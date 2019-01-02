@@ -1,3 +1,3 @@
-# Online eCommerce
+# Online eCommerce website
 
 frontend

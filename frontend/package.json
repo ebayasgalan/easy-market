@@ -1,7 +1,7 @@
 {
   "name": "easy-market-frontend",
   "version": "1.0.0",
-  "description": "front-end of new project",
+  "description": "front-end of easy-market Ecommerce website",
   "main": "index.js",
   "scripts": {
     "dev": "next -p 7777",
