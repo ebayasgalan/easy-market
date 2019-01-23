@@ -1,16 +1,32 @@
 import App, { Container } from "next/app";
+import { ApolloProvider } from "react-apollo";
+import withData from "../lib/withData";
+import Page from "../components/Page";
 
 class MyApp extends App {
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
+    if (Component.getInitialProps) {
+      pageProps = await Component.getInitialProps(ctx);
+    }
+    // exposing the query to the user
+    pageProps.query = ctx.query;
+    return { pageProps };
+  }
   render() {
-    const { Component } = this.props;
+    const { Component, apollo, pageProps } = this.props;
 
     return (
       <Container>
-        <p>Hey this is app component</p>
-        <Component />
+        <ApolloProvider client={apollo}>
+          <Page>
+            <p>Hey this is app component</p>
+            <Component {...pageProps} />
+          </Page>
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default MyApp;
+export default withData(MyApp);
