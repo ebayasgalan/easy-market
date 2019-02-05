@@ -37,8 +37,7 @@ function Items(props) {
       <Query
         query={ALL_ITEMS_QUERY}
         variables={{
-          skip: 2,
-          first: 4
+          skip: props.page * perPage - perPage
         }}
       >
         {({ data, error, loading }) => {
