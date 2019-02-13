@@ -1,7 +1,12 @@
-const Orders = () => (
+import PleaseSignin from "../components/PleaseSignin";
+import OrderList from "../components/OrderList";
+
+const OrderPage = props => (
   <div>
-    <p>Orders page!</p>
+    <PleaseSignin>
+      <OrderList />
+    </PleaseSignin>
   </div>
 );
 
-export default Orders;
+export default OrderPage;

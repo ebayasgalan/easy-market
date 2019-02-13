@@ -42,6 +42,7 @@ class Order extends Component {
           if (error) return <Error error={error} />;
           if (loading) return <p>Loading...</p>;
           const order = data.order;
+          console.log(order);
           return (
             <OrderStyles>
               <Head>
@@ -71,6 +72,13 @@ class Order extends Component {
                 {order.items.map(item => (
                   <div className="order-item" key={item.id}>
                     <img src={item.image} alt={item.title} />
+                    <div className="item-details">
+                      <h1>{item.title}</h1>
+                      <h3>{item.description}</h3>
+                      <p>Quantity: {item.quantity}</p>
+                      <p>Each: {formatMoney(item.price)}</p>
+                      <p>SubTotal: {formatMoney(item.price * item.quantity)}</p>
+                    </div>
                   </div>
                 ))}
               </div>
