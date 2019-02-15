@@ -2,6 +2,7 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import styled from "styled-components";
 import Error from "./ErrorMessage";
+import Router from "next/router";
 
 const StyledAccount = styled.div`
   text-align: center;
@@ -23,6 +24,10 @@ const Account = () => {
       {({ data, error, loading }) => {
         if (error) return <Error error={error} />;
         if (loading) return <p>Loading...</p>;
+        if (!data.me)
+          return Router.push({
+            pathname: "/order"
+          });
         return (
           <StyledAccount>
             <h2>Name: {data.me.name}</h2>
