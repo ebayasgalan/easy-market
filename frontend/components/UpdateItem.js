@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { Mutation, Query } from "react-apollo";
 import gql from "graphql-tag";
-import Router from "next/router";
 import Form from "./styles/Form";
-import formatMoney from "../lib/formatMoney";
 import Error from "./ErrorMessage";
 
 const SINGLE_ITEM_QUERY = gql`
@@ -48,8 +46,6 @@ class UpdateItem extends Component {
 
   updateItem = async (e, updateItemMutation) => {
     e.preventDefault();
-    console.log(this.state);
-    console.log("Updating Item");
     const res = await updateItemMutation({
       variables: {
         id: this.props.id,

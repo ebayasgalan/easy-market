@@ -38,7 +38,6 @@ class Search extends Component {
     loading: false
   };
   onChangeHandler = debounce(async (e, client) => {
-    console.log("Searching...");
     // turn loading on
     this.setState({ loading: true });
     // Manually query apollo client
