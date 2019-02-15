@@ -1,7 +1,9 @@
-const Account = () => (
+import Account from "../components/Account";
+
+const AccountPage = () => (
   <div>
-    <p>Account Page!</p>
+    <Account />
   </div>
 );
 
-export default Account;
+export default AccountPage;
