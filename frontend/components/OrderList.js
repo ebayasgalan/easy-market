@@ -41,7 +41,10 @@ class OrderList extends Component {
           if (loading) return <p>Loading...</p>;
           return (
             <div>
-              <h2>You have {orders.length} orders</h2>
+              <h2>
+                You have {orders.length}{" "}
+                {orders.length !== 1 ? "orders" : "order"}
+              </h2>
               <OrderUl>
                 {orders.map(order => (
                   <OrderItemStyles key={order.id}>
