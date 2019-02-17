@@ -28,8 +28,6 @@ function totalItems(cart) {
 class ChargeMyCard extends Component {
   onToken = async (res, createOrder) => {
     NProgress.start();
-    console.log("On token called!");
-    console.log(res.id);
     // once the stripe token is recieved, call the mutation
     const order = await createOrder({
       variables: {
