@@ -43,7 +43,7 @@ class Search extends Component {
     // Manually query apollo client
     const response = await client.query({
       query: SEARCH_ITEMS_QUERY,
-      variables: { searchTerm: e.target.value }
+      variables: { searchTerm: e.target.value.toLowerCase() }
     });
     this.setState({
       items: response.data.items,
