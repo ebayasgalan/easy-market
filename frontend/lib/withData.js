@@ -6,14 +6,14 @@ import { LOCAL_STATE_QUERY } from "../components/Cart";
 function createClient({ headers }) {
   return new ApolloClient({
     uri: process.env.NODE_ENV === "development" ? devEndpoint : prodEndpoint,
-    request: operation => {
-      operation.setContext({
-        fetchOptions: {
-          credentials: "include"
-        },
-        headers
-      });
-    },
+    // request: operation => {
+    //   operation.setContext({
+    //     fetchOptions: {
+    //       credentials: "include"
+    //     },
+    //     headers
+    //   });
+    // },
     // local data
     clientState: {
       resolvers: {
