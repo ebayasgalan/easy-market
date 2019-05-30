@@ -1,5 +1,6 @@
 #endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://easy-market-server-82b2a2aa31.herokuapp.com/easy-market-prod/prod
+#endpoint: https://easy-market-server-82b2a2aa31.herokuapp.com/easy-market-prod/prod
+endpoint: https://easy-market-c6b7aa5257.herokuapp.com/easy-market/prod
 datamodel: datamodel.prisma
 secret: ${env:PRISMA_SECRET}
 hooks:
