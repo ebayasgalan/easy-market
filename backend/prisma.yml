@@ -3,6 +3,7 @@
 #endpoint: https://easy-market-c6b7aa5257.herokuapp.com/easy-market/prod
 #endpoint: https://easy-market-c6b7aa5257.herokuapp.com/easy-market/prod
 #endpoint: https://easy-market-c6b7aa5257.herokuapp.com/easy-market/prod
+#endpoint: https://easy-market-c6b7aa5257.herokuapp.com/easy-market/prod
 endpoint: https://easy-market-c6b7aa5257.herokuapp.com/easy-market/prod
 datamodel: datamodel.prisma
 secret: ${env:PRISMA_SECRET}
