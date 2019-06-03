@@ -9,7 +9,6 @@ import CartCount from "./CartCount";
 const Nav = () => (
   <User>
     {({ data: { me } }) => {
-      console.log("This is inside nav, data.me: ", me);
       return (
         <NavStyles>
           <Link href="/items">
