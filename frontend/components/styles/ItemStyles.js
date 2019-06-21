@@ -9,7 +9,7 @@ const Item = styled.div`
   flex-direction: column;
   img {
     width: 100%;
-    height: 400px;
+    height: 350px;
     object-fit: cover;
   }
   p {
@@ -33,6 +33,11 @@ const Item = styled.div`
       font-family: "radnika_next";
       font-size: 1rem;
       padding: 1rem;
+    }
+  }
+  @media (max-width: 768px) {
+    img {
+      height: 200px;
     }
   }
 `;
