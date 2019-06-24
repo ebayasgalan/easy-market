@@ -2,8 +2,6 @@ import Signup from "../components/Signup";
 import styled from "styled-components";
 import Signin from "../components/Signin";
 import RequestReset from "../components/RequestReset";
-import User from "./User";
-import Router from "next/router";
 
 const Columns = styled.div`
   display: grid;
@@ -13,19 +11,9 @@ const Columns = styled.div`
 
 const SignupPage = props => (
   <Columns>
-    <User>
-      {({data: {me}}) => {
-        {!me && (Router.push({
-          pathname: "/"
-        }))}
-        return (
-          <Signin />
-          <Signup />
-          <RequestReset />
-        )
-      }
-    }
-    </User>
+    <Signin />
+    <Signup />
+    <RequestReset />
   </Columns>
 );
 
