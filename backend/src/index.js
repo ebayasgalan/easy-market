@@ -1,9 +1,10 @@
-const cookieParser = require("cookie-parser");
-const jwt = require("jsonwebtoken");
-require("dotenv").config({ path: "variables.env" });
-const createServer = require("./createServer");
-const db = require("./db");
+const cookieParser = require('cookie-parser');
+const jwt = require('jsonwebtoken');
+require('dotenv').config({ path: 'variables.env' });
+const createServer = require('./createServer');
+const db = require('./db');
 
+// create the server
 const server = createServer();
 
 server.express.use(cookieParser());
@@ -25,7 +26,7 @@ server.express.use(async (req, res, next) => {
     {
       where: { id: req.userId }
     },
-    "{id, permissions, email, name}"
+    '{id, permissions, email, name}'
   );
   req.user = user;
   next();
@@ -35,10 +36,10 @@ server.express.use(async (req, res, next) => {
 
 server.start(
   {
-    // cors: {
-    //   credentials: true,
-    //   origin: process.env.FRONTEND_URL
-    // }
+    cors: {
+      credentials: true,
+      origin: process.env.FRONTEND_URL
+    }
   },
   deets => {
     console.log(`Server is now running on port http:/localhost:${deets.port}`);
