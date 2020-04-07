@@ -1,7 +1,7 @@
-import App, { Container } from "next/app";
-import { ApolloProvider } from "react-apollo";
-import withData from "../lib/withData";
-import Page from "../components/Page";
+import App from 'next/app';
+import { ApolloProvider } from 'react-apollo';
+import withData from '../lib/withData';
+import Page from '../components/Page';
 
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -17,13 +17,11 @@ class MyApp extends App {
     const { Component, apollo, pageProps } = this.props;
 
     return (
-      <Container>
-        <ApolloProvider client={apollo}>
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </ApolloProvider>
-      </Container>
+      <ApolloProvider client={apollo}>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
+      </ApolloProvider>
     );
   }
 }
