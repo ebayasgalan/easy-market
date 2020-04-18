@@ -30,5 +30,8 @@
     "presets": [
       "env"
     ]
+  },
+  "devDependencies": {
+    "@prisma/cli": "^2.0.0-beta.2"
   }
 }
