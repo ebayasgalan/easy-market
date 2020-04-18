@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-const SickButton = styled.button`
+const CoolButton = styled.button`
   background: blue;
   color: white;
   font-weight: 500;
@@ -17,4 +17,4 @@ const SickButton = styled.button`
   }
 `;
 
-export default SickButton;
+export default CoolButton;

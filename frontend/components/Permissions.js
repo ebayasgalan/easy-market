@@ -1,17 +1,17 @@
-import { Query, Mutation } from "react-apollo";
-import Error from "./ErrorMessage";
-import gql from "graphql-tag";
-import Table from "./styles/Table";
-import SickButton from "./styles/SickButton";
-import PropTypes from "prop-types";
+import { Query, Mutation } from 'react-apollo';
+import Error from './ErrorMessage';
+import gql from 'graphql-tag';
+import Table from './styles/Table';
+import CoolButton from './styles/CoolButton';
+import PropTypes from 'prop-types';
 
 const possiblePermissions = [
-  "ADMIN",
-  "USER",
-  "PERMISSIONUPDATE",
-  "ITEMCREATE",
-  "ITEMUPDATE",
-  "ITEMDELETE"
+  'ADMIN',
+  'USER',
+  'PERMISSIONUPDATE',
+  'ITEMCREATE',
+  'ITEMUPDATE',
+  'ITEMDELETE',
 ];
 
 const UPDATE_PERMISSIONS_MUTATION = gql`
@@ -39,7 +39,7 @@ const ALL_USERS_QUERY = gql`
   }
 `;
 
-const Permissions = props => (
+const Permissions = (props) => (
   <Query query={ALL_USERS_QUERY}>
     {({ data, loading, error }) => (
       <div>
@@ -51,14 +51,14 @@ const Permissions = props => (
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                {possiblePermissions.map(permission => (
+                {possiblePermissions.map((permission) => (
                   <th key={permission}>{permission}</th>
                 ))}
                 <th />
               </tr>
             </thead>
             <tbody>
-              {data.users.map(user => (
+              {data.users.map((user) => (
                 <UserPermissions user={user} key={user.id} />
               ))}
             </tbody>
@@ -75,13 +75,13 @@ class UserPermissions extends React.Component {
       name: PropTypes.string,
       email: PropTypes.string,
       id: PropTypes.string,
-      permissions: PropTypes.array
-    }).isRequired
+      permissions: PropTypes.array,
+    }).isRequired,
   };
   state = {
-    permissions: this.props.user.permissions
+    permissions: this.props.user.permissions,
   };
-  handlePermissionChange = e => {
+  handlePermissionChange = (e) => {
     const checkbox = e.target;
     // take a copy of the current permissions
     let updatedPermissions = [...this.state.permissions];
@@ -90,7 +90,7 @@ class UserPermissions extends React.Component {
       updatedPermissions.push(checkbox.value);
     } else {
       updatedPermissions = updatedPermissions.filter(
-        permission => permission !== checkbox.value
+        (permission) => permission !== checkbox.value
       );
     }
     this.setState({ permissions: updatedPermissions });
@@ -102,23 +102,23 @@ class UserPermissions extends React.Component {
         mutation={UPDATE_PERMISSIONS_MUTATION}
         variables={{
           permissions: this.state.permissions,
-          userId: this.props.user.id
+          userId: this.props.user.id,
         }}
       >
         {(updatePermissions, { loading, error }) => (
           <>
             <tr>
-              <td colSpan="6">{error && <Error error={error} />}</td>
+              <td colSpan='6'>{error && <Error error={error} />}</td>
             </tr>
             <tr>
               <td>{user.name}</td>
               <td>{user.email}</td>
-              {possiblePermissions.map(permission => (
+              {possiblePermissions.map((permission) => (
                 <td key={permission}>
                   <label htmlFor={`${user.id}-permission-${permission}`}>
                     <input
                       id={`${user.id}-permission-${permission}`}
-                      type="checkbox"
+                      type='checkbox'
                       checked={this.state.permissions.includes(permission)}
                       value={permission}
                       onChange={this.handlePermissionChange}
@@ -127,13 +127,13 @@ class UserPermissions extends React.Component {
                 </td>
               ))}
               <td>
-                <SickButton
-                  type="button"
+                <CoolButton
+                  type='button'
                   disabled={loading}
                   onClick={updatePermissions}
                 >
-                  Updat{loading ? "ing" : "e"}
-                </SickButton>
+                  Updat{loading ? 'ing' : 'e'}
+                </CoolButton>
               </td>
             </tr>
           </>
