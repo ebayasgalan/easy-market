@@ -1,29 +1,34 @@
-import App from 'next/app';
-import { ApolloProvider } from 'react-apollo';
-import withData from '../lib/withData';
+import { ApolloProvider } from '@apollo/client';
+import NProgress from 'nprogress';
+import Router from 'next/router';
 import Page from '../components/Page';
+import '../components/styles/nprogress.css';
+import withData from '../lib/withData';
+import { CartStateProvider } from '../lib/cartState';
 
-class MyApp extends App {
-  static async getInitialProps({ Component, ctx }) {
-    let pageProps = {};
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-    // exposing the query to the user
-    pageProps.query = ctx.query;
-    return { pageProps };
-  }
-  render() {
-    const { Component, apollo, pageProps } = this.props;
+Router.events.on('routeChangeStart', () => NProgress.start());
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
-    return (
-      <ApolloProvider client={apollo}>
+function MyApp({ Component, pageProps, apollo }) {
+  return (
+    <ApolloProvider client={apollo}>
+      <CartStateProvider>
         <Page>
           <Component {...pageProps} />
         </Page>
-      </ApolloProvider>
-    );
-  }
+      </CartStateProvider>
+    </ApolloProvider>
+  );
 }
+
+MyApp.getInitialProps = async function ({ Component, ctx }) {
+  let pageProps = {};
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps(ctx);
+  }
+  pageProps.query = ctx.query;
+  return { pageProps };
+};
 
 export default withData(MyApp);

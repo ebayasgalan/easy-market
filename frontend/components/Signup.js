@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import { Mutation } from "react-apollo";
-import gql from "graphql-tag";
-import Form from "./styles/Form";
-import Error from "./ErrorMessage";
-import { CURRENT_USER_QUERY } from "./User";
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
+import Form from './styles/Form';
+import useForm from '../lib/useForm';
+import Error from './ErrorMessage';
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -11,7 +10,7 @@ const SIGNUP_MUTATION = gql`
     $name: String!
     $password: String!
   ) {
-    signup(email: $email, name: $name, password: $password) {
+    createUser(data: { email: $email, name: $name, password: $password }) {
       id
       email
       name
@@ -19,73 +18,71 @@ const SIGNUP_MUTATION = gql`
   }
 `;
 
-class Signup extends Component {
-  state = {
-    name: "",
-    email: "",
-    password: ""
-  };
-  saveToState = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  render() {
-    return (
-      <Mutation
-        mutation={SIGNUP_MUTATION}
-        variables={this.state}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-      >
-        {(signup, { error, loading }) => {
-          return (
-            <Form
-              method="post"
-              onSubmit={async e => {
-                e.preventDefault();
-                await signup();
-                this.setState({ name: "", email: "", password: "" });
-              }}
-            >
-              <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Sign up for an account</h2>
-                <Error error={error} />
-                <label htmlFor="name">
-                  name
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="name"
-                    value={this.state.name}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="email">
-                  email
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    value={this.state.email}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="password">
-                  password
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={this.state.password}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <button type="submit">Sign Up</button>
-              </fieldset>
-            </Form>
-          );
-        }}
-      </Mutation>
-    );
+export default function SignUp() {
+  const { inputs, handleChange, resetForm } = useForm({
+    email: '',
+    name: '',
+    password: '',
+  });
+  const [signup, { data, loading, error }] = useMutation(SIGNUP_MUTATION, {
+    variables: inputs,
+    // refectch the currently logged in user
+    // refetchQueries: [{ query: CURRENT_USER_QUERY }],
+  });
+  async function handleSubmit(e) {
+    e.preventDefault(); // stop the form from submitting
+    console.log(inputs);
+    const res = await signup().catch(console.error);
+    console.log(res);
+    console.log({ data, loading, error });
+    resetForm();
+    // Send the email and password to the graphqlAPI
   }
+  return (
+    <Form method="POST" onSubmit={handleSubmit}>
+      <h2>Sign Up For an Account</h2>
+      <Error error={error} />
+      <fieldset>
+        {data?.createUser && (
+          <p>
+            Signed up with {data.createUser.email} - Please Go Head and Sign in!
+          </p>
+        )}
+        <label htmlFor="email">
+          Your Name
+          <input
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            autoComplete="name"
+            value={inputs.name}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="email">
+          Email
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email Address"
+            autoComplete="email"
+            value={inputs.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            autoComplete="password"
+            value={inputs.password}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Sign In!</button>
+      </fieldset>
+    </Form>
+  );
 }
-
-export default Signup;

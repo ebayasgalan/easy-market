@@ -1,12 +1,12 @@
-import CreateItem from "../components/CreateItem";
-import PleaseSignin from "../components/PleaseSignin";
+import CreateProduct from '../components/CreateProduct';
+import PleaseSignIn from '../components/PleaseSignIn';
 
-const Sell = props => (
-  <div>
-    <PleaseSignin>
-      <CreateItem />
-    </PleaseSignin>
-  </div>
-);
-
-export default Sell;
+export default function SellPage() {
+  return (
+    <div>
+      <PleaseSignIn>
+        <CreateProduct />
+      </PleaseSignIn>
+    </div>
+  );
+}

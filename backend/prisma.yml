@@ -1,7 +1,0 @@
-# endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://easy-market-server-cadfc2d643.herokuapp.com/ecommerce-app-prod/prod
-datamodel: datamodel.prisma
-secret: ${env:PRISMA_SECRET}
-hooks:
-  post-deploy:
-    - graphql get-schema -p prisma

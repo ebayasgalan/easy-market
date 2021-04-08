@@ -1,92 +1,81 @@
-import React, { Component } from "react";
-import { Mutation } from "react-apollo";
-import PropTypes from "prop-types";
-import gql from "graphql-tag";
-import Form from "./styles/Form";
-import Error from "./ErrorMessage";
-import { CURRENT_USER_QUERY } from "./User";
+import gql from 'graphql-tag';
+import { useMutation } from '@apollo/client';
+import Form from './styles/Form';
+import useForm from '../lib/useForm';
+import Error from './ErrorMessage';
 
 const RESET_MUTATION = gql`
   mutation RESET_MUTATION(
-    $resetToken: String!
+    $email: String!
     $password: String!
-    $confirmPassword: String!
+    $token: String!
   ) {
-    resetPassword(
-      resetToken: $resetToken
+    redeemUserPasswordResetToken(
+      email: $email
+      token: $token
       password: $password
-      confirmPassword: $confirmPassword
     ) {
-      id
-      email
-      name
+      code
+      message
     }
   }
 `;
 
-class Reset extends Component {
-  static propTypes = {
-    resetToken: PropTypes.string.isRequired
-  };
-  state = {
-    password: "",
-    confirmPassword: ""
-  };
-  saveToState = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  render() {
-    return (
-      <Mutation
-        mutation={RESET_MUTATION}
-        variables={{
-          resetToken: this.props.resetToken,
-          password: this.state.password,
-          confirmPassword: this.state.confirmPassword
-        }}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-      >
-        {(reset, { error, loading }) => {
-          return (
-            <Form
-              method="post"
-              onSubmit={async e => {
-                e.preventDefault();
-                await reset();
-                this.setState({ password: "", confirmPassword: "" });
-              }}
-            >
-              <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Reset Your Password</h2>
-                <Error error={error} />
-                <label htmlFor="password">
-                  Password
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="password"
-                    value={this.state.password}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <label htmlFor="confirmPassword">
-                  Confirm Password
-                  <input
-                    type="password"
-                    name="confirmPassword"
-                    placeholder="confirmPassword"
-                    value={this.state.confirmPassword}
-                    onChange={this.saveToState}
-                  />
-                </label>
-                <button type="submit">Reset Your Password</button>
-              </fieldset>
-            </Form>
-          );
-        }}
-      </Mutation>
-    );
+export default function Reset({ token }) {
+  const { inputs, handleChange, resetForm } = useForm({
+    email: '',
+    password: '',
+    token,
+  });
+  const [reset, { data, loading, error }] = useMutation(RESET_MUTATION, {
+    variables: inputs,
+  });
+  const successfulError = data?.redeemUserPasswordResetToken?.code
+    ? data?.redeemUserPasswordResetToken
+    : undefined;
+  console.log(error);
+  async function handleSubmit(e) {
+    e.preventDefault(); // stop the form from submitting
+    console.log(inputs);
+    const res = await reset().catch(console.error);
+    console.log(res);
+    console.log({ data, loading, error });
+    resetForm();
+    // Send the email and password to the graphqlAPI
   }
-}
+  return (
+    <Form method="POST" onSubmit={handleSubmit}>
+      <h2>Reset Your Password</h2>
+      <Error error={error || successfulError} />
+      <fieldset>
+        {data?.redeemUserPasswordResetToken === null && (
+          <p>Success! You can Now sign in</p>
+        )}
 
-export default Reset;
+        <label htmlFor="email">
+          Email
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email Address"
+            autoComplete="email"
+            value={inputs.email}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="password">
+          Password
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            autoComplete="password"
+            value={inputs.password}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Request Reset!</button>
+      </fieldset>
+    </Form>
+  );
+}
