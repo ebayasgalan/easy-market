@@ -1,15 +1,15 @@
 import { permissionsList } from './schemas/fields';
-import { ListAccessArgs } from './types';
+// import  } from './types';
 // At it's simplest, the access control returns a yes or no value depending on the users session
 
-export function isSignedIn({ session }: ListAccessArgs) {
+export function isSignedIn({ session }) {
   return !!session;
 }
 
 const generatedPermissions = Object.fromEntries(
   permissionsList.map((permission) => [
     permission,
-    function ({ session }: ListAccessArgs) {
+    function ({ session }) {
       return !!session?.data.role?.[permission];
     },
   ])
@@ -18,7 +18,7 @@ const generatedPermissions = Object.fromEntries(
 // Permissions check if someone meets a criteria - yes or no.
 export const permissions = {
   ...generatedPermissions,
-  isAwesome({ session }: ListAccessArgs): boolean {
+  isAwesome({ session }): boolean {
     return session?.data.name.includes('eric');
   },
 };
@@ -26,7 +26,7 @@ export const permissions = {
 // Rule based function
 // Rules can return a boolean - yes or no - or a filter which limits which products they can CRUD.
 export const rules = {
-  canManageProducts({ session }: ListAccessArgs) {
+  canManageProducts({ session }) {
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -37,7 +37,7 @@ export const rules = {
     // 2. If not, do they own this item?
     return { user: { id: session.itemId } };
   },
-  canOrder({ session }: ListAccessArgs) {
+  canOrder({ session }) {
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -48,7 +48,7 @@ export const rules = {
     // 2. If not, do they own this item?
     return { user: { id: session.itemId } };
   },
-  canManageOrderItems({ session }: ListAccessArgs) {
+  canManageOrderItems({ session }) {
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -59,7 +59,7 @@ export const rules = {
     // 2. If not, do they own this item?
     return { order: { user: { id: session.itemId } } };
   },
-  canReadProducts({ session }: ListAccessArgs) {
+  canReadProducts({ session }) {
     if (!isSignedIn({ session })) {
       return false;
     }
@@ -69,7 +69,7 @@ export const rules = {
     // They should only see available products (based on the status field)
     return { status: 'AVAILABLE' };
   },
-  canManageUsers({ session }: ListAccessArgs) {
+  canManageUsers({ session }) {
     if (!isSignedIn({ session })) {
       return false;
     }

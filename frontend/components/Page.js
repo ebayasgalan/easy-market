@@ -5,7 +5,7 @@ import Header from './Header';
 const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'radnika_next';
-    src: url('/static/radnikanext-medium-webfont.woff2') format('woff2');
+    // src: url('/public/radnikanext-medium-webfont.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
   }
@@ -55,7 +55,7 @@ export default function Page({ children, cool }) {
     <div>
       <GlobalStyles />
       <Header />
-      <InnerStyles>{children}</InnerStyles>
+      {/* <InnerStyles>{children}</InnerStyles> */}
     </div>
   );
 }

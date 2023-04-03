@@ -1,6 +1,6 @@
 # Online Ecommerce Web-App
 
-a visitor can see what items are for sale. In order to buy or post, the user has to be logged-in. 
+This is a full stack ecommerce application. The user can see list of items that are for sale. In order to buy or post, the user has to get authenticated. 
 
 
 

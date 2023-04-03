@@ -1,9 +1,13 @@
-import { createAuth } from '@keystone-next/auth';
-import { config, createSchema } from '@keystone-next/keystone/schema';
+import { config } from '@keystone-6/core';
+// import { Context } from '@keystone-6/core/types';
+import type { Context } from '.keystone/types';
+import { withAuth } from './auth';
+
+// Below are added packages from legacy code
+
 import {
-  withItemData,
   statelessSessions,
-} from '@keystone-next/keystone/session';
+} from '@keystone-6/core/session';
 import { permissionsList } from './schemas/fields';
 import { Role } from './schemas/Role';
 import { OrderItem } from './schemas/OrderItem';
@@ -14,38 +18,18 @@ import { Product } from './schemas/Product';
 import { User } from './schemas/User';
 import 'dotenv/config';
 import { insertSeedData } from './seed-data';
-import { sendPasswordResetEmail } from './lib/mail';
 import { extendGraphqlSchema } from './mutations';
 
-function check(name: string) {}
-
-const databaseURL =
-  process.env.DATABASE_URL || 'mongodb://localhost/keystone-sick-fits-tutorial';
+const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
+console.log('process.env.DATABASE_URL: ', process.env.DATABASE_URL);
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
   secret: process.env.COOKIE_SECRET,
 };
 
-const { withAuth } = createAuth({
-  listKey: 'User',
-  identityField: 'email',
-  secretField: 'password',
-  initFirstItem: {
-    fields: ['name', 'email', 'password'],
-    // TODO: Add in inital roles here
-  },
-  passwordResetLink: {
-    async sendToken(args) {
-      // send the email
-      await sendPasswordResetEmail(args.token, args.identity);
-    },
-  },
-});
-
 export default withAuth(
   config({
-    // @ts-ignore
     server: {
       cors: {
         origin: [process.env.FRONTEND_URL],
@@ -53,35 +37,31 @@ export default withAuth(
       },
     },
     db: {
-      adapter: 'mongoose',
+      provider: 'postgresql',
       url: databaseURL,
-      async onConnect(keystone) {
+      onConnect: async (context) => {
         console.log('Connected to the database!');
-        if (process.argv.includes('--seed-data')) {
-          await insertSeedData(keystone);
-        }
-      },
+        // if (process.argv.includes('--seed-data')) {
+        //   await insertSeedData(context);
+        // }
+      }
     },
-    lists: createSchema({
-      // Schema items go in here
+    lists: ({
       User,
-      Product,
-      ProductImage,
-      CartItem,
-      OrderItem,
-      Order,
-      Role,
-    }),
-    extendGraphqlSchema,
+      // Product,
+      // ProductImage,
+      // CartItem,
+      // OrderItem,
+      // Order,
+      // Role,
+    }),  
+    // extendGraphqlSchema,
     ui: {
       // Show the UI only for poeple who pass this test
       isAccessAllowed: ({ session }) =>
-        // console.log(session);
         !!session?.data,
     },
-    session: withItemData(statelessSessions(sessionConfig), {
-      // GraphQL Query
-      User: `id name email role { ${permissionsList.join(' ')} }`,
-    }),
+    session: statelessSessions(sessionConfig),
+    // sessionStrategy: storedSessions({}, sessionConfig)
   })
 );
