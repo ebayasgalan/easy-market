@@ -1,3 +1,4 @@
+// This config does not work with React 18 
 // import { configure } from 'enzyme';
 // import Adapter from 'enzyme-adapter-react-16';
 
