@@ -1,6 +1,5 @@
 import { config } from '@keystone-6/core';
 // import { Context } from '@keystone-6/core/types';
-import type { Context } from '.keystone/types';
 import { withAuth } from './auth';
 
 // Below are added packages from legacy code
@@ -17,11 +16,10 @@ import { ProductImage } from './schemas/ProductImage';
 import { Product } from './schemas/Product';
 import { User } from './schemas/User';
 import 'dotenv/config';
-import { insertSeedData } from './seed-data';
+// import { seedDatabase } from './seed-data';
 import { extendGraphqlSchema } from './mutations';
 
 const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
-console.log('process.env.DATABASE_URL: ', process.env.DATABASE_URL);
 
 const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
@@ -39,21 +37,33 @@ export default withAuth(
     db: {
       provider: 'postgresql',
       url: databaseURL,
-      onConnect: async (context) => {
+      onConnect: async context => {
         console.log('Connected to the database!');
-        // if (process.argv.includes('--seed-data')) {
-        //   await insertSeedData(context);
-        // }
+        // const users = await context.db.Product.createMany({
+        //   data: [
+        //     {
+        //       name: 'Alice'
+        //     },
+        //     {
+        //       name: 'Bob'
+        //     },
+        //   ],
+        // });
+        // console.log('created seed data: ', users);
+        if (process.argv.includes('--seed-data')) {
+          console.log('data seeded');
+          // await seedDatabase(context);
+        }
       }
     },
     lists: ({
       User,
-      // Product,
-      // ProductImage,
-      // CartItem,
-      // OrderItem,
-      // Order,
-      // Role,
+      Product,
+      ProductImage,
+      CartItem,
+      OrderItem,
+      Order,
+      Role,
     }),  
     // extendGraphqlSchema,
     ui: {

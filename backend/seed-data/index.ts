@@ -1,21 +1,28 @@
-import { products } from './data';
+// import { products } from './data';
 
-export async function insertSeedData(ks: any) {
-  // Keystone API changed, so we need to check for both versions to get keystone
-  const keystone = ks.keystone || ks;
-  // const adapter = keystone.adapters?.MongooseAdapter || keystone.adapter;
+console.log('from index.ts file');
 
-  console.log(`🌱 Inserting Seed Data: ${products.length} products`);
-  // const { mongoose } = adapter;
-  for (const product of products) {
-    console.log(`  🛍️ Adding Product: ${product.name}`);
-    // const { _id } = await mongoose
-    //   .model('ProductImage')
-    //   .create({ image: product.photo, altText: product.description });
-    product.photo = _id;
-    await mongoose.model('Product').create(product);
-  }
-  console.log(`✅ Seed Data Inserted: ${products.length} Products`);
-  console.log(`Please start the process with \`yarn dev\` or \`npm run dev\``);
-  process.exit();
-}
+// export async function seedDatabase(context) {
+//   console.log(`Inserting Seed Data: ${products.length} products`);
+
+//   for (const product of products) {
+//     console.log(`Adding Product: ${product.name}`);
+//     const item = await context.db.Product.findOne({
+//       where: { name: product.name },
+//     });
+
+//     if (!item) {
+//       const newProductImage = await context.db.ProductImage.createOne({
+//         data: {image: product.photo, altText: product.description},
+//         query: 'id',
+//       });
+//       product.photo = newProductImage;
+//       await context.db.Product.createOne({
+//         data: product,
+//       });
+//     }
+//   }
+//   console.log(`Seed Data Inserted: ${products.length} Products`);
+//   console.log(`Please start the process with \`yarn dev\` or \`npm run dev\``);
+//   process.exit();
+// }

@@ -4,7 +4,6 @@ import { permissions, rules } from '../access';
 import { allowAll } from '@keystone-6/core/access';
 
 export const User = list({
-  access: allowAll,
   // access: {
   //   operation: {
   //     create: () => true,
@@ -13,6 +12,9 @@ export const User = list({
   //     delete: permissions.canManageUsers,
   //   }
   // },
+  access: {
+    operation: allowAll
+  },
   ui: {
     // hide the backend UI from regular users
     // hideCreate: (args) => !permissions.canManageUsers(args),
@@ -27,25 +29,25 @@ export const User = list({
       isIndexed: 'unique',
     }),
     password: password(),
-    // cart: relationship({
-    //   ref: 'CartItem.user',
-    //   many: true,
-    //   ui: {
-    //     createView: { fieldMode: 'hidden' },
-    //     itemView: { fieldMode: 'read' },
-    //   },
-    // }),
-    // orders: relationship({ ref: 'Order.user', many: true }),
-    // role: relationship({
-    //   ref: 'Role.assignedTo',
-    //   access: {
-    //     create: permissions.canManageUsers,
-    //     update: permissions.canManageUsers,
-    //   },
-    // }),
-    // products: relationship({
-    //   ref: 'Product.user',
-    //   many: true,
-    // }),
+    cart: relationship({
+      ref: 'CartItem.user',
+      many: true,
+      ui: {
+        createView: { fieldMode: 'hidden' },
+        itemView: { fieldMode: 'read' },
+      },
+    }),
+    orders: relationship({ ref: 'Order.user', many: true }),
+    role: relationship({
+      ref: 'Role.assignedTo',
+      access: {
+        create: permissions.canManageUsers,
+        update: permissions.canManageUsers,
+      },
+    }),
+    products: relationship({
+      ref: 'Product.user',
+      many: true,
+    }),
   },
 });

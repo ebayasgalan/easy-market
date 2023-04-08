@@ -1,15 +1,19 @@
 import { integer, select, text, relationship } from '@keystone-6/core/fields';
 import { list } from '@keystone-6/core';
 import { isSignedIn, rules } from '../access';
+import { allowAll } from '@keystone-6/core/access';
 
 export const OrderItem = list({
+  // access: {
+  //   operation: {
+  //     create: isSignedIn,
+  //     query: rules.canManageOrderItems,
+  //     update: () => false,
+  //     delete: () => false,
+  //   }
+  // },
   access: {
-    operation: {
-      create: isSignedIn,
-      query: rules.canManageOrderItems,
-      update: () => false,
-      delete: () => false,
-    }
+    operation: allowAll
   },
   fields: {
     name: text({ 

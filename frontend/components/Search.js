@@ -42,7 +42,6 @@ export default function Search() {
     inputValue,
     getMenuProps,
     getInputProps,
-    getComboboxProps,
     getItemProps,
     highlightedIndex,
   } = useCombobox({
@@ -63,38 +62,37 @@ export default function Search() {
   });
   
   return (
-    <div>hello from search.js</div>
-    // <SearchStyles>
-    //   <div {...getComboboxProps()}>
-    //     <input
-    //       {...getInputProps({
-    //         type: 'search',
-    //         placeholder: 'Search for an Item',
-    //         id: 'search',
-    //         className: loading ? 'loading' : null,
-    //       })}
-    //     />
-    //   </div>
-    //   <DropDown {...getMenuProps()}>
-    //     {isOpen &&
-    //       items.map((item, index) => (
-    //         <DropDownItem
-    //           {...getItemProps({ item })}
-    //           key={item.id}
-    //           highlighted={index === highlightedIndex}
-    //         >
-    //           <img
-    //             src={item.photo.image.publicUrlTransformed}
-    //             alt={item.name}
-    //             width="50"
-    //           />
-    //           {item.name}
-    //         </DropDownItem>
-    //       ))}
-    //     {isOpen && !items.length && !loading && (
-    //       <DropDownItem>Sorry, No items found for {inputValue}</DropDownItem>
-    //     )}
-    //   </DropDown>
-    // </SearchStyles>
+    <SearchStyles>
+      <div>
+        <input
+          {...getInputProps({
+            type: 'search',
+            placeholder: 'Search for an Item',
+            id: 'search',
+            className: loading ? 'loading' : null,
+          })}
+        />
+      </div>
+      <DropDown {...getMenuProps()}>
+        {isOpen &&
+          items.map((item, index) => (
+            <DropDownItem
+              {...getItemProps({ item })}
+              key={item.id}
+              highlighted={index === highlightedIndex}
+            >
+              <img
+                src={item.photo.image.publicUrlTransformed}
+                alt={item.name}
+                width="50"
+              />
+              {item.name}
+            </DropDownItem>
+          ))}
+        {isOpen && !items.length && !loading && (
+          <DropDownItem>Sorry, No items found for {inputValue}</DropDownItem>
+        )}
+      </DropDown>
+    </SearchStyles>
   );
 }

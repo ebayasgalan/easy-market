@@ -8,15 +8,19 @@ import {
 import { list, graphql } from '@keystone-6/core';
 import { isSignedIn, rules } from '../access';
 import formatMoney from '../lib/formatMoney';
+import { allowAll } from '@keystone-6/core/access';
 
 export const Order = list({
+  // access: {
+  //   operation: {
+  //     create: isSignedIn,
+  //     query: rules.canOrder,
+  //     update: () => false,
+  //     delete: () => false,
+  //   }
+  // },
   access: {
-    operation: {
-      create: isSignedIn,
-      query: rules.canOrder,
-      update: () => false,
-      delete: () => false,
-    }
+    operation: allowAll
   },
   fields: {
     label: virtual({

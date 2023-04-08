@@ -56,36 +56,18 @@ export default function Header() {
   if (error) return <p>Error was thrown</p>;
   console.log('data from Header.js: ', data);
 
-  // useEffect(() => {
-  //   fetch('https://dummyjson.com/products')
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("from header.js: ", data);
-  //     })
-  // }, [])
-
   return (
-    <Link href="/">Easy Market</Link>
-
-    // <HeaderStyles>
-    //   <div className="bar">
-    //     <Logo>
-    //       <Link href="/">Easy Market</Link>
-    //     </Logo>
-    //     <Nav />
-    //   </div>
-    //   <div className="sub-bar">
-    //     <Search />
-    //   </div>
-    //   <Cart />
-    // </HeaderStyles>
+    <HeaderStyles>
+      <div className="bar">
+        <Logo>
+          <Link href="/">Easy Market</Link>
+        </Logo>
+        <Nav />
+      </div>
+      <div className="sub-bar">
+        <Search />
+      </div>
+      <Cart />
+    </HeaderStyles>
   );
 }
-
-// Header.getInitialProps = async (ctx) => {
-//   const res = await fetch('https://api.github.com/repos/vercel/next.js')
-//   const json = await res.json()
-//   console.log('from search.js: ', json);
-// }
-
-// export default Header

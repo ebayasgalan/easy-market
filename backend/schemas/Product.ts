@@ -1,15 +1,19 @@
 import { integer, select, text, relationship } from '@keystone-6/core/fields';
 import { list } from '@keystone-6/core';
 import { rules, isSignedIn } from '../access';
+import { allowAll } from '@keystone-6/core/access';
 
 export const Product = list({
+  // access: {
+  //   operation: {
+  //     create: isSignedIn,
+  //     query: rules.canReadProducts,
+  //     update: rules.canManageProducts,
+  //     delete: rules.canManageProducts,
+  //   }
+  // },
   access: {
-    operation: {
-      create: isSignedIn,
-      query: rules.canReadProducts,
-      update: rules.canManageProducts,
-      delete: rules.canManageProducts,
-    }
+    operation: allowAll
   },
   fields: {
     name: text({ 
