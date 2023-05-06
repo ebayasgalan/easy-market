@@ -337,57 +337,25 @@ input UserRelateToOneForCreateInput {
 
 type ProductImage {
   id: ID!
-  image: CloudinaryImage_File
+  image: ImageFieldOutput
   altText: String
   product: Product
 }
 
-type CloudinaryImage_File {
-  id: ID
-  filename: String
-  originalFilename: String
-  mimetype: String
-  encoding: String
-  publicUrl: String
-  publicUrlTransformed(transformation: CloudinaryImageFormat): String
+type ImageFieldOutput {
+  id: ID!
+  filesize: Int!
+  width: Int!
+  height: Int!
+  extension: ImageExtension!
+  url: String!
 }
 
-"""
-Mirrors the formatting options [Cloudinary provides](https://cloudinary.com/documentation/image_transformation_reference).
-All options are strings as they ultimately end up in a URL.
-"""
-input CloudinaryImageFormat {
-  """ Rewrites the filename to be this pretty string. Do not include `/` or `.`
-  """
-  prettyName: String
-  width: String
-  height: String
-  crop: String
-  aspect_ratio: String
-  gravity: String
-  zoom: String
-  x: String
-  y: String
-  format: String
-  fetch_format: String
-  quality: String
-  radius: String
-  angle: String
-  effect: String
-  opacity: String
-  border: String
-  background: String
-  overlay: String
-  underlay: String
-  default_image: String
-  delay: String
-  color: String
-  color_space: String
-  dpr: String
-  page: String
-  density: String
-  flags: String
-  transformation: String
+enum ImageExtension {
+  jpg
+  png
+  webp
+  gif
 }
 
 input ProductImageWhereUniqueInput {
@@ -409,9 +377,13 @@ input ProductImageOrderByInput {
 }
 
 input ProductImageUpdateInput {
-  image: Upload
+  image: ImageFieldInput
   altText: String
   product: ProductRelateToOneForUpdateInput
+}
+
+input ImageFieldInput {
+  upload: Upload!
 }
 
 """The `Upload` scalar type represents a file upload."""
@@ -429,7 +401,7 @@ input ProductImageUpdateArgs {
 }
 
 input ProductImageCreateInput {
-  image: Upload
+  image: ImageFieldInput
   altText: String
   product: ProductRelateToOneForCreateInput
 }
@@ -739,7 +711,7 @@ type Mutation {
   createProducts(data: [ProductCreateInput!]!): [Product]
   updateProduct(where: ProductWhereUniqueInput!, data: ProductUpdateInput!): Product
   updateProducts(data: [ProductUpdateArgs!]!): [Product]
-  deleteProduct(where: ProductWhereUniqueInput!): Product
+  deleteProduct(id: ID, where: ProductWhereUniqueInput): Product
   deleteProducts(where: [ProductWhereUniqueInput!]!): [Product]
   createProductImage(data: ProductImageCreateInput!): ProductImage
   createProductImages(data: [ProductImageCreateInput!]!): [ProductImage]
@@ -776,6 +748,8 @@ type Mutation {
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
   sendUserPasswordResetLink(email: String!): Boolean!
   redeemUserPasswordResetToken(email: String!, token: String!, password: String!): RedeemUserPasswordResetTokenResult
+  addToCart(productId: ID): CartItem
+  checkout(token: String!): Order
 }
 
 union UserAuthenticationWithPasswordResult = UserAuthenticationWithPasswordSuccess | UserAuthenticationWithPasswordFailure
@@ -831,6 +805,15 @@ type Query {
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
   validateUserPasswordResetToken(email: String!, token: String!): ValidateUserPasswordResetTokenResult
+  allOrders(where: OrderWhereInput! = {}, orderBy: [OrderOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: OrderWhereUniqueInput): [Order!]
+  Order(where: OrderWhereUniqueInput!): Order
+  Product(where: ProductWhereUniqueInput!): Product
+  _allProductsMeta: _AllProductsMeta
+  allProducts(where: ProductWhereInput! = {}, orderBy: [ProductOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ProductWhereUniqueInput, first: Int): [Product!]
+}
+
+type _AllProductsMeta {
+  count: Int
 }
 
 union AuthenticatedItem = User

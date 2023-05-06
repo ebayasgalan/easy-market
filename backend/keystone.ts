@@ -1,13 +1,5 @@
 import { config } from '@keystone-6/core';
-// import { Context } from '@keystone-6/core/types';
-import { withAuth } from './auth';
-
-// Below are added packages from legacy code
-
-import {
-  statelessSessions,
-} from '@keystone-6/core/session';
-import { permissionsList } from './schemas/fields';
+import { statelessSessions } from '@keystone-6/core/session';
 import { Role } from './schemas/Role';
 import { OrderItem } from './schemas/OrderItem';
 import { Order } from './schemas/Order';
@@ -16,8 +8,10 @@ import { ProductImage } from './schemas/ProductImage';
 import { Product } from './schemas/Product';
 import { User } from './schemas/User';
 import 'dotenv/config';
-// import { seedDatabase } from './seed-data';
+import { withAuth } from './auth';
 import { extendGraphqlSchema } from './mutations';
+import { addCompatibilityForQueries } from './compat';
+// import { insertSeedData } from './seed-data';
 
 const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
 
@@ -25,6 +19,11 @@ const sessionConfig = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
   secret: process.env.COOKIE_SECRET,
 };
+
+const bucketName = process.env.S3_BUCKET_NAME ?? '';
+const region = process.env.S3_REGION ?? '';
+const accessKeyId = process.env.S3_ACCESS_KEY_ID ?? '';
+const secretAccessKey = process.env.S3_SECRET_ACCESS_KEY ?? '';
 
 export default withAuth(
   config({
@@ -37,24 +36,29 @@ export default withAuth(
     db: {
       provider: 'postgresql',
       url: databaseURL,
-      onConnect: async context => {
+      onConnect: async (context) => {
         console.log('Connected to the database!');
-        // const users = await context.db.Product.createMany({
-        //   data: [
-        //     {
-        //       name: 'Alice'
-        //     },
-        //     {
-        //       name: 'Bob'
-        //     },
-        //   ],
+        // if (process.argv.includes('--seed-data')) {
+        //   await insertSeedData(context.prisma);
+        // }
+        // const cloudinaryResponse = await context.db.ProductImage.createOne({
+        //   data: {
+        //       image: products.photo,
+        //       altText: products.description
+        //   }
         // });
-        // console.log('created seed data: ', users);
-        if (process.argv.includes('--seed-data')) {
-          console.log('data seeded');
-          // await seedDatabase(context);
-        }
       }
+    },
+    storage: {
+      my_images: {
+        kind: 's3', 
+        type: 'image', 
+        bucketName, 
+        region, 
+        accessKeyId, 
+        secretAccessKey, 
+        signed: { expiry: 5000 },
+      },
     },
     lists: ({
       User,
@@ -65,13 +69,12 @@ export default withAuth(
       Order,
       Role,
     }),  
-    // extendGraphqlSchema,
+    extendGraphqlSchema: (schema) => addCompatibilityForQueries(extendGraphqlSchema(schema)),
     ui: {
-      // Show the UI only for poeple who pass this test
+      // Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) =>
         !!session?.data,
     },
     session: statelessSessions(sessionConfig),
-    // sessionStrategy: storedSessions({}, sessionConfig)
   })
 );

@@ -8,44 +8,27 @@
   "scripts": {
     "start": "next start",
     "dev": "keystone dev",
-    "seed-data": "keystone --seed-data",
+    "build": "keystone build",
+    "seed-data": "tsx seed-data",
     "reset-data": "keystone prisma db push --force-reset",
-    "postinstall": "keystone postinstall",
     "prisma": "prisma generate"
   },
   "babel": {
     "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": 10,
-            "browsers": [
-              "last 2 chrome versions",
-              "last 2 firefox versions",
-              "last 2 safari versions",
-              "last 2 edge versions"
-            ]
-          }
-        }
-      ],
+      "@babel/preset-env",
       "@babel/preset-react",
       "@babel/preset-typescript"
     ]
   },
   "dependencies": {
+    "@graphql-tools/schema": "^9.0.19",
     "@keystone-6/auth": "^7.0.0",
-    "@keystone-6/cloudinary": "^7.0.0",
     "@keystone-6/core": "^5.0.0",
-    "@keystone-6/fields-document": "^7.0.0",
+    "@prisma/client": "^4.13.0",
     "@types/nodemailer": "^6.4.7",
     "dotenv": "^16.0.3",
-    "graphql": "^16.6.0",
-    "next": "^13.2.3",
     "nodemailer": "^6.9.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "stripe": "^11.13.0"
+    "stripe": "^12.4.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.54.0",
@@ -62,6 +45,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.4",
+    "prisma": "^4.13.0",
     "typescript": "^4.9.5"
   }
 }

@@ -14,7 +14,8 @@ export const ALL_PRODUCTS_QUERY = gql`
       photo {
         id
         image {
-          publicUrlTransformed
+          id
+          url
         }
       }
     }
@@ -31,7 +32,7 @@ export default function Products({ page }) {
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
     variables: {
       skip: page * perPage - perPage,
-      first: perPage,
+      take: perPage,
     },
   });
   if (loading) return <p>Loading...</p>;

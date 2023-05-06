@@ -29,7 +29,7 @@ export default function paginationField() {
         return false;
       }
 
-      // If there are items, just reutrn them from the cache, and we don't need to go to the network
+      // If there are items, just return them from the cache, and we don't need to go to the network
       if (items.length) {
         // console.log(
         //   `There are ${items.length} items in the cache! Gonna send them to apollo`
