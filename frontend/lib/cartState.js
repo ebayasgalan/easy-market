@@ -4,7 +4,7 @@ const LocalStateContext = createContext();
 const LocalStateProvider = LocalStateContext.Provider;
 
 function CartStateProvider({ children }) {
-  // This is our own custom provider! We will store data (state) and functionality (updaters) in here and anyone can access it via the consumer!
+  // This is the custom provider! Store data (state) and functionality (updaters) in here and anyone can access it via the consumer!
 
   // Closed cart by default
   const [cartOpen, setCartOpen] = useState(false);
@@ -38,7 +38,7 @@ function CartStateProvider({ children }) {
 
 // make a custom hook for accessing the cart local state
 function useCart() {
-  // We use a consumer here to access the local state
+  // Use a consumer here to access the local state
   const all = useContext(LocalStateContext);
   return all;
 }

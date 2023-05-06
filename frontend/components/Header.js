@@ -54,10 +54,11 @@ export default function Header() {
   const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error was thrown</p>;
-  console.log('data from Header.js: ', data);
+  // console.log('data from Header.js: ', data);
 
   return (
     <HeaderStyles>
+    <div>
       <div className="bar">
         <Logo>
           <Link href="/">Easy Market</Link>
@@ -68,6 +69,7 @@ export default function Header() {
         <Search />
       </div>
       <Cart />
+      </div>
     </HeaderStyles>
   );
 }

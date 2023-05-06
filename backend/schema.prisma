@@ -45,7 +45,11 @@ model Product {
 
 model ProductImage {
   id                   String      @id @default(cuid())
-  image                Json?
+  image_filesize       Int?
+  image_extension      String?
+  image_width          Int?
+  image_height         Int?
+  image_id             String?
   altText              String      @default("")
   product              Product?    @relation("Product_photo")
   from_OrderItem_photo OrderItem[] @relation("OrderItem_photo")

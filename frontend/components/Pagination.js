@@ -8,9 +8,7 @@ import { perPage } from '../config';
 
 export const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
-    _allProductsMeta {
-      count
-    }
+    productsCount
   }
 `;
 
@@ -18,8 +16,8 @@ export default function Pagination({ page }) {
   const { error, loading, data } = useQuery(PAGINATION_QUERY);
   if (loading) return 'Loading...';
   if (error) return <DisplayError error={error} />;
-  const { count } = data._allProductsMeta;
-  const pageCount = Math.ceil(count / perPage);
+  const { productsCount } = data;
+  const pageCount = Math.ceil(productsCount / perPage);
   return (
     <PaginationStyles>
       <Head>
@@ -27,16 +25,12 @@ export default function Pagination({ page }) {
           Easy Market - Page {page} of {pageCount}
         </title>
       </Head>
-      <Link href={`/products/${page - 1}`}>
-        <a aria-disabled={page <= 1}>← Prev</a>
-      </Link>
+      <Link href={`/products/${page - 1}`} aria-disabled={page <= 1}>← Prev</Link>
       <p>
         Page {page} of {pageCount}
       </p>
-      <p>{count} Items Total</p>
-      <Link href={`/products/${page + 1}`}>
-        <a aria-disabled={page >= pageCount}>Next →</a>
-      </Link>
+      <p>{productsCount} Items Total</p>
+      <Link href={`/products/${page + 1}`} aria-disabled={page >= pageCount}>Next →</Link>
     </PaginationStyles>
   );
 }

@@ -12,6 +12,7 @@ let apolloClient;
 
 // function createApolloClient({ headers, initialState }) {
 //   return new ApolloClient({
+//     ssrMode: typeof window === 'undefined',
 //     link: ApolloLink.from([
 //       onError(({ graphQLErrors, networkError }) => {
 //         if (graphQLErrors)
@@ -28,9 +29,9 @@ let apolloClient;
 //       // this uses apollo-link-http under the hood, so all the options here come from that package
 //       createUploadLink({
 //         uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
-//         fetchOptions: {
-//           credentials: 'include',
-//         },
+//         // fetchOptions: {
+//         //   credentials: 'include',
+//         // },
 //         // pass the headers along from this request. This enables SSR with logged in state
 //         headers,
 //       }),
@@ -71,19 +72,21 @@ function createApolloClient() {
           credentials: 'include',
         },
         // pass the headers along from this request. This enables SSR with logged in state
-        // headers,
+        // headers
+        headers: {
+          "apollo-require-preflight": true
+        }
       }),
     ]),
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
           fields: {
-            // TODO: We will add this together!
             allProducts: paginationField(),
           },
         },
       },
-    }).restore(),
+    }).restore()
   });
 }
 

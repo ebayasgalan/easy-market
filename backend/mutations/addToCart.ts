@@ -17,12 +17,13 @@ async function addToCart(
     throw new Error('You must be logged in to do this!');
   }
   // 2. Query the current users cart
-  const allCartItems = await context.lists.CartItem.findMany({
-    where: { user: { id: sesh.itemId }, product: { id: productId } },
+  const allCartItems = await context.db.CartItem.findMany({
+    where: { user: { id: { equals: sesh.itemId }  }, product: { id: { equals: productId } } },
     resolveFields: 'id,quantity'
   });
 
   const [existingCartItem] = allCartItems;
+
   if (existingCartItem) {
     console.log(existingCartItem)
     console.log(
@@ -30,14 +31,14 @@ async function addToCart(
     );
     // 3. See if the current item is in their cart
     // 4. if itis, increment by 1
-    return await context.lists.CartItem.updateOne({
+    return await context.db.CartItem.updateOne({
       id: existingCartItem.id,
       data: { quantity: existingCartItem.quantity + 1 },
       resolveFields: false,
     });
   }
   // 4. if it isnt, create a new cart item!
-  return await context.lists.CartItem.createOne({
+  return await context.db.CartItem.createOne({
     data: {
       product: { connect: { id: productId }},
       user: { connect: { id: sesh.itemId }},

@@ -3,8 +3,7 @@ import gql from 'graphql-tag';
 
 const DELETE_PRODUCT_MUTATION = gql`
   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
-    deleteProduct(id: $id) {
-      id
+    deleteProduct(where: {id: $id}) {
       name
     }
   }
@@ -21,7 +20,7 @@ export default function DeleteProduct({ id, children }) {
     DELETE_PRODUCT_MUTATION,
     {
       variables: { id },
-      update,
+      update
     }
   );
   return (
@@ -30,8 +29,7 @@ export default function DeleteProduct({ id, children }) {
       disabled={loading}
       onClick={() => {
         if (confirm('Are you sure you want to delete this item?')) {
-          // go ahead and delete it
-          console.log('DELTEe');
+          console.log('DELETED');
           deleteProduct().catch((err) => alert(err.message));
         }
       }}

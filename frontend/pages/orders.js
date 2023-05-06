@@ -9,7 +9,7 @@ import OrderItemStyles from '../components/styles/OrderItemStyles';
 
 const USER_ORDERS_QUERY = gql`
   query USER_ORDERS_QUERY {
-    allOrders {
+    orders {
       id
       charge
       total
@@ -24,7 +24,7 @@ const USER_ORDERS_QUERY = gql`
         quantity
         photo {
           image {
-            publicUrlTransformed
+            url
           }
         }
       }
@@ -46,18 +46,17 @@ export default function OrdersPage() {
   const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
   if (loading) return <p>Loading...</p>;
   if (error) return <ErrorMessage error={error} />;
-  const { allOrders } = data;
+  const { orders } = data;
   return (
     <div>
       <Head>
-        <title>Your Orders ({allOrders.length})</title>
+        <title>Your Orders ({orders.length})</title>
       </Head>
-      <h2>You have {allOrders.length} orders!</h2>
+      <h2>You have {orders.length} orders!</h2>
       <OrderUl>
-        {allOrders.map((order) => (
-          <OrderItemStyles>
+        {orders.map((order, i) => (
+          <OrderItemStyles key={i}>
             <Link href={`/order/${order.id}`}>
-              <a>
                 <div className="order-meta">
                   <p>{countItemsInAnOrder(order)} Items</p>
                   <p>
@@ -70,12 +69,11 @@ export default function OrdersPage() {
                   {order.items.map((item) => (
                     <img
                       key={`image-${item.id}`}
-                      src={item.photo?.image?.publicUrlTransformed}
+                      src={item.photo?.image?.url}
                       alt={item.name}
                     />
                   ))}
                 </div>
-              </a>
             </Link>
           </OrderItemStyles>
         ))}
