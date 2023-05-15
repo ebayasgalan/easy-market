@@ -28,9 +28,9 @@ export const Product = list({
       ref: 'ProductImage.product',
       ui: {
         displayMode: 'cards',
-        cardFields: ['image', 'altText'],
-        inlineCreate: { fields: ['image', 'altText'] },
-        inlineEdit: { fields: ['image', 'altText'] },
+        cardFields: ['picture', 'altText'],
+        inlineCreate: { fields: ['picture', 'altText'] },
+        inlineEdit: { fields: ['picture', 'altText'] },
       },
     }),
     status: select({

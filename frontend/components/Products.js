@@ -13,7 +13,7 @@ export const ALL_PRODUCTS_QUERY = gql`
       description
       photo {
         id
-        image {
+        picture {
           id
           url
         }

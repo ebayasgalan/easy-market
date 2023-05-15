@@ -4,7 +4,6 @@ import { list } from '@keystone-6/core';
 import { allowAll } from '@keystone-6/core/access';
 // import { cloudinaryImage } from '@keystone-6/cloudinary';
 
-
 // export const cloudinary = {
 //   cloudName: process.env.CLOUDINARY_CLOUD_NAME,
 //   apiKey: process.env.CLOUDINARY_KEY,
@@ -17,13 +16,13 @@ export const ProductImage = list({
     operation: allowAll
   },
   fields: {
-    image: image({ storage: 'my_images' }),
+    picture: image({ storage: 'my_images' }),
     altText: text(),
     product: relationship({ ref: 'Product.photo' }),
   },
   ui: {
     listView: {
-      initialColumns: ['image', 'altText', 'product'],
+      initialColumns: ['picture', 'altText', 'product'],
     },
   },
 });

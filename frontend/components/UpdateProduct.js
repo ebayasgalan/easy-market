@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
+import Router from 'next/router';
 import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
 import Form from './styles/Form';
@@ -35,11 +36,11 @@ const UPDATE_PRODUCT_MUTATION = gql`
 `;
 
 export default function UpdateProduct({ id }) {
-  // 1. We need to get the existing product
+  // 1. Get the existing product
   const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: { id },
   });
-  // 2. We need to get the mutation to update the product
+  // 2. Get the mutation to update the product
   const [
     updateProduct,
     { data: updateData, error: updateError, loading: updateLoading },
@@ -54,7 +55,7 @@ export default function UpdateProduct({ id }) {
   );
   console.log(inputs);
   if (loading) return <p>loading...</p>;
-  // 3. We need the form to handle the updates
+  // 3. The form needs to handle the updates
   return (
     <Form
       onSubmit={async (e) => {
@@ -67,15 +68,11 @@ export default function UpdateProduct({ id }) {
             price: inputs.price,
           },
         }).catch(console.error);
-        console.log(res);
-        // Submit the inputfields to the backend:
-        // TODO: Handle Submit!!!
-        // const res = await createProduct();
-        // clearForm();
+        // console.log(res);
         // // Go to that product's page!
-        // Router.push({
-        //   pathname: `/product/${res.data.createProduct.id}`,
-        // });
+        Router.push({
+          pathname: `/product/${res.data.updateProduct.id}`,
+        });
       }}
     >
       <DisplayError error={error || updateError} />

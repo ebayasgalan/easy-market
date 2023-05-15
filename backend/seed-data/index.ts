@@ -1,5 +1,5 @@
 import { getContext } from '@keystone-6/core/context';
-import * as PrismaModule from '@prisma/client';
+// import * as PrismaModule from '@prisma/client';
 import config from '../keystone';
 import { products } from './data';
 
@@ -45,7 +45,7 @@ const testPhoto = {
 //   publicUrlTransformed: 'https://res.cloudinary.com/djmraqiyz/image/upload/v1574351965/easy-market/smart_phone.jpg'
 
 const insertSeedData = async () => {
-    const context = getContext(config, PrismaModule);
+    // const context = getContext(config, PrismaModule);
     console.log(`Inserting Seed Data: ${products.length} products`);
 
     for (const product of products) {

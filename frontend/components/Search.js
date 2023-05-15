@@ -18,7 +18,7 @@ const SEARCH_PRODUCTS_QUERY = gql`
       id
       name
       photo {
-        image {
+        picture {
           url
         }
       }
@@ -82,7 +82,7 @@ export default function Search() {
               highlighted={index === highlightedIndex}
             >
               <img
-                src={item.photo.image.url}
+                src={item.photo.picture.url}
                 alt={item.name}
                 width="50"
               />

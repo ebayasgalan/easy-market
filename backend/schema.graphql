@@ -337,7 +337,7 @@ input UserRelateToOneForCreateInput {
 
 type ProductImage {
   id: ID!
-  image: ImageFieldOutput
+  picture: ImageFieldOutput
   altText: String
   product: Product
 }
@@ -377,7 +377,7 @@ input ProductImageOrderByInput {
 }
 
 input ProductImageUpdateInput {
-  image: ImageFieldInput
+  picture: ImageFieldInput
   altText: String
   product: ProductRelateToOneForUpdateInput
 }
@@ -401,7 +401,7 @@ input ProductImageUpdateArgs {
 }
 
 input ProductImageCreateInput {
-  image: ImageFieldInput
+  picture: ImageFieldInput
   altText: String
   product: ProductRelateToOneForCreateInput
 }
@@ -711,7 +711,7 @@ type Mutation {
   createProducts(data: [ProductCreateInput!]!): [Product]
   updateProduct(where: ProductWhereUniqueInput!, data: ProductUpdateInput!): Product
   updateProducts(data: [ProductUpdateArgs!]!): [Product]
-  deleteProduct(id: ID, where: ProductWhereUniqueInput): Product
+  deleteProduct(where: ProductWhereUniqueInput!): Product
   deleteProducts(where: [ProductWhereUniqueInput!]!): [Product]
   createProductImage(data: ProductImageCreateInput!): ProductImage
   createProductImages(data: [ProductImageCreateInput!]!): [ProductImage]
@@ -805,15 +805,6 @@ type Query {
   keystone: KeystoneMeta!
   authenticatedItem: AuthenticatedItem
   validateUserPasswordResetToken(email: String!, token: String!): ValidateUserPasswordResetTokenResult
-  allOrders(where: OrderWhereInput! = {}, orderBy: [OrderOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: OrderWhereUniqueInput): [Order!]
-  Order(where: OrderWhereUniqueInput!): Order
-  Product(where: ProductWhereUniqueInput!): Product
-  _allProductsMeta: _AllProductsMeta
-  allProducts(where: ProductWhereInput! = {}, orderBy: [ProductOrderByInput!]! = [], take: Int, skip: Int! = 0, cursor: ProductWhereUniqueInput, first: Int): [Product!]
-}
-
-type _AllProductsMeta {
-  count: Int
 }
 
 union AuthenticatedItem = User

@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 const DELETE_PRODUCT_MUTATION = gql`
   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
     deleteProduct(where: {id: $id}) {
+      id
       name
     }
   }
@@ -21,16 +22,17 @@ export default function DeleteProduct({ id, children }) {
     {
       variables: { id },
       update
+
     }
   );
   return (
     <button
       type="button"
       disabled={loading}
-      onClick={() => {
+      onClick={ async () => {
         if (confirm('Are you sure you want to delete this item?')) {
-          console.log('DELETED');
-          deleteProduct().catch((err) => alert(err.message));
+          const res = await deleteProduct().catch((err) => alert(err.message));
+          console.log('Product Deleted!');
         }
       }}
     >
