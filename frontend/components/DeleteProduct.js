@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import styled from 'styled-components';
 
 const DELETE_PRODUCT_MUTATION = gql`
   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
@@ -9,6 +10,12 @@ const DELETE_PRODUCT_MUTATION = gql`
     }
   }
 `;
+
+const ButtonStyles = styled.button`
+  &:hover{
+    cursor: pointer
+  }
+`
 
 function update(cache, payload) {
   console.log(payload);
@@ -26,7 +33,7 @@ export default function DeleteProduct({ id, children }) {
     }
   );
   return (
-    <button
+    <ButtonStyles
       type="button"
       disabled={loading}
       onClick={ async () => {
@@ -37,6 +44,6 @@ export default function DeleteProduct({ id, children }) {
       }}
     >
       {children}
-    </button>
+    </ButtonStyles>
   );
 }

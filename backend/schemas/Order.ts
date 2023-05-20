@@ -14,10 +14,12 @@ export const Order = list({
   // access: {
   //   operation: {
   //     create: isSignedIn,
-  //     query: rules.canOrder,
   //     update: () => false,
   //     delete: () => false,
-  //   }
+  //   },
+  //   filter: {
+  //     query: rules.canOrder,
+  //   },
   // },
   access: {
     operation: allowAll

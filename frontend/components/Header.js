@@ -18,21 +18,29 @@ const USER_ORDERS_QUERY = gql`
 `;
 
 const Logo = styled.h1`
-  font-size: 4rem;
-  margin-left: 2rem;
-  position: relative;
-  z-index: 2;
-  background: red;
-  transform: skew(-7deg);
+  font-size: 2rem;
+  display: flex;
+  line-height: 24px;
   a {
-    color: white;
-    text-decoration: none;
-    text-transform: uppercase;
+    color: red;
     padding: 0.5rem 1rem;
+    :hover {
+      text-decoration: none;
+    }
+  }
+  @media (min-width: 768px) {
+    font-size: 2rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 3rem;
   }
 `;
 
 const HeaderStyles = styled.header`
+  position: sticky;
+  z-index: 30;
+  top: 0;
+  background: white;
   .bar {
     border-bottom: 10px solid var(--black, black);
     display: grid;
@@ -58,17 +66,17 @@ export default function Header() {
 
   return (
     <HeaderStyles>
-    <div>
-      <div className="bar">
-        <Logo>
-          <Link href="/">Easy Market</Link>
-        </Logo>
-        <Nav />
-      </div>
-      <div className="sub-bar">
-        <Search />
-      </div>
-      <Cart />
+      <div>
+        <div className="bar">
+          <Logo>
+            <Link href="/">Easy Market</Link>
+          </Logo>
+          <Nav />
+        </div>
+        <div className="sub-bar">
+          <Search />
+        </div>
+        <Cart />
       </div>
     </HeaderStyles>
   );

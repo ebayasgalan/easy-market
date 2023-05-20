@@ -5,12 +5,14 @@ import { allowAll } from '@keystone-6/core/access';
 
 export const Product = list({
   // access: {
-  //   operation: {
+  //   item: {
   //     create: isSignedIn,
+  //   },
+  //   filter: {
   //     query: rules.canReadProducts,
   //     update: rules.canManageProducts,
   //     delete: rules.canManageProducts,
-  //   }
+  //   },
   // },
   access: {
     operation: allowAll

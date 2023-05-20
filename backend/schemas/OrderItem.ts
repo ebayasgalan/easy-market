@@ -7,10 +7,12 @@ export const OrderItem = list({
   // access: {
   //   operation: {
   //     create: isSignedIn,
-  //     query: rules.canManageOrderItems,
   //     update: () => false,
   //     delete: () => false,
-  //   }
+  //   },
+  //   filter: {
+  //     query: rules.canManageOrderItems,
+  //   },
   // },
   access: {
     operation: allowAll

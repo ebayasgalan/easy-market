@@ -5,6 +5,7 @@ const ItemStyles = styled.div`
   border: 1px solid var(--offWhite);
   box-shadow: var(--bs);
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   img {
@@ -22,6 +23,7 @@ const ItemStyles = styled.div`
   .buttonList {
     display: grid;
     width: 100%;
+    text-align: center;
     border-top: 1px solid var(--lightGrey);
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     grid-gap: 1px;
@@ -32,6 +34,12 @@ const ItemStyles = styled.div`
       font-size: 1rem;
       padding: 1rem;
     }
+    a:hover {
+      text-decoration: none;
+    }
+  }
+  @media(min-width: 768px) {
+    width: 47%;
   }
 `;
 
