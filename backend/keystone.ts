@@ -69,7 +69,6 @@ export default withAuth(
       Order,
       Role,
     }),  
-    // extendGraphqlSchema: (schema) => addCompatibilityForQueries(extendGraphqlSchema(schema)),
     extendGraphqlSchema,
     ui: {
       // Show the UI only for people who pass this test
