@@ -7,10 +7,12 @@ export const OrderItem = list({
   // access: {
   //   operation: {
   //     create: isSignedIn,
-  //     query: rules.canManageOrderItems,
   //     update: () => false,
   //     delete: () => false,
-  //   }
+  //   },
+  //   filter: {
+  //     query: rules.canManageOrderItems,
+  //   },
   // },
   access: {
     operation: allowAll
@@ -28,9 +30,9 @@ export const OrderItem = list({
       ref: 'ProductImage',
       ui: {
         displayMode: 'cards',
-        cardFields: ['image', 'altText'],
-        inlineCreate: { fields: ['image', 'altText'] },
-        inlineEdit: { fields: ['image', 'altText'] },
+        cardFields: ['picture', 'altText'],
+        inlineCreate: { fields: ['picture', 'altText'] },
+        inlineEdit: { fields: ['picture', 'altText'] },
       },
     }),
     price: integer(),

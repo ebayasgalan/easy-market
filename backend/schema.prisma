@@ -45,11 +45,11 @@ model Product {
 
 model ProductImage {
   id                   String      @id @default(cuid())
-  image_filesize       Int?
-  image_extension      String?
-  image_width          Int?
-  image_height         Int?
-  image_id             String?
+  picture_filesize     Int?
+  picture_extension    String?
+  picture_width        Int?
+  picture_height       Int?
+  picture_id           String?
   altText              String      @default("")
   product              Product?    @relation("Product_photo")
   from_OrderItem_photo OrderItem[] @relation("OrderItem_photo")

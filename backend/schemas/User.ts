@@ -9,6 +9,7 @@ export const User = list({
   //     create: () => true,
   //     query: rules.canManageUsers,
   //     update: rules.canManageUsers,
+  //     // only people with the permission can delete themselves!
   //     delete: permissions.canManageUsers,
   //   }
   // },
@@ -17,8 +18,8 @@ export const User = list({
   },
   ui: {
     // hide the backend UI from regular users
-    // hideCreate: (args) => !permissions.canManageUsers(args),
-    // hideDelete: (args) => !permissions.canManageUsers(args),
+    hideCreate: (args) => !permissions.canManageUsers(args),
+    hideDelete: (args) => !permissions.canManageUsers(args),
   },
   fields: {
     name: text({ 

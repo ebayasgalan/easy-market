@@ -1,13 +1,21 @@
 import { useMutation } from '@apollo/client';
 import gql from 'graphql-tag';
+import styled from 'styled-components';
 
 const DELETE_PRODUCT_MUTATION = gql`
   mutation DELETE_PRODUCT_MUTATION($id: ID!) {
     deleteProduct(where: {id: $id}) {
+      id
       name
     }
   }
 `;
+
+const ButtonStyles = styled.button`
+  &:hover{
+    cursor: pointer
+  }
+`
 
 function update(cache, payload) {
   console.log(payload);
@@ -21,20 +29,21 @@ export default function DeleteProduct({ id, children }) {
     {
       variables: { id },
       update
+
     }
   );
   return (
-    <button
+    <ButtonStyles
       type="button"
       disabled={loading}
-      onClick={() => {
+      onClick={ async () => {
         if (confirm('Are you sure you want to delete this item?')) {
-          console.log('DELETED');
-          deleteProduct().catch((err) => alert(err.message));
+          const res = await deleteProduct().catch((err) => alert(err.message));
+          console.log('Product Deleted!');
         }
       }}
     >
       {children}
-    </button>
+    </ButtonStyles>
   );
 }

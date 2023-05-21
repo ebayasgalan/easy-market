@@ -7,18 +7,18 @@ import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
   query SEARCH_PRODUCTS_QUERY($searchTerm: String!) {
-    searchTerms: allProducts(
+    searchTerms: products(
       where: {
         OR: [
-          { name_contains_i: $searchTerm }
-          { description_contains_i: $searchTerm }
+          { name: { contains: $searchTerm } }
+          { description: { contains: $searchTerm } }
         ]
       }
     ) {
       id
       name
       photo {
-        image {
+        picture {
           url
         }
       }
@@ -82,7 +82,7 @@ export default function Search() {
               highlighted={index === highlightedIndex}
             >
               <img
-                src={item.photo.image.url}
+                src={item.photo.picture.url}
                 alt={item.name}
                 width="50"
               />

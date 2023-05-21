@@ -5,12 +5,14 @@ import { allowAll } from '@keystone-6/core/access';
 
 export const Product = list({
   // access: {
-  //   operation: {
+  //   item: {
   //     create: isSignedIn,
+  //   },
+  //   filter: {
   //     query: rules.canReadProducts,
   //     update: rules.canManageProducts,
   //     delete: rules.canManageProducts,
-  //   }
+  //   },
   // },
   access: {
     operation: allowAll
@@ -28,9 +30,9 @@ export const Product = list({
       ref: 'ProductImage.product',
       ui: {
         displayMode: 'cards',
-        cardFields: ['image', 'altText'],
-        inlineCreate: { fields: ['image', 'altText'] },
-        inlineEdit: { fields: ['image', 'altText'] },
+        cardFields: ['picture', 'altText'],
+        inlineCreate: { fields: ['picture', 'altText'] },
+        inlineEdit: { fields: ['picture', 'altText'] },
       },
     }),
     status: select({

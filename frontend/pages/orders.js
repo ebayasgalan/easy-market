@@ -23,7 +23,7 @@ const USER_ORDERS_QUERY = gql`
         price
         quantity
         photo {
-          image {
+          picture {
             url
           }
         }

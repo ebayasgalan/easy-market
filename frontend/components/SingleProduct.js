@@ -28,7 +28,7 @@ const SINGLE_ITEM_QUERY = gql`
       photo {
         id
         altText
-        image {
+        picture {
           url
         }
       }
@@ -52,7 +52,7 @@ export default function SingleProduct({ id }) {
         <title>Easy Market | {product.name}</title>
       </Head>
       <img
-        src={product.photo?.image?.url}
+        src={product.photo?.picture?.url}
         alt={product.photo?.altText}
       />
       <div className="details">

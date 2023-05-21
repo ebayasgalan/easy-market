@@ -30,7 +30,7 @@ function CartItem({ cartItem }) {
     <CartItemStyles>
       <img
         width="100"
-        src={product.photo.image.url}
+        src={product.photo.picture.url}
         alt={product.name}
       />
       <div>

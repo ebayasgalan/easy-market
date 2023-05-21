@@ -13,7 +13,7 @@ export const ALL_PRODUCTS_QUERY = gql`
       description
       photo {
         id
-        image {
+        picture {
           id
           url
         }
@@ -23,9 +23,13 @@ export const ALL_PRODUCTS_QUERY = gql`
 `;
 
 const ProductsListStyles = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  @media (min-width: 768px) {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
 `;
 
 export default function Products({ page }) {

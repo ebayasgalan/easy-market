@@ -16,7 +16,7 @@ const CURRENT_USER_QUERY = gql`
             name
             description
             photo {
-              image {
+              picture {
                 url
               }
             }

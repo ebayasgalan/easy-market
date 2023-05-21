@@ -36,7 +36,7 @@ async function checkout(
           id
           photo {
             id
-            image {
+            picture {
               id
               url
             }
@@ -64,7 +64,7 @@ async function checkout(
   });
   console.log(charge)
   // 4. Convert the cartItems to OrderItems
-  const orderItems = cartItems?.map(cartItem => {
+  const orderItems = cartItems.map(cartItem => {
     const orderItem = {
       name: cartItem.product.name,
       description: cartItem.product.description,

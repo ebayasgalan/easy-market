@@ -21,7 +21,7 @@ const SINGLE_ORDER_QUERY = gql`
         price
         quantity
         photo {
-          image {
+          picture {
             url
           }
         }

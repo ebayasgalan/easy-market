@@ -7,10 +7,12 @@ export const CartItem = list({
   // access: {
   //   operation: {
   //     create: isSignedIn,
+  //   },
+  //   filter: {
   //     query: rules.canOrder,
   //     update: rules.canOrder,
   //     delete: rules.canOrder,
-  //   }
+  //   },
   // },
   access: {
     operation: allowAll
@@ -21,7 +23,6 @@ export const CartItem = list({
     },
   },
   fields: {
-    // TODO: Custom Label in here
     quantity: integer({
       defaultValue: 1,
       validation: { isRequired: true },
