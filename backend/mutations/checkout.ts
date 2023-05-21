@@ -36,7 +36,7 @@ async function checkout(
           id
           photo {
             id
-            image {
+            picture {
               id
               url
             }

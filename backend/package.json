@@ -6,7 +6,6 @@
     "node": "16.20.0"
   },
   "scripts": {
-    "start": "next start",
     "dev": "keystone dev",
     "build": "keystone build",
     "seed-data": "tsx seed-data",

@@ -10,7 +10,6 @@ import { User } from './schemas/User';
 import 'dotenv/config';
 import { withAuth } from './auth';
 import { extendGraphqlSchema } from './mutations';
-import { addCompatibilityForQueries } from './compat';
 // import { insertSeedData } from './seed-data';
 
 const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
