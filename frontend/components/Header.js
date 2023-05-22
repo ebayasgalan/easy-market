@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useEffect } from 'react'
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Cart from './Cart';
