@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import { useCart } from '../lib/cartState.js';
-import CartCount from './CartCount.js';
+import { useCart } from '../lib/cartState';
+import CartCount from './CartCount';
 import SignOut from './SignOut.js';
-import NavStyles from './styles/NavStyles.js';
-import { useUser } from './User.js';
+import NavStyles from './styles/NavStyles';
+import { useUser } from './User';
 
 export default function Nav() {
   const user = useUser();

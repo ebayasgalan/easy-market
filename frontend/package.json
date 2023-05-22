@@ -14,6 +14,7 @@
     "lint": "next lint",
     "test": "NODE_ENV=test jest --watch"
   },
+  "type": "module",
   "dependencies": {
     "@apollo/client": "^3.7.9",
     "@apollo/react-ssr": "^4.0.0",
