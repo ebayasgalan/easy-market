@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next -p 7777",
-    "build": "next build",
+    "build-prod": "next build",
     "start": "next start -p 7777",
     "lint": "next lint",
     "test": "NODE_ENV=test jest --watch"
