@@ -1,6 +1,8 @@
+'use client';
+
 import { useMutation, useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
-import Router from 'next/router';
+import { useRouter } from 'next/navigation';
 import useForm from '../lib/useForm';
 import DisplayError from './ErrorMessage';
 import Form from './styles/Form';
@@ -36,6 +38,7 @@ const UPDATE_PRODUCT_MUTATION = gql`
 `;
 
 export default function UpdateProduct({ id }) {
+  const router = useRouter();
   // 1. Get the existing product
   const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
     variables: { id },
@@ -70,9 +73,7 @@ export default function UpdateProduct({ id }) {
         }).catch(console.error);
         // console.log(res);
         // // Go to that product's page!
-        Router.push({
-          pathname: `/product/${res.data.updateProduct.id}`,
-        });
+        router.push(`/product/${res.data.updateProduct.id}`);
       }}
     >
       <DisplayError error={error || updateError} />

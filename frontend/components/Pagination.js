@@ -1,3 +1,5 @@
+'use client';
+
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';

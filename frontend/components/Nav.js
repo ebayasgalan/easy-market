@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';

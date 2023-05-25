@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 import { loadStripe } from '@stripe/stripe-js';
 import {
@@ -10,7 +12,7 @@ import { useState } from 'react';
 import nProgress from 'nprogress';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
-import { Router, useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/navigation';
 import SickButton from './styles/SickButton';
 import { useCart } from '../lib/cartState';
 import { CURRENT_USER_QUERY } from './User';
@@ -80,12 +82,12 @@ function CheckoutForm() {
     console.log(`Finished with the order!!`);
     // console.log(order);
     // 6. Change the page to view the order
-    router.push({
-      pathname: `/order/[id]`,
-      query: {
-        id: order.data.checkout.id,
-      },
-    });
+    // router.push({
+    //   pathname: `/order/[id]`,
+    //   query: {
+    //     id: order.data.checkout.id,
+    //   },
+    // });
     // 7. Close the cart
     closeCart();
 

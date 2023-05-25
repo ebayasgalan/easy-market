@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
@@ -62,7 +64,7 @@ export default function Header() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error was thrown</p>;
   // console.log('data from Header.js: ', data);
-
+  
   return (
     <HeaderStyles>
       <div>

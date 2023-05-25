@@ -1,3 +1,5 @@
+'use client';
+
 import styled from 'styled-components';
 import CartStyles from './styles/CartStyles';
 import CloseButton from './styles/CloseButton';

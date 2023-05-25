@@ -1,3 +1,5 @@
+'use client';
+
 import { useUser } from './User';
 import SignIn from './SignIn';
 

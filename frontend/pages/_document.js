@@ -8,12 +8,13 @@ export default class MyDocument extends Document {
       sheet.collectStyles(<App {...props} />)
     );
     const styleTags = sheet.getStyleElement();
+    console.log('page from document.js: ', page);
     return { ...page, styleTags };
   }
 
   render() {
     return (
-      <Html lang="en-CA">
+      <Html lang="en">
         <Head />
         <body>
           <Main />

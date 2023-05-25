@@ -1,8 +1,10 @@
+'use client';
+
 import { useLazyQuery } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
 import gql from 'graphql-tag';
 import debounce from 'lodash.debounce';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/navigation';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 const SEARCH_PRODUCTS_QUERY = gql`
@@ -54,9 +56,7 @@ export default function Search() {
       });
     },
     onSelectedItemChange({ selectedItem }) {
-      router.push({
-        pathname: `/product/${selectedItem.id}`,
-      });
+      // router.push( `/product/${selectedItem.id}`);
     },
     itemToString: (item) => item?.name || '',
   });

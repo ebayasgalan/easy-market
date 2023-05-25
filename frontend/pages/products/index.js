@@ -5,6 +5,7 @@ import Products from '../../components/Products';
 export default function OrderPage() {
   const { query } = useRouter();
   const page = parseInt(query.page);
+  // console.log('query: ', query);
   return (
     <div>
       <Pagination page={page || 1} />

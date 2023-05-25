@@ -27,6 +27,7 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   const apolloClient = useApollo(pageProps);
+  // console.log('pageProps: ', pageProps);
 
   return (
     <ApolloProvider client={apolloClient}>

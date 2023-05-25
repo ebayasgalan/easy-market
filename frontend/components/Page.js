@@ -1,5 +1,7 @@
-import PropTypes from 'prop-types';
+'use client';
+
 import styled, { createGlobalStyle } from 'styled-components';
+import StyledComponentsRegistry from '../lib/styledRegistry';
 import Header from './Header';
 
 const GlobalStyles = createGlobalStyle`
@@ -51,8 +53,13 @@ const InnerStyles = styled.div`
   padding: 2rem;
 `;
 
-export default function Page({ children, cool }) {
+export default function Page({ children }) {
   return (
+    // <body>
+    //   <GlobalStyles />
+    //   <Header />
+    //   <StyledComponentsRegistry><InnerStyles>{children}</InnerStyles></StyledComponentsRegistry>
+    // </body>
     <div>
       <GlobalStyles />
       <Header />
@@ -60,8 +67,3 @@ export default function Page({ children, cool }) {
     </div>
   );
 }
-
-Page.propTypes = {
-  cool: PropTypes.string,
-  children: PropTypes.any,
-};
