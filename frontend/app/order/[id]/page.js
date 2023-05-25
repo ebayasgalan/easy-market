@@ -3,9 +3,9 @@
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import Head from 'next/head';
-import ErrorMessage from '../../components/ErrorMessage';
-import OrderStyles from '../../components/styles/OrderStyles';
-import formatMoney from '../../lib/formatMoney';
+import ErrorMessage from '../../../components/ErrorMessage';
+import OrderStyles from '../../../components/styles/OrderStyles';
+import formatMoney from '../../../lib/formatMoney';
 
 const SINGLE_ORDER_QUERY = gql`
   query SINGLE_ORDER_QUERY($id: ID!) {
