@@ -55,7 +55,7 @@ export default function CreateProduct() {
         const res = await createProduct();
         clearForm();
         // Go to that product's page!
-        // router.push(`/product/${res.data.createProduct.id}`);
+        router.push(`/product/${res.data.createProduct.id}`);
       }}
     >
       <DisplayError error={error} />
