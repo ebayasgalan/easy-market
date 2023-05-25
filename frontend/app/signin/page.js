@@ -62,6 +62,7 @@ const SIGNIN_MUTATION = gql`
 
 
 export default function SignInPage() {
+  const router = useRouter();
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
     variables: {
       email: 'demoUser@gmail.com',
@@ -72,7 +73,6 @@ export default function SignInPage() {
   });
   
   async function handleSubmit(e) {
-    const router = useRouter();
     console.log('demoUser logging in...');
     const res = await signin();
     console.log(res);

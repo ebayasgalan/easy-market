@@ -1,3 +1,5 @@
+'use client';
+
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/navigation';
