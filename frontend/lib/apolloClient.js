@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 import { createUploadLink } from 'apollo-upload-client';
-import { endpoint, prodEndpoint } from '../config';
 import paginationField from './paginationField';
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
@@ -27,7 +26,7 @@ function createApolloClient() {
       }),
       // this uses apollo-link-http under the hood, so all the options here come from that package
       createUploadLink({
-        uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
+        uri: process.env.NODE_ENV === 'development' ? process.env.NEXT_PUBLIC_ENDPOINT : process.env.NEXT_PUBLIC_PRODENDPOINT,
         fetchOptions: {
           credentials: 'include',
         },
