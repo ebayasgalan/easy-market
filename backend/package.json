@@ -6,8 +6,10 @@
     "node": "16.20.0"
   },
   "scripts": {
+    "start": "keystone start",
     "dev": "keystone dev",
     "build": "keystone build",
+    "postinstall": "keystone postinstall",
     "seed-data": "tsx seed-data",
     "reset-data": "keystone prisma db push --force-reset",
     "prisma": "prisma generate"
