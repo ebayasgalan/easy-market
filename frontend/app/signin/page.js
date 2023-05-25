@@ -1,11 +1,12 @@
+'use client';
 import gql from 'graphql-tag';
 import { useMutation } from '@apollo/client';
 import styled from 'styled-components';
-import { CURRENT_USER_QUERY } from '../components/User';
-import RequestReset from '../components/RequestReset';
-import SignIn from '../components/SignIn';
-import SignUp from '../components/SignUp';
-import Router from 'next/router';
+import { CURRENT_USER_QUERY } from '../../components/User';
+import RequestReset from '../../components/RequestReset';
+import Signin from '../../components/Signin';
+import Signup from '../../components/Signup';
+import { useRouter } from 'next/navigation';
 
 const GridStyles = styled.div`
   .forms {
@@ -61,6 +62,7 @@ const SIGNIN_MUTATION = gql`
 
 
 export default function SignInPage() {
+  const router = useRouter();
   const [signin, { data, loading }] = useMutation(SIGNIN_MUTATION, {
     variables: {
       email: 'demoUser@gmail.com',
@@ -74,16 +76,14 @@ export default function SignInPage() {
     console.log('demoUser logging in...');
     const res = await signin();
     console.log(res);
-    Router.push({
-      pathname: `/products`,
-    });
+    router.push(`/products`);
   }
   return (
     <GridStyles>
       <button className='demo-button' onClick={handleSubmit}>Bypass login for demo purposes</button>
       <div className='forms'>
-        <SignIn />
-        <SignUp />
+        <Signin />
+        <Signup />
         <RequestReset />
       </div>
     </GridStyles>

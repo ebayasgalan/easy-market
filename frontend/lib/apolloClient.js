@@ -1,7 +1,6 @@
 import { useMemo } from 'react';
 import { ApolloClient, ApolloLink, InMemoryCache } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
-// import { getDataFromTree } from '@apollo/client/react/ssr';
 import { createUploadLink } from 'apollo-upload-client';
 import { endpoint, prodEndpoint } from '../config';
 import paginationField from './paginationField';
@@ -9,45 +8,6 @@ import paginationField from './paginationField';
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
 let apolloClient;
-
-// function createApolloClient({ headers, initialState }) {
-//   return new ApolloClient({
-//     ssrMode: typeof window === 'undefined',
-//     link: ApolloLink.from([
-//       onError(({ graphQLErrors, networkError }) => {
-//         if (graphQLErrors)
-//           graphQLErrors.forEach(({ message, locations, path }) =>
-//             console.log(
-//               `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-//             )
-//           );
-//         if (networkError)
-//           console.log(
-//             `[Network error]: ${networkError}. Backend is unreachable. Is it running?`
-//           );
-//       }),
-//       // this uses apollo-link-http under the hood, so all the options here come from that package
-//       createUploadLink({
-//         uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
-//         // fetchOptions: {
-//         //   credentials: 'include',
-//         // },
-//         // pass the headers along from this request. This enables SSR with logged in state
-//         headers,
-//       }),
-//     ]),
-//     cache: new InMemoryCache({
-//       typePolicies: {
-//         Query: {
-//           fields: {
-//             // TODO: We will add this together!
-//             allProducts: paginationField(),
-//           },
-//         },
-//       },
-//     }).restore(initialState || {}),
-//   });
-// }
 
 function createApolloClient() {
   return new ApolloClient({
@@ -72,7 +32,6 @@ function createApolloClient() {
           credentials: 'include',
         },
         // pass the headers along from this request. This enables SSR with logged in state
-        // headers
         headers: {
           "apollo-require-preflight": true
         }
@@ -132,6 +91,5 @@ export function addApolloState(client, pageProps) {
 export function useApollo(pageProps) {
   const state = pageProps[APOLLO_STATE_PROP_NAME]
   const store = useMemo(() => initializeApollo(state), [state])
-  // const store = useMemo(() => initializeApollo())
   return store
 }

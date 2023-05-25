@@ -1,7 +1,10 @@
-import { useUser } from '../components/User';
+'use client';
+
+import { useUser } from '../../components/User';
 
 export default function OrderPage() {
   const user = useUser();
+
   if(user) {
     console.log('user: ', user);
     const numberOfItems = user.cart.length;

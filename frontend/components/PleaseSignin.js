@@ -1,10 +1,10 @@
 'use client';
 
 import { useUser } from './User';
-import SignIn from './SignIn';
+import Signin from './Signin';
 
 export default function ({ children }) {
   const me = useUser();
-  if (!me) return <SignIn />;
+  if (!me) return <Signin />;
   return children;
 }
