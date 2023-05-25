@@ -11,6 +11,7 @@ import 'dotenv/config';
 import { withAuth } from './auth';
 import { extendGraphqlSchema } from './mutations';
 // import { insertSeedData } from './seed-data';
+import path from 'node:path';
 
 const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
 
@@ -71,8 +72,8 @@ export default withAuth(
     extendGraphqlSchema,
     ui: {
       // Show the UI only for people who pass this test
-      isAccessAllowed: ({ session }) =>
-        !!session?.data,
+      isAccessAllowed: ({ session }) => {!!session?.data},
+      basePath: '/admin',
     },
     session: statelessSessions(sessionConfig),
   })
