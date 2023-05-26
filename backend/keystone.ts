@@ -72,8 +72,10 @@ export default withAuth(
     extendGraphqlSchema,
     ui: {
       // Show the UI only for people who pass this test
-      isAccessAllowed: ({ session }) => {!!session?.data},
-      basePath: '/admin',
+      isAccessAllowed: ({ session }) => !!session?.data,
+    },
+    graphql: {
+      path: '/api/graphql',
     },
     session: statelessSessions(sessionConfig),
   })
