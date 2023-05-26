@@ -11,11 +11,10 @@ import 'dotenv/config';
 import { withAuth } from './auth';
 import { extendGraphqlSchema } from './mutations';
 // import { insertSeedData } from './seed-data';
-import path from 'node:path';
 
 const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
 
-const sessionConfig = {
+const sessionConfig: any = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
   secret: process.env.COOKIE_SECRET,
 };
@@ -73,9 +72,6 @@ export default withAuth(
     ui: {
       // Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) => !!session?.data,
-    },
-    graphql: {
-      path: '/api/graphql',
     },
     session: statelessSessions(sessionConfig),
   })
