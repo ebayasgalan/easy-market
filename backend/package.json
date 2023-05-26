@@ -2,9 +2,6 @@
   "name": "easy-market-backend",
   "version": "2.0.0",
   "license": "MIT",
-  "engines": {
-    "node": "16.20.0"
-  },
   "scripts": {
     "start": "keystone start",
     "dev": "keystone dev",
@@ -20,9 +17,6 @@
       "@babel/preset-react",
       "@babel/preset-typescript"
     ]
-  },
-  "overrides": {
-    "next": "13.3.4"
   },
   "dependencies": {
     "@graphql-tools/schema": "^9.0.19",

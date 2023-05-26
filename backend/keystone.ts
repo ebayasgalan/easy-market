@@ -27,7 +27,7 @@ const secretAccessKey = process.env.S3_SECRET_ACCESS_KEY ?? '';
 export default withAuth(
   config({
     server: {
-      cors: {
+      cors: <any> {
         origin: [process.env.FRONTEND_URL],
         credentials: true,
       },
