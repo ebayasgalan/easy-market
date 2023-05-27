@@ -18,6 +18,9 @@
       "@babel/preset-typescript"
     ]
   },
+  "overrides": {
+    "next": "~13.3.0"
+  },
   "dependencies": {
     "@graphql-tools/schema": "^9.0.19",
     "@keystone-6/auth": "^7.0.0",
