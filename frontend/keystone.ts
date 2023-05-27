@@ -1,15 +1,16 @@
 import { config } from '@keystone-6/core';
 import { statelessSessions } from '@keystone-6/core/session';
-import { Role } from './schemas/Role';
-import { OrderItem } from './schemas/OrderItem';
-import { Order } from './schemas/Order';
-import { CartItem } from './schemas/CartItem';
-import { ProductImage } from './schemas/ProductImage';
-import { Product } from './schemas/Product';
-import { User } from './schemas/User';
-import { withAuth } from './auth';
-import { extendGraphqlSchema } from './mutations';
+import { Role } from './src/keystone/schemas/Role';
+import { OrderItem } from './src/keystone/schemas/OrderItem';
+import { Order } from './src/keystone/schemas/Order';
+import { CartItem } from './src/keystone/schemas/CartItem';
+import { ProductImage } from './src/keystone/schemas/ProductImage';
+import { Product } from './src/keystone/schemas/Product';
+import { User } from './src/keystone/schemas/User';
+import { withAuth } from './src/keystone/auth';
+import { extendGraphqlSchema } from './src/keystone/mutations';
 // import { insertSeedData } from './seed-data';
+import path from 'node:path';
 import { getContext } from '@keystone-6/core/context';
 import * as PrismaModule from '.prisma/client';
 
@@ -25,7 +26,7 @@ const region = process.env.NEXT_PUBLIC_S3_REGION ?? '';
 const accessKeyId = process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID ?? '';
 const secretAccessKey = process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY ?? '';
 
-const withAuthConfig = withAuth(
+export default withAuth(
   config({
     server: {
       cors: <any> {
@@ -73,15 +74,25 @@ const withAuthConfig = withAuth(
     ui: {
       // Show the UI only for people who pass this test
       isAccessAllowed: ({ session }) => !!session?.data,
+      // isAccessAllowed: ({ session }) => session.allowAdminUI,
+      // getAdditionalFiles: [
+      //   async () => [
+      //     {
+      //       mode: 'copy',
+      //       inputPath: path.resolve('./keystone-next-config.js'),
+      //       outputPath: 'next.config.js',
+      //     }
+      //   ]
+      // ]
     },
     session: statelessSessions(sessionConfig),
   })
 );
 
 // Making sure multiple prisma clients are not created during dev hot reloading
-export const keystoneContext =
-  (globalThis as any).keystoneContext || getContext(withAuthConfig, PrismaModule);
+// export const keystoneContext =
+//   (globalThis as any).keystoneContext || getContext(withAuthConfig, PrismaModule);
 
-if (process.env.NODE_ENV !== 'production') {
-    (globalThis as any).keystoneContext = keystoneContext;
-}
+// if (process.env.NODE_ENV !== 'production') {
+//     (globalThis as any).keystoneContext = keystoneContext;
+// }
