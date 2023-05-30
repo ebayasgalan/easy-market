@@ -7,8 +7,18 @@ import Link from 'next/link';
 import PaginationStyles from './styles/PaginationStyles';
 import DisplayError from './ErrorMessage';
 
-export default function Pagination({ page, productsCount }) {
+export const PAGINATION_QUERY = gql`
+  query PAGINATION_QUERY {
+    productsCount
+  }
+`;
+
+export default function Pagination({ page }) {
   const perPage = 4;
+  const { error, loading, data } = useQuery(PAGINATION_QUERY);
+  if (loading) return 'Loading...';
+  if (error) return <DisplayError error={error} />;
+  const { productsCount } = data;
   const pageCount = Math.ceil(productsCount / perPage);
   return (
     <PaginationStyles>

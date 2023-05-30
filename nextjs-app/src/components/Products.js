@@ -33,7 +33,7 @@ const ProductsListStyles = styled.div`
   }
 `;
 
-export default function Products({ page, products }) {
+export default function Products({ page }) {
   const perPage = 4;
   
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
@@ -47,7 +47,7 @@ export default function Products({ page, products }) {
   return (
     <div>
       <ProductsListStyles>
-        {data.products.map((product) => (
+        {data.products.map(product => (
           <Product key={product.id} product={product} />
         ))}
       </ProductsListStyles>
