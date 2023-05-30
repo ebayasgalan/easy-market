@@ -1,22 +1,21 @@
 import { config } from '@keystone-6/core';
 import { statelessSessions } from '@keystone-6/core/session';
-import { Role } from './schemas/Role';
-import { OrderItem } from './schemas/OrderItem';
-import { Order } from './schemas/Order';
-import { CartItem } from './schemas/CartItem';
-import { ProductImage } from './schemas/ProductImage';
-import { Product } from './schemas/Product';
-import { User } from './schemas/User';
-import 'dotenv/config';
-import { withAuth } from './auth';
-import { extendGraphqlSchema } from './mutations';
+import { Role } from './src/keystone/schemas/Role';
+import { OrderItem } from './src/keystone/schemas/OrderItem';
+import { Order } from './src/keystone/schemas/Order';
+import { CartItem } from './src/keystone/schemas/CartItem';
+import { ProductImage } from './src/keystone/schemas/ProductImage';
+import { Product } from './src/keystone/schemas/Product';
+import { User } from './src/keystone/schemas/User';
+import { withAuth } from './src/keystone/auth';
+import { extendGraphqlSchema } from './src/keystone/mutations';
 // import { insertSeedData } from './seed-data';
 
-const databaseURL = process.env.DATABASE_URL ?? `file:${process.cwd()}/keystone.db`;
+const databaseURL = process.env.DATABASE_URL ?? ``;
 
 const sessionConfig: any = {
   maxAge: 60 * 60 * 24 * 360, // How long they stay signed in?
-  secret: process.env.COOKIE_SECRET,
+  secret: process.env.COOKIE_SECRET ?? ""
 };
 
 const bucketName = process.env.S3_BUCKET_NAME ?? '';
@@ -28,7 +27,7 @@ export default withAuth(
   config({
     server: {
       cors: <any> {
-        origin: [process.env.FRONTEND_URL],
+        origin: [process.env.NEXT_PUBLIC_FRONTEND_URL ],
         credentials: true,
       },
     },
@@ -40,12 +39,6 @@ export default withAuth(
         // if (process.argv.includes('--seed-data')) {
         //   await insertSeedData(context.prisma);
         // }
-        // const cloudinaryResponse = await context.db.ProductImage.createOne({
-        //   data: {
-        //       image: products.photo,
-        //       altText: products.description
-        //   }
-        // });
       }
     },
     storage: {

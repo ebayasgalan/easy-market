@@ -8,15 +8,15 @@ import Cart from './Cart';
 import Nav from './Nav';
 import Search from './Search';
 
-const USER_ORDERS_QUERY = gql`
-  query ALL_USERS_QUERY {
-    users {
-      id
-      name
-      email
-    }
-  }
-`;
+// const USER_ORDERS_QUERY = gql`
+  // query ALL_USERS_QUERY {
+  //   users {
+  //     id
+  //     name
+  //     email
+  //   }
+  // }
+// `;
 
 const Logo = styled.h1`
   font-size: 2rem;
@@ -60,9 +60,9 @@ const HeaderStyles = styled.header`
 
 
 export default function Header() {
-  const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error was thrown</p>;
+  // const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
+  // if (loading) return <p>Loading...</p>;
+  // if (error) return <p>Error was thrown</p>;
   // console.log('data from Header.js: ', data);
   
   return (
