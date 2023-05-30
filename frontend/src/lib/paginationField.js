@@ -1,4 +1,8 @@
-import { PAGINATION_QUERY } from '../components/Pagination';
+const PAGINATION_QUERY = `
+  query PAGINATION_QUERY {
+    productsCount
+  }
+`;
 
 export default function paginationField() {
   return {

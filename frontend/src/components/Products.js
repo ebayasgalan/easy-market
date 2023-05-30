@@ -1,4 +1,5 @@
 'use client';
+
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
@@ -32,7 +33,7 @@ const ProductsListStyles = styled.div`
   }
 `;
 
-export default function Products({ page }) {
+export default function Products({ page, products }) {
   const perPage = 4;
   
   const { data, error, loading } = useQuery(ALL_PRODUCTS_QUERY, {
