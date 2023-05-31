@@ -83,7 +83,7 @@ async function checkout(
       items: { create: orderItems },
       user: { connect: { id: userId }}
     },
-    resolveFields: false,
+    // resolveFields: false,
   });
   // 6. Clean up any old cart item
   const cartItemIds = user.cart.map((cartItem: any) => cartItem.id);
