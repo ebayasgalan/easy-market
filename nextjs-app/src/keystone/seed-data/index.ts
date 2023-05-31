@@ -1,6 +1,6 @@
 import { getContext } from '@keystone-6/core/context';
 // import * as PrismaModule from '@prisma/client';
-import config from '../keystone';
+// import config from '../../../keystone';
 import { products } from './data';
 
 function timestamp() {
@@ -26,13 +26,13 @@ const insertSeedData = async () => {
         // const newProductImage = await context.db.ProductImage.createOne({
         //     data: {image: product.photo, altText: product.description},
         // });
-        const returnResponse = await context.db.ProductImage.createOne({
-            // image: testPhoto.photo,
-            data: {
-                image: JSON.stringify(testPhoto.photo),
-                altText: testPhoto.description
-            }
-        });
+        // const returnResponse = await context.db.ProductImage.createOne({
+        //     // image: testPhoto.photo,
+        //     data: {
+        //         image: JSON.stringify(testPhoto.photo),
+        //         altText: testPhoto.description
+        //     }
+        // });
         // console.log(`newProductImage: ${id}`);
         // product.photo = newProductImage;
         console.log(`End Product: ${product}`);
@@ -44,4 +44,4 @@ const insertSeedData = async () => {
     console.log(`Please start the process with \`yarn dev\` or \`npm run dev\``);
 }
 
-insertSeedData();
+// insertSeedData();
