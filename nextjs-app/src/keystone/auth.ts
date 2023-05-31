@@ -14,7 +14,7 @@ const { withAuth } = createAuth({
     async sendToken(args) {
       // send the email
       // await sendPasswordResetEmail(args.token, args.identity);
-      console.log('sending email, this needs more work');
+      console.log('sending email, need to update later');
     },
   },
 });

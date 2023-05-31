@@ -28,7 +28,7 @@ export const Order = list({
     label: virtual({
       field: graphql.field({
         type: graphql.String,
-        resolve(item) {
+        resolve(item: any) {
           return `${formatMoney(item.total)}`;
         },
       })
