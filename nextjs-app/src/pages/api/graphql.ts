@@ -7,7 +7,8 @@ export default createYoga<{
   req: NextApiRequest;
   res: NextApiResponse;
 }>({
-  graphqlEndpoint: '/api/graphql',
+  // graphqlEndpoint: '/api/graphql',
+  graphqlEndpoint: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/graphql`,
   schema: keystoneContext.graphql.schema,
   fetchAPI: { Response },
   /*
