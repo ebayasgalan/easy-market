@@ -3,6 +3,12 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { keystoneContext } from '../../keystone/context';
 
 // Use Keystone API to create GraphQL handler
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
 export default createYoga<{
   req: NextApiRequest;
   res: NextApiResponse;
@@ -10,7 +16,6 @@ export default createYoga<{
   // graphqlEndpoint: '/api/graphql',
   graphqlEndpoint: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/graphql`,
   schema: keystoneContext.graphql.schema,
-  fetchAPI: { Response },
   /*
     `keystoneContext` object doesn't have user's session information.
     You need an authenticated context to CRUD data behind access control.
