@@ -5,6 +5,7 @@ import { keystoneContext } from '../../keystone/context';
 // Use Keystone API to create GraphQL handler
 export const config = {
   api: {
+    // Disable body parsing (required for file uploads)
     bodyParser: false,
   },
 };
@@ -13,8 +14,7 @@ export default createYoga<{
   req: NextApiRequest;
   res: NextApiResponse;
 }>({
-  // graphqlEndpoint: '/api/graphql',
-  graphqlEndpoint: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/graphql`,
+  graphqlEndpoint: '/api/graphql',
   schema: keystoneContext.graphql.schema,
   /*
     `keystoneContext` object doesn't have user's session information.
