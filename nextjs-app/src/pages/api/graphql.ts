@@ -15,20 +15,20 @@ export default createYoga<{
   res: NextApiResponse;
 }>({
   graphqlEndpoint: '/api/graphql',
-  schema: keystoneContext.graphql.schema,
-  // schema: createSchema({
-  //   typeDefs: /* GraphQL */ `
-  //     type Query {
-  //       greetings: String
-  //     }
-  //   `,
-  //   resolvers: {
-  //     Query: {
-  //       greetings: () =>
-  //         'This is the `greetings` field of the root `Query` type'
-  //     }
-  //   }
-  // }),
+  // schema: keystoneContext.graphql.schema,
+  schema: createSchema({
+    typeDefs: /* GraphQL */ `
+      type Query {
+        greetings: String
+      }
+    `,
+    resolvers: {
+      Query: {
+        greetings: () =>
+          'This is the `greetings` field of the root `Query` type'
+      }
+    }
+  }),
   /*
     `keystoneContext` object doesn't have user's session information.
     You need an authenticated context to CRUD data behind access control.
