@@ -1,6 +1,6 @@
 import { createYoga, createSchema } from 'graphql-yoga';
 import type { NextApiRequest, NextApiResponse } from 'next';
-// import { keystoneContext } from '../../keystone/context';
+import { keystoneContext } from '../../keystone/context';
 
 // Use Keystone API to create GraphQL handler
 export const config = {
@@ -36,5 +36,5 @@ export default createYoga<{
     in the request object and gives you a `context` object with session info
     and an elevated sudo context to bypass access control if needed (context.sudo()).
   */
-  // context: ({ req, res }) => keystoneContext.withRequest(req, res),
+  context: ({ req, res }) => keystoneContext.withRequest(req, res),
 });
