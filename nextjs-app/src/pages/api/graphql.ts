@@ -1,4 +1,4 @@
-import { createYoga, createSchema } from 'graphql-yoga';
+import { createYoga } from 'graphql-yoga';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { keystoneContext } from '../../keystone/context';
 
@@ -10,36 +10,18 @@ export const config = {
   },
 };
 
-const { schema } = keystoneContext.graphql;
-
-// console.log('api-route, keystoneContext: ', keystoneContext.graphql);
-
 export default createYoga<{
   req: NextApiRequest;
   res: NextApiResponse;
 }>({
-  graphqlEndpoint: '/api/graphql',
-  schema,
-  // schema: keystoneContext.graphql.schema,
-  // schema: createSchema({
-  //   typeDefs: /* GraphQL */ `
-  //     type Query {
-  //       greetings: String
-  //     }
-  //   `,
-  //   resolvers: {
-  //     Query: {
-  //       greetings: () =>
-  //         'This is the `greetings` field of the root `Query` type'
-  //     }
-  //   }
-  // }),
+  schema: keystoneContext.graphql.schema,
   /*
-    `keystoneContext` object doesn't have user's session information.
-    You need an authenticated context to CRUD data behind access control.
-    keystoneContext.withRequest(req, res) automatically unwraps the session cookie
-    in the request object and gives you a `context` object with session info
-    and an elevated sudo context to bypass access control if needed (context.sudo()).
+  `keystoneContext` object doesn't have user's session information.
+  You need an authenticated context to CRUD data behind access control.
+  keystoneContext.withRequest(req, res) automatically unwraps the session cookie
+  in the request object and gives you a `context` object with session info
+  and an elevated sudo context to bypass access control if needed (context.sudo()).
   */
-  // context: ({ req, res }) => keystoneContext.withRequest(req, res),
+ context: ({ req, res }) => keystoneContext.withRequest(req, res),
+ graphqlEndpoint: '/api/graphql',
 });
