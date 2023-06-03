@@ -1,4 +1,4 @@
-import { Context } from './.keystone/types';
+import { Context } from '.keystone/types';
 import { CartItem } from '.prisma/client';
 import { Session } from '../types';
 
