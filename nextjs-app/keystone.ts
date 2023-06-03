@@ -41,14 +41,6 @@ export default withAuth(
         // }
       }
     },
-    graphql: {
-      debug: process.env.NODE_ENV !== 'production',
-      path: '/api/graphql',
-      apolloConfig: {
-        debug: true,
-        /* ... */
-      },
-    },
     storage: {
       my_images: {
         kind: 's3', 
