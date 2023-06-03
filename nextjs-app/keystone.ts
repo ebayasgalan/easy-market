@@ -41,6 +41,14 @@ export default withAuth(
         // }
       }
     },
+    graphql: {
+      debug: process.env.NODE_ENV !== 'production',
+      path: '/api/graphql',
+      apolloConfig: {
+        debug: true,
+        /* ... */
+      },
+    },
     storage: {
       my_images: {
         kind: 's3', 
@@ -64,6 +72,7 @@ export default withAuth(
     extendGraphqlSchema,
     ui: {
       // Show the UI only for people who pass this test
+      basePath: '/admin',
       isAccessAllowed: ({ session }) => !!session?.data,
     },
     session: statelessSessions(sessionConfig),
