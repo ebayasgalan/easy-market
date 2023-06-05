@@ -12,7 +12,7 @@
     "keystone:build": "keystone build",
     "keystone:start": "keystone start",
     "next:build": "next build",
-    "build": "pnpm keystone build --no-ui && pnpm keystone prisma migrate deploy && pnpm next build",
+    "build": "pnpm keystone build --no-ui && npx keystone prisma migrate deploy && pnpm next build",
     "postinstall": "keystone postinstall",
     "prisma": "prisma generate"
   },
