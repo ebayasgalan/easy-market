@@ -1,6 +1,12 @@
 import { createYoga } from 'graphql-yoga';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { keystoneContext } from '../../../keystone/context';
+
+// import { PrismaClient } from '@prisma/client'
+
+// const prisma = new PrismaClient();
+
+// console.log('prisma client: ', prisma);
  
 const { handleRequest } = createYoga<{
   req: NextApiRequest;

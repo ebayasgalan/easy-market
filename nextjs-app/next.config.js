@@ -1,6 +1,6 @@
 module.exports = {
   experimental: {
-    appDir: true
+    serverActions: true,
   },
   eslint: {
     ignoreDuringBuilds: true,

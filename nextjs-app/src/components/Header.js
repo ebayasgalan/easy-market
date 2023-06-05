@@ -57,8 +57,6 @@ const HeaderStyles = styled.header`
   }
 `;
 
-
-
 export default function Header() {
   // const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
   // if (loading) return <p>Loading...</p>;
