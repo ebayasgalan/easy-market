@@ -58,7 +58,8 @@ export default function Page({ children }) {
     <body>
       <GlobalStyles />
       <Header />
-      <StyledComponentsRegistry><InnerStyles>{children}</InnerStyles></StyledComponentsRegistry>
+      {/* <StyledComponentsRegistry><InnerStyles>{children}</InnerStyles></StyledComponentsRegistry> */}
+      <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
     </body>
   );
 }

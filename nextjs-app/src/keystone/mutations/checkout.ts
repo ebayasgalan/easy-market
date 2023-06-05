@@ -1,6 +1,6 @@
 /* eslint-disable */
 import type { Context } from '.keystone/types';
-import { Order } from '.prisma/client';
+import { Prisma } from '@prisma/client';
 import stripeConfig from '../lib/stripe';
 
 const graphql = String.raw;
@@ -13,7 +13,7 @@ async function checkout(
   root: any,
   { token }: Arguments,
   context: Context
-): Promise<Order> {
+): Promise<Prisma.TransactionClient> {
   // 1. Make sure they are signed in
   const userId = context.session.itemId;
   if(!userId) {

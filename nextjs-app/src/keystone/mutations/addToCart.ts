@@ -1,12 +1,12 @@
 import { Context } from '.keystone/types';
-import { CartItem } from '.prisma/client';
+import { Prisma } from '@prisma/client';
 import { Session } from '../types';
 
 async function addToCart(
   root: any,
   { productId }: { productId: string },
   context: Context
-): Promise<CartItem> {
+): Promise<Prisma.TransactionClient> {
   console.log('ADDING TO CART!');
   // 1. Query the current user 
   const sesh = context.session as Session;
