@@ -11,7 +11,7 @@ const { withAuth } = createAuth({
   },
   sessionData: `id name email role { ${permissionsList.join(' ')} }`,
   passwordResetLink: {
-    async sendToken(args) {
+    sendToken: async (args) => {
       // send the email
       // await sendPasswordResetEmail(args.token, args.identity);
       console.log('sending email, need to update later');
