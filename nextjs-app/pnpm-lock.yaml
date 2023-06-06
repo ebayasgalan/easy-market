@@ -17,9 +17,6 @@ dependencies:
   '@graphql-tools/schema':
     specifier: ^9.0.19
     version: 9.0.19(graphql@16.6.0)
-  '@graphql-yoga/plugin-csrf-prevention':
-    specifier: ^2.0.0
-    version: 2.0.0(graphql-yoga@4.0.0)
   '@keystone-6/auth':
     specifier: ^7.0.0
     version: 7.0.0(@keystone-6/core@5.3.0)(@types/react@18.2.7)(react-dom@18.2.0)(react@18.2.0)
@@ -225,6 +222,7 @@ packages:
       ts-invariant: 0.10.3
       tslib: 2.5.3
       zen-observable-ts: 1.2.5
+    dev: true
 
   /@apollo/client@3.7.9(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-YnJvrJOVWrp4y/zdNvUaM8q4GuSHCEIecsRDTJhK/veT33P/B7lfqGJ24NeLdKMj8tDEuXYF7V0t+th4+rgC+Q==}
@@ -3366,15 +3364,6 @@ packages:
       tslib: 2.5.3
     dev: false
 
-  /@graphql-yoga/plugin-csrf-prevention@2.0.0(graphql-yoga@4.0.0):
-    resolution: {integrity: sha512-r3OJrPMmmPhSnjJ2AeCX1uims+u5+w28ByLnts7QBhIgOCuXRGEKCR4/wNo3eH083W32Qpvj71zeD2texDoFeA==}
-    engines: {node: '>=16.0.0'}
-    peerDependencies:
-      graphql-yoga: ^4.0.0
-    dependencies:
-      graphql-yoga: 4.0.0(graphql@16.6.0)
-    dev: false
-
   /@graphql-yoga/subscription@4.0.0:
     resolution: {integrity: sha512-0qsN/BPPZNMoC2CZ8i+P6PgiJyHh1H35aKDt37qARBDaIOKDQuvEOq7+4txUKElcmXi7DYFo109FkhSQoEajrg==}
     engines: {node: '>=16.0.0'}
@@ -4569,7 +4558,7 @@ packages:
   /@types/apollo-upload-client@17.0.2(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-NphAiBqzZv3iY8Cq+qWyi0QUFFzJ+nVd7QKI/iKV8RfILrpYDL69F/vlhjn4BNxKlmc3LxJHymcf3gFzLBwuZQ==}
     dependencies:
-      '@apollo/client': 3.7.15(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
+      '@apollo/client': 3.7.9(graphql@16.6.0)(react-dom@18.2.0)(react@18.2.0)
       '@types/extract-files': 8.1.1
       graphql: 16.6.0
     transitivePeerDependencies:
@@ -4955,6 +4944,7 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       tslib: 2.5.3
+    dev: true
 
   /accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -5540,7 +5530,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001495
-      electron-to-chromium: 1.4.420
+      electron-to-chromium: 1.4.422
       node-releases: 2.0.12
       update-browserslist-db: 1.0.11(browserslist@4.21.7)
 
@@ -6366,8 +6356,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: false
 
-  /electron-to-chromium@1.4.420:
-    resolution: {integrity: sha512-BpPy2KXZc+UPbI8NGo2QdHU1Mkq11pO/zaNDHY57L09K/0ytrPw+IiLOUvZ1NjI5BlAVF5DkNr1UBUS76Tc4ow==}
+  /electron-to-chromium@1.4.422:
+    resolution: {integrity: sha512-OQMid0IRbJv27BhlPiBK8CfGzjeq4ZCBSmpwNi1abyS8w17/BajOUu7hBI49ptDTBCz9NRFbORhWvt41dF7dwg==}
 
   /emittery@0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}

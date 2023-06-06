@@ -1,17 +1,11 @@
 import { createYoga } from 'graphql-yoga';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { useCSRFPrevention } from '@graphql-yoga/plugin-csrf-prevention';
 import { keystoneContext } from '../../../keystone/context';
  
 const { handleRequest } = createYoga<{
   req: NextApiRequest;
   res: NextApiResponse;
 }>({
-  plugins: [
-    useCSRFPrevention({
-      requestHeaders: ['x-graphql-yoga-csrf'] 
-    })
-  ],
   schema: keystoneContext.graphql.schema,
   // While using Next.js file convention for routing, we need to configure Yoga to use the correct endpoint
   graphqlEndpoint: '/api/graphql',
