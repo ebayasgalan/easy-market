@@ -1,6 +1,13 @@
 import { createYoga } from 'graphql-yoga';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { keystoneContext } from '../../../keystone/context';
+
+export const config = {
+  api: {
+    // Disable body parsing (required for file uploads)
+    bodyParser: false
+  }
+}
  
 const { handleRequest } = createYoga<{
   req: NextApiRequest;
@@ -21,7 +28,7 @@ const { handleRequest } = createYoga<{
   context: ({ req, res }) => keystoneContext.withRequest(req, res),
  
   // Yoga needs to know how to create a valid Next response
-  fetchAPI: { Response }
+  // fetchAPI: { Response }
 })
  
 export { handleRequest as GET, handleRequest as POST }
