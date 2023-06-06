@@ -1,16 +1,20 @@
 import { createYoga } from 'graphql-yoga';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { useCSRFPrevention } from '@graphql-yoga/plugin-csrf-prevention';
 import { keystoneContext } from '../../../keystone/context';
  
 const { handleRequest } = createYoga<{
   req: NextApiRequest;
   res: NextApiResponse;
 }>({
+  plugins: [
+    useCSRFPrevention({
+      requestHeaders: ['x-graphql-yoga-csrf'] 
+    })
+  ],
   schema: keystoneContext.graphql.schema,
- 
   // While using Next.js file convention for routing, we need to configure Yoga to use the correct endpoint
   graphqlEndpoint: '/api/graphql',
-
   /*
   `keystoneContext` object doesn't have user's session information.
   You need an authenticated context to CRUD data behind access control.
@@ -19,7 +23,6 @@ const { handleRequest } = createYoga<{
   and an elevated sudo context to bypass access control if needed (context.sudo()).
   */
   context: ({ req, res }) => keystoneContext.withRequest(req, res),
- 
   // Yoga needs to know how to create a valid Next response
   fetchAPI: { Response }
 })

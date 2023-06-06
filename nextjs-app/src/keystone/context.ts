@@ -7,4 +7,4 @@ import * as PrismaModule from '@prisma/client';
 export const keystoneContext: Context =
   (globalThis as any).keystoneContext || getContext(withAuth, PrismaModule);
 
-// if (process.env.NODE_ENV !== 'production') (globalThis as any).keystoneContext = keystoneContext;
+if (process.env.NODE_ENV !== 'production') (globalThis as any).keystoneContext = keystoneContext;
