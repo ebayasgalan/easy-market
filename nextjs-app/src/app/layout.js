@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/graphql`,
     cache: new InMemoryCache(),
+    credentials: 'same-origin',
   });
 
   return (
