@@ -1,7 +1,7 @@
 'use client';
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import NProgress from 'nprogress';
+// import NProgress from 'nprogress';
 import Page from '../components/Page';
 // import '../../components/styles/nprogress.css';
 import { CartStateProvider } from '../lib/cartState';
@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
   const client = new ApolloClient({
     uri: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/api/graphql`,
     cache: new InMemoryCache(),
-    credentials: 'same-origin',
   });
 
   return (

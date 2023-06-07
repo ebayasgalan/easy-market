@@ -1,6 +1,5 @@
 import { relationship, text, image } from '@keystone-6/core/fields';
 import { list } from '@keystone-6/core';
-import 'dotenv/config';
 import { isSignedIn, permissions } from '../access';
 import { allowAll } from '@keystone-6/core/access';
 
