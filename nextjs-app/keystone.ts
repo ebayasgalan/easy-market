@@ -9,6 +9,7 @@ import { Product } from './src/keystone/schemas/Product';
 import { User } from './src/keystone/schemas/User';
 import { withAuth } from './src/keystone/auth';
 import { extendGraphqlSchema } from './src/keystone/mutations';
+import 'dotenv/config';
 // import { insertSeedData } from './seed-data';
 
 const databaseURL = process.env.DATABASE_URL ?? ``;

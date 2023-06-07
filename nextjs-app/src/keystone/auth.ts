@@ -1,6 +1,6 @@
 import { createAuth } from '@keystone-6/auth';
 // import { sendPasswordResetEmail } from './lib/mail';
-import { permissionsList } from './schemas/fields';
+// import { permissionsList } from './schemas/fields';
 
 const { withAuth } = createAuth({
   listKey: 'User',
@@ -9,7 +9,8 @@ const { withAuth } = createAuth({
   initFirstItem: {
     fields: ['name', 'email', 'password']
   },
-  sessionData: `id name email role { ${permissionsList.join(' ')} }`,
+  // sessionData: `id name email role { ${permissionsList.join(' ')} }`,
+  sessionData: `id name email`,
   passwordResetLink: {
     sendToken: async (args) => {
       // send the email
