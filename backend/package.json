@@ -6,6 +6,7 @@
     "start": "keystone start",
     "dev": "keystone dev",
     "build": "keystone build",
+    "migrate": "keystone prisma migrate deploy",
     "postinstall": "keystone postinstall",
     "seed-data": "tsx seed-data",
     "reset-data": "keystone prisma db push --force-reset",
