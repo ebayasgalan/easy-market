@@ -42,5 +42,3 @@ async function addToCart(
     },
   });
 }
-
-export default addToCart;
