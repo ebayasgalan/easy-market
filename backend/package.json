@@ -6,7 +6,6 @@
     "start": "keystone start",
     "dev": "keystone dev",
     "build": "keystone build",
-    "generate": "keystone prisma migrate dev",
     "deploy": "keystone build && keystone prisma migrate deploy",
     "postinstall": "keystone postinstall",
     "seed-data": "tsx seed-data",
