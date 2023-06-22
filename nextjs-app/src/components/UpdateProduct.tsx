@@ -1,63 +1,60 @@
 'use client';
 
-import { useMutation, useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import { useRouter } from 'next/navigation';
 import useForm from '../lib/useForm';
-import DisplayError from './ErrorMessage';
 import Form from './styles/Form';
 
-const SINGLE_PRODUCT_QUERY = gql`
-  query SINGLE_PRODUCT_QUERY($id: ID!) {
-    product(where: { id: $id }) {
-      id
-      name
-      description
-      price
-    }
-  }
-`;
+// const SINGLE_PRODUCT_QUERY = gql`
+//   query SINGLE_PRODUCT_QUERY($id: ID!) {
+//     product(where: { id: $id }) {
+//       id
+//       name
+//       description
+//       price
+//     }
+//   }
+// `;
 
-const UPDATE_PRODUCT_MUTATION = gql`
-  mutation UPDATE_PRODUCT_MUTATION(
-    $id: ID!
-    $name: String
-    $description: String
-    $price: Int
-  ) {
-    updateProduct(
-      where: { id: $id }
-      data: { name: $name, description: $description, price: $price }
-    ) {
-      id
-      name
-      description
-      price
-    }
-  }
-`;
+// const UPDATE_PRODUCT_MUTATION = gql`
+//   mutation UPDATE_PRODUCT_MUTATION(
+//     $id: ID!
+//     $name: String
+//     $description: String
+//     $price: Int
+//   ) {
+//     updateProduct(
+//       where: { id: $id }
+//       data: { name: $name, description: $description, price: $price }
+//     ) {
+//       id
+//       name
+//       description
+//       price
+//     }
+//   }
+// `;
 
 export default function UpdateProduct({ id }) {
   const router = useRouter();
   // 1. Get the existing product
-  const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
-    variables: { id },
-  });
+  // const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
+  //   variables: { id },
+  // });
   // 2. Get the mutation to update the product
-  const [
-    updateProduct,
-    { data: updateData, error: updateError, loading: updateLoading },
-  ] = useMutation(UPDATE_PRODUCT_MUTATION);
-  // 2.5 Create some state for the form inputs:
-  const { inputs, handleChange, clearForm, resetForm } = useForm(
-    data?.Product || {
-      name: '',
-      description: '',
-      price: '',
-    }
-  );
-  console.log(inputs);
-  if (loading) return <p>loading...</p>;
+  // const [
+  //   updateProduct,
+  //   { data: updateData, error: updateError, loading: updateLoading },
+  // ] = useMutation(UPDATE_PRODUCT_MUTATION);
+  // // 2.5 Create some state for the form inputs:
+  // const { inputs, handleChange, clearForm, resetForm } = useForm(
+  //   data?.Product || {
+  //     name: '',
+  //     description: '',
+  //     price: '',
+  //   }
+  // );
+  // console.log(inputs);
+  // if (loading) return <p>loading...</p>;
   // 3. The form needs to handle the updates
   return (
     <Form
@@ -76,7 +73,6 @@ export default function UpdateProduct({ id }) {
         router.push(`/product/${res.data.updateProduct.id}`);
       }}
     >
-      <DisplayError error={error || updateError} />
       <fieldset disabled={updateLoading} aria-busy={updateLoading}>
         <label htmlFor="name">
           Name

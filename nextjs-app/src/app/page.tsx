@@ -20,7 +20,7 @@ export default async function HomePage() {
 
   return (
     <main>
-      <Products products={products} userId={user.id} />
+      <Products products={products} userId={user?.id} />
     </main>
   )
 }

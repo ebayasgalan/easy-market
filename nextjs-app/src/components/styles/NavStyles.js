@@ -3,8 +3,8 @@ import styled from 'styled-components';
 const NavStyles = styled.div`
   margin: 0;
   padding: 0;
-  height: 60px;
   z-index: 5;
+  height: 60px;
 
   a,
   button {
@@ -78,6 +78,7 @@ const NavStyles = styled.div`
   }
 
   &.mobile-active {
+    height: auto;
     
     .toggle-btn {
       top: 22;

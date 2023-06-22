@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth";
 import { revalidatePath } from 'next/cache';
 import bcrypt from "bcrypt";
 import prisma from "./prisma";
-import { create } from "domain";
 
 interface SignupPropsType {
     name: string,
@@ -45,6 +44,9 @@ export const getCurrentUser = async () => {
         const currentUser = await prisma.user.findUnique({
             where: {
                 email: session.user.email as string
+            },
+            include: {
+                cart: true
             }
         });
 
@@ -58,13 +60,13 @@ export const getCurrentUser = async () => {
     }
 };
 
-export const getAllCartItems = async (userId) => {
+export const getAllCartItems = async (userCart) => {
     try {
 
         // fetch all products and filter based on cartItem-productIds 
-        const cartItems = await prisma.cartItem.findMany({ where: { userId } });
+        // const cartItems = await prisma.cartItem.findMany({ where: { userId } });
         const allProducts = await prisma.product.findMany();
-        const selectedProductIds = cartItems.map(cartItem => cartItem.productId);
+        const selectedProductIds = userCart.map(item => item.productId);
 
         interface Product {
             id: string,
@@ -126,12 +128,7 @@ export const removeFromCart = async (id) => {
 }
 
 export const checkOutCart = async (token, totalPrice, userId) => { 
-    // console.log('checkOutCart, userId: ', userId);
-
-    // create/map each Product for OrderItems and store in an array
     const cartItems = await getAllCartItems();
-
-    // console.log('checkOutCart, cartItems: ', cartItems);
 
     const orderItems = cartItems.map(cartItem => {
         return {
@@ -142,41 +139,26 @@ export const checkOutCart = async (token, totalPrice, userId) => {
             quantity: cartItem.quantity,
         }
     })
-
-    // console.log('checkOutCart, cartItems after: ', orderItems);
-
-    // const orderItems = await Promise.all(
-    //     cartItems.map(async (cartItem) => {
-    //         console.log('cartItem: ', cartItem);
-    //         return await prisma.orderItem.create({
-    //             data: {
-    //                 name: cartItem.name,
-    //                 description: cartItem.description,
-    //                 photo: cartItem.photo,
-    //                 price: cartItem.price,
-    //                 quantity: cartItem.quantity,
-    //             }
-    //         })
-    //     })
-    // )
-    // console.log('checkOutCart, orderItems: ', orderItems);
     
-    try {
-        const newOrder = await prisma.order.create({
-            data: {
-                total: totalPrice,
-                userId,
-                items: {
-                    createMany: {
-                        data: orderItems
-                    }
+    const newOrder = await prisma.order.create({
+        data: {
+            total: totalPrice,
+            userId,
+            items: {
+                createMany: {
+                    data: orderItems
                 }
-            },
-            include: {
-                items: true,
-            },
-        });
-        console.log('checkOutCart server-action, newOrder: ', newOrder);
+            }
+        },
+        include: {
+            items: true,
+        },
+    });    
+
+    try {
+        // delete cart Items that belong to the current user 
+        const deletedItems = await prisma.cartItem.deleteMany({ where: { userId } });
+
         revalidatePath('/');
         return newOrder;
     } catch (error) {

@@ -10,7 +10,6 @@ import {
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 // import nProgress from 'nprogress';
-import { useRouter } from 'next/navigation';
 import SickButton from './styles/SickButton';
 import { useCart } from '../lib/cartState';
 import { checkOutCart } from '../lib/server-actions';
@@ -31,7 +30,6 @@ function CheckoutForm({ totalPrice, userId }) {
   // const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
-  const router = useRouter();
   const { closeCart } = useCart();
   
   async function handleSubmit(e) {
@@ -69,7 +67,7 @@ function CheckoutForm({ totalPrice, userId }) {
     <CheckoutFormStyles onSubmit={handleSubmit}>
       {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
       <CardElement />
-      <SickButton>Check Out Now</SickButton>
+      <SickButton type="submit">Check Out Now</SickButton>
     </CheckoutFormStyles>
   );
 }

@@ -34,6 +34,7 @@ const glow = keyframes`
 
 const SearchStyles = styled.div`
   position: relative;
+  display: none;
   input {
     width: 100%;
     padding: 10px;
@@ -42,6 +43,9 @@ const SearchStyles = styled.div`
     &.loading {
       animation: ${glow} 0.5s ease-in-out infinite alternate;
     }
+  }
+  @media (min-width: 768px) {
+    display: block;
   }
 `;
 

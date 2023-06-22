@@ -17,10 +17,13 @@ export const metadata = {
 export default async function RootLayout({
   children
 }) {
+  // All the cart items relating to current user
   const currentUser = await getCurrentUser();
-  const cartItems= await getAllCartItems(currentUser.id);
-  // console.log('root layout, all cartItems: ', cartItems);
-  // Need to get all the cart items relating to userID and then pass it down as props to NAV and CART 
+  let cartItems = [];
+  if(currentUser) cartItems = await getAllCartItems(currentUser?.cart);
+  
+  console.log('root layout, currentUser: ', currentUser);
+  console.log('root layout, all cartItems: ', cartItems);
   return (
     <html lang="en">
       <body>
@@ -29,7 +32,7 @@ export default async function RootLayout({
             <StyledComponentsRegistry>
               <div className='header-wrapper'>
                 <div className='bar'>
-                  <Link href="/">Easy Market Logo</Link>
+                  {/* <Link href="/">Easy Market Logo</Link> */}
                   <Nav cartItems={cartItems}/>
                 </div>
                 <div className='sub-bar'>

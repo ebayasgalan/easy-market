@@ -48,7 +48,7 @@ function CartItem({ cartItem }) {
 }
 
 export default function Cart({ cartItems, currentUser }) {
-  if (!currentUser.id) return null;
+  if (!currentUser?.id) return null;
 
   const { cartOpen, closeCart } = useCart();
   const totalPrice = calcTotalPrice(cartItems);
