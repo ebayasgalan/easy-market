@@ -9,7 +9,7 @@ import {
   useStripe,
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
-import nProgress from 'nprogress';
+// import nProgress from 'nprogress';
 import { useRouter } from 'next/navigation';
 import SickButton from './styles/SickButton';
 import { useCart } from '../lib/cartState';
@@ -28,7 +28,7 @@ const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 function CheckoutForm({ totalPrice, userId }) {
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
   const router = useRouter();
@@ -54,26 +54,14 @@ function CheckoutForm({ totalPrice, userId }) {
       return; // stops the checkout from happening
     }
     // 5. Send the token from step 3 to server, via server-action!
-    // const order = await checkout({
-    //   variables: {
-    //     token: paymentMethod.id,
-    //   },
-    // });
     const order = await checkOutCart(paymentMethod.id, totalPrice, userId);
     console.log(`Finished with the order!!`, order);
-    // console.log(order);
-    // 6. Change the page to view the order
-    // router.push({
-    //   pathname: `/order/[id]`,
-    //   query: {
-        // id: order.data.checkout.id,
-    //   },
-    // });
-    // 7. Close the cart
+
+    // 7. Clear and close the cart
     closeCart();
 
     // 8. turn the loader off
-    setLoading(false);
+    // setLoading(false);
     // nProgress.done();
   }
 
