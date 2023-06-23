@@ -64,6 +64,13 @@ const NavStyles = styled.div`
     z-index: 2;
     background: #000;
     transition: .5s ease-in;
+    button {
+      font-family: radnika_next;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
     @media (min-width: 768px) {
       transform: none;
       transition: auto;
@@ -71,9 +78,6 @@ const NavStyles = styled.div`
       display: flex;
       height: 60px;
       width: auto;
-    }
-    @media (min-width: 1024px) {
-      height: 74px;
     }
   }
 
@@ -129,6 +133,7 @@ const NavStyles = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    // border-bottom: 2px solid var(--lightGrey);
   }
   @media(min-width: 1024px) {
     align-items: normal;

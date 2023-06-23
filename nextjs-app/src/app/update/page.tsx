@@ -1,10 +1,10 @@
 import UpdateProduct from '../../components/UpdateProduct';
 
-export default function UpdatePage({ params }) {
-  console.log(params);
+export default function UpdatePage({ searchParams }) {
+  // console.log('UpdatePage, params: ', searchParams);
   return (
     <div>
-      <UpdateProduct id={params.id} />
+      <UpdateProduct id={searchParams.id} />
     </div>
   );
 }

@@ -5,11 +5,12 @@ import ItemStyles from './styles/ItemStyles';
 import Title from './styles/Title';
 import PriceTag from './styles/PriceTag';
 import formatMoney from '../lib/formatMoney';
-// import DeleteProduct from './DeleteProduct';
+import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
+import { useUser } from './User';
 
 export default function Product({ product, userId }) {
-  // console.log('Product, prop-product: ', product);
+  const user = useUser();
   return (
     <ItemStyles>
       <img
@@ -21,20 +22,22 @@ export default function Product({ product, userId }) {
       </Title>
       <PriceTag>{formatMoney(product.price)}</PriceTag>
       <p>{product.description}</p>
-      <div className="buttonList">
-        <Link
-          href={{
-            pathname: '/update',
-            query: {
-              id: product.id,
-            },
-          }}
-        >
-          Edit ✏️
-        </Link>
-        <AddToCart id={product.id} userId={userId} />
-        {/* <DeleteProduct id={product.id}>Delete</DeleteProduct> */}
-      </div>
+      {user &&
+        <div className="buttonList">
+          <Link
+            href={{
+              pathname: '/update',
+              query: {
+                id: product.id,
+              },
+            }}
+          >
+            Edit ✏️
+          </Link>
+          <AddToCart id={product.id} userId={userId} />
+          <DeleteProduct id={product.id}>Delete</DeleteProduct>
+        </div>
+      }
     </ItemStyles>
   );
 }

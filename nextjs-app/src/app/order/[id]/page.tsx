@@ -1,10 +1,23 @@
 import Order from '../../../components/Order';
 import prisma from '@/lib/prisma';
+import { Metadata, ResolvingMetadata } from 'next';
 
-// dynamic head tag is needed later
-{/* <Head>
-    <title>Easy Market - {order.id}</title>
-</Head> */}
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.id
+ 
+  return {
+    title: 'Order id: ' + id,
+  }
+}
 
 const getOrder = async (id) => {
     const order = await prisma.order.findUnique({

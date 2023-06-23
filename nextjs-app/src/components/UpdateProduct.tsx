@@ -1,113 +1,93 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import useForm from '../lib/useForm';
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useRouter } from "next/navigation";
+import * as yup from 'yup';
 import Form from './styles/Form';
+import { updateProduct } from '../lib/server-actions';
 
-// const SINGLE_PRODUCT_QUERY = gql`
-//   query SINGLE_PRODUCT_QUERY($id: ID!) {
-//     product(where: { id: $id }) {
-//       id
-//       name
-//       description
-//       price
-//     }
-//   }
-// `;
+const MAX_FILE_SIZE = 2000000; // 2MB
 
-// const UPDATE_PRODUCT_MUTATION = gql`
-//   mutation UPDATE_PRODUCT_MUTATION(
-//     $id: ID!
-//     $name: String
-//     $description: String
-//     $price: Int
-//   ) {
-//     updateProduct(
-//       where: { id: $id }
-//       data: { name: $name, description: $description, price: $price }
-//     ) {
-//       id
-//       name
-//       description
-//       price
-//     }
-//   }
-// `;
+const formSchema = yup.object({
+  picture: yup.mixed<FileList>().test("fileSize", "max allowed size is 2MB", value => value && value[0].size <= MAX_FILE_SIZE),
+  name: yup.string().required(),
+  price: yup.number().positive().required(),
+  description: yup.string().required(),
+})
 
-export default function UpdateProduct({ id }) {
+type FormSchemaType = yup.InferType<typeof formSchema>
+
+export default async function UpdateProduct({ id }) {
   const router = useRouter();
-  // 1. Get the existing product
-  // const { data, error, loading } = useQuery(SINGLE_PRODUCT_QUERY, {
-  //   variables: { id },
-  // });
-  // 2. Get the mutation to update the product
-  // const [
-  //   updateProduct,
-  //   { data: updateData, error: updateError, loading: updateLoading },
-  // ] = useMutation(UPDATE_PRODUCT_MUTATION);
-  // // 2.5 Create some state for the form inputs:
-  // const { inputs, handleChange, clearForm, resetForm } = useForm(
-  //   data?.Product || {
-  //     name: '',
-  //     description: '',
-  //     price: '',
-  //   }
-  // );
-  // console.log(inputs);
-  // if (loading) return <p>loading...</p>;
-  // 3. The form needs to handle the updates
+
+  const onSubmit = async (data: FormSchemaType) => {
+
+    // wrap all user-inputs in FormData instance 
+    // this is required to pass file-type to server-action 
+    const formData = new FormData();
+    formData.append('picture', data.picture[0]);
+    formData.append('name', data.name);
+    formData.append('price', data.price);
+    formData.append('description', data.description);
+
+    // invoke server-action 
+    const updatedProduct = await updateProduct(formData, id);
+    
+    // Go to that product's page!
+    router.push(`/product/${updatedProduct.id}`);
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(formSchema),
+  });
+
   return (
-    <Form
-      onSubmit={async (e) => {
-        e.preventDefault();
-        const res = await updateProduct({
-          variables: {
-            id,
-            name: inputs.name,
-            description: inputs.description,
-            price: inputs.price,
-          },
-        }).catch(console.error);
-        // console.log(res);
-        // // Go to that product's page!
-        router.push(`/product/${res.data.updateProduct.id}`);
-      }}
-    >
-      <fieldset disabled={updateLoading} aria-busy={updateLoading}>
-        <label htmlFor="name">
+    // @ts-ignore
+    <Form action={handleSubmit(onSubmit)}>
+      <h2>Update existing product</h2>
+      <fieldset>
+        <label>
+          Image
+          <input
+            type="file"
+            {...register('picture')}
+          />
+        </label>
+        <p className='text-sm text-red-600 mt-1'>{errors.picture?.message}</p>
+        <label>
           Name
           <input
             type="text"
-            id="name"
-            name="name"
-            placeholder="Name"
-            value={inputs.name}
-            onChange={handleChange}
+            placeholder="Product name"
+            {...register('name')}
           />
         </label>
-        <label htmlFor="price">
+        <p className='text-sm text-red-600 mt-1'>{errors.name?.message}</p>
+        <label>
           Price
           <input
             type="number"
-            id="price"
-            name="price"
-            placeholder="price"
-            value={inputs.price}
-            onChange={handleChange}
+            placeholder="Price"
+            {...register('price')}
           />
         </label>
-        <label htmlFor="description">
+        <p className='text-sm text-red-600 mt-1'>{errors.price?.message}</p>
+        <label>
           Description
           <textarea
-            id="description"
-            name="description"
+            rows={5}
+            cols={20}
             placeholder="Description"
-            value={inputs.description}
-            onChange={handleChange}
+            {...register('description')}
           />
         </label>
-
-        <button type="submit">Update Product</button>
+        <p className='text-sm text-red-600 mt-1'>{errors.description?.message}</p>
+        <button className="bg-red-600 text-white" type="submit">Update Product</button>
       </fieldset>
     </Form>
   );

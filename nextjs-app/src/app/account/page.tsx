@@ -5,7 +5,7 @@ export default async function AccountPage() {
     const user = await getCurrentUser();
 
     if(user) {
-        console.log('user: ', user);
+        // console.log('user: ', user);
         const numberOfItems = user.cart.length;
         return <div>
         <p>Hello {user.name}</p>

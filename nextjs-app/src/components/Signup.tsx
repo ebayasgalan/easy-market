@@ -2,8 +2,10 @@
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { signIn } from "next-auth/react";
 import * as yup from 'yup';
-import { signupSubmitHandler } from '../lib/server-actions'
+import { signupHandler } from '../lib/server-actions';
+import Form from './styles/Form';
 
 const formSchema = yup.object({
   name: yup.string(),
@@ -11,7 +13,7 @@ const formSchema = yup.object({
   password: yup.string().min(6).required('password is required'),
 })
 
-export default function SignUp() {
+export default async function SignUp() {
   const {
     register,
     handleSubmit,
@@ -20,9 +22,22 @@ export default function SignUp() {
     resolver: yupResolver(formSchema),
   });
 
+  const submitHandler = async (data) => {
+    const { email, password } = data;
+    const newMember = await signupHandler(data);
+    console.log('submitHandler, newMember: ', newMember);
+    
+    // signin after successfull signup 
+    const res = await signIn('credentials', {
+      email: email,
+      password: password,
+      callbackUrl: '/'
+    })
+  }
+
   return (
     // @ts-ignore
-    <form action={handleSubmit(signupSubmitHandler)}>
+    <Form action={handleSubmit(submitHandler)}>
       <h2>Sign Up For an Account</h2>
       <fieldset>
         <label>
@@ -57,6 +72,6 @@ export default function SignUp() {
         <p className='text-sm text-red-600 mt-1'>{errors.password?.message}</p>
         <button type="submit">Sign Up!</button>
       </fieldset>
-    </form>
+    </Form>
   );
 }

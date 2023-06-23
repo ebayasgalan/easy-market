@@ -48,14 +48,15 @@ function CartItem({ cartItem }) {
 }
 
 export default function Cart({ cartItems, currentUser }) {
-  if (!currentUser?.id) return null;
-
   const { cartOpen, closeCart } = useCart();
+  
+  if (!currentUser?.id) return null;
+  
   const totalPrice = calcTotalPrice(cartItems);
   return (
     <CartStyles open={cartOpen}>
       <header>
-        <Supreme>{currentUser.name}'s Cart</Supreme>
+        <Supreme>{currentUser.name}&apos;s Cart</Supreme>
         <CloseButton onClick={closeCart}>&times;</CloseButton>
       </header>
       <ul>

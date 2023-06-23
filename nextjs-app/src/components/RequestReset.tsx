@@ -3,7 +3,7 @@
 // import gql from 'graphql-tag';
 // import { useMutation } from '@apollo/client';
 import Form from './styles/Form';
-import useForm from '../lib/useForm';
+// import useForm from '../lib/useForm';
 // import Error from './ErrorMessage';
 
 // const REQUEST_RESET_MUTATION = gql`
@@ -30,8 +30,8 @@ export default function RequestReset() {
   async function handleSubmit(e) {
     e.preventDefault(); // stop the form from submitting
     console.log(inputs);
-    const res = await signup().catch(console.error);
-    console.log(res);
+    // const res = await signup().catch(console.error);
+    // console.log(res);
     // console.log({ data, loading, error });
     resetForm();
   }

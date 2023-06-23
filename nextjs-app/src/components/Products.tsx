@@ -13,11 +13,18 @@ const ProductsListStyles = styled.div`
   }
 `;
 
-export default async function Products({ products, userId }) {
+export default async function Products({ products, userId, page }) {
+  // console.log('products: ', products);
+  // console.log('userId: ', userId);
+  // console.log('page: ', page);
+  let endIndex = page * 4;
+  let startIndex = endIndex - 4;
+  const pageProducts = products.slice(startIndex, endIndex);
+
   return (
     <div>
        <ProductsListStyles>
-          {products.map((product) => (
+          {pageProducts.map((product) => (
             <Product key={product.id} product={product} userId={userId} />
           ))}
       </ProductsListStyles> 

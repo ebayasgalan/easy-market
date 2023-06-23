@@ -10,7 +10,6 @@ import { useUser } from './User';
 export default function Nav({ cartItems }) {
   const user = useUser();
   // console.log('Nav, user: ', user);
-  // console.log('Nav, cartItems-prop: ', cartItems);
   const { openCart } = useCart();
 
   const toggleClass = () => {
@@ -39,13 +38,13 @@ export default function Nav({ cartItems }) {
             <Signout />
             <button type="button" onClick={openCart}>
               My Cart
-              <CartCount
-                count={cartItems.reduce(
-                  (tally, cartItem) =>
-                    tally + (cartItem.id ? cartItem.quantity : 0),
-                  0
-                )}
-              />
+            <CartCount
+              count={cartItems.reduce(
+                (tally, cartItem) =>
+                  tally + (cartItem.id ? cartItem.quantity : 0),
+                0
+              )}
+            />
             </button>
           </>
         )}

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { signIn } from "next-auth/react";
 import Signin from '../../components/Signin';
 import Signup from '../../components/Signup';
-import RequestReset from '../../components/RequestReset';
+// import RequestReset from '../../components/RequestReset';
 
 const GridStyles = styled.div`
   .forms {
@@ -13,6 +13,8 @@ const GridStyles = styled.div`
     justify-content: space-between;
     @media (min-width: 768px) {
       flex-direction: row;
+      justify-content: center;
+      gap: 10%
     }
   }
   .demo-button {
@@ -60,7 +62,7 @@ export default async function SignInPage() {
       <div className='forms'>
         <Signin />
         <Signup />
-        <RequestReset />
+        {/* <RequestReset /> */}
       </div>
     </GridStyles>
   );

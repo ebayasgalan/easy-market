@@ -7,7 +7,7 @@ import { getCurrentUser } from '../../../lib/server-actions';
 const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
 const S3_REGION = process.env.S3_REGION;
 
-const uploadImageToS3 = async (imageFile: any) => {
+export const uploadImageToS3 = async (imageFile: any) => {
     let imageURL = '';
     const imageName = imageFile.name;
     const imageType = imageFile.type;

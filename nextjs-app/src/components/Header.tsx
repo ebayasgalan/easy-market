@@ -2,26 +2,14 @@
 
 import Link from 'next/link';
 import styled from 'styled-components';
-import { useQuery } from '@apollo/client';
-import gql from 'graphql-tag';
 import Cart from './Cart';
 import Nav from './Nav';
-import Search from './Search';
-
-const USER_ORDERS_QUERY = gql`
-  query ALL_USERS_QUERY {
-    users {
-      id
-      name
-      email
-    }
-  }
-`;
+// import Search from './Search';
 
 const Logo = styled.h1`
   font-size: 2rem;
-  display: flex;
-  line-height: 24px;
+  font-weight: 600;
+  display: none;
   a {
     color: red;
     padding: 0.5rem 1rem;
@@ -30,10 +18,13 @@ const Logo = styled.h1`
     }
   }
   @media (min-width: 768px) {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   @media (min-width: 1024px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
+    padding: 0;
   }
 `;
 
@@ -43,11 +34,18 @@ const HeaderStyles = styled.header`
   top: 0;
   background: white;
   .bar {
-    border-bottom: 10px solid var(--black, black);
     display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
+    max-width: var(--maxWidth);
+    margin: auto;
+    @media (min-width: 1024px) {
+      padding: 0 10px;
+    }
+    @media (min-width: 1440px) {
+      padding: 0 15px;
+    }
   }
 
   .sub-bar {
@@ -55,15 +53,13 @@ const HeaderStyles = styled.header`
     grid-template-columns: 1fr auto;
     border-bottom: 1px solid var(--black, black);
   }
+
+  @media (min-width: 768px) {
+    border-bottom: 2px solid var(--lightGrey);
+  }
 `;
 
-
-
-export default function Header() {
-  const { data, error, loading } = useQuery(USER_ORDERS_QUERY);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error was thrown</p>;
-  // console.log('data from Header.js: ', data);
+export default function Header({ cartItems, currentUser}) {
   
   return (
     <HeaderStyles>
@@ -72,12 +68,12 @@ export default function Header() {
           <Logo>
             <Link href="/">Easy Market</Link>
           </Logo>
-          <Nav />
+          <Nav cartItems={cartItems} />
         </div>
-        <div className="sub-bar">
+        {/* <div className="sub-bar">
           <Search />
-        </div>
-        <Cart />
+        </div> */}
+        <Cart cartItems={cartItems} currentUser={currentUser} />
       </div>
     </HeaderStyles>
   );

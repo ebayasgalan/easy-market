@@ -37,13 +37,11 @@ export const authOptions: AuthOptions = {
           throw new Error('Invalid credentials');
         }
 
-        console.log('authorized user: ', user);
-
         return user;
       }
     })
   ],
-  debug: process.env.NODE_ENV === 'development',
+  debug: process.env.NODE_ENV !== "production",
   session: {
     strategy: "jwt",
   },
