@@ -21,8 +21,8 @@ export default async function RootLayout({
   let cartItems = null;
   if(currentUser) cartItems = await getAllCartItems(currentUser?.cart);
   
-  // console.log('root layout, currentUser: ', currentUser);
-  // console.log('root layout, all cartItems: ', cartItems);
+  console.log('root layout, currentUser: ', currentUser);
+  console.log('root layout, all cartItems: ', cartItems);
   return (
     <html lang="en">
       <body>
