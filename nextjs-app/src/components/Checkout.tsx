@@ -23,7 +23,7 @@ const CheckoutFormStyles = styled.form`
   grid-gap: 1rem;
 `;
 
-const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+// const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
 function CheckoutForm({ totalPrice, userId }) {
   const [error, setError] = useState();
@@ -80,4 +80,4 @@ function Checkout({ totalPrice, userId }) {
   );
 }
 
-export { Checkout };
+// export { Checkout };
