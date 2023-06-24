@@ -22,7 +22,7 @@ export default async function ProductsPage({ params }) {
   // console.log('ProductsPage, params: ', params);
 
   // Initiate both requests in parallel
-  const productsData = await getAllProducts();
+  const allProducts = await getAllProducts();
   // const userData = getCurrentUser();
 
   // Wait for the promises to resolve
@@ -32,7 +32,7 @@ export default async function ProductsPage({ params }) {
     <main>
       <h1>From Products Component</h1>
       <ul>
-        {todos.map((todo, i) => <li key={i}>{todo.title}</li>)}
+        {allProducts.map((product, i) => <li key={i}>{product.name}</li>)}
       </ul>
       {/* <Pagination page={page || 1} productsCount={products.length} /> */}
       {/* <Products page={page || 1} products={products} userId={user?.id} /> */}
