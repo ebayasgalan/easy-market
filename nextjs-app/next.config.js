@@ -2,10 +2,10 @@
 
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self';
-  child-src https://easy-market-git-main-ebayasgalan.vercel.app;
-  style-src 'self' https://easy-market-git-main-ebayasgalan.vercel.app;
-  font-src 'self';
+  script-src 'self' https://easy-market-iota.vercel.app;
+  child-src 'self';
+  style-src 'self' https://easy-market-iota.vercel.app;
+  font-src 'self' https://easy-market-iota.vercel.app;
 `
 
 const nextConfig = {
