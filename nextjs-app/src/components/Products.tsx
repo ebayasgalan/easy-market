@@ -1,17 +1,17 @@
 'use client';
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Product from './Product';
 
-const ProductsListStyles = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  @media (min-width: 768px) {
-    flex-flow: row wrap;
-    justify-content: space-between;
-  }
-`;
+// const ProductsListStyles = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 30px;
+//   @media (min-width: 768px) {
+//     flex-flow: row wrap;
+//     justify-content: space-between;
+//   }
+// `;
 
 export default async function Products({ products, userId, page }) {
   // console.log('products: ', products);

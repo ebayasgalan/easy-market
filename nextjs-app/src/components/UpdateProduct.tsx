@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation";
 import * as yup from 'yup';
-import Form from './styles/Form';
+// import Form from './styles/Form';
 import { updateProduct } from '../lib/server-actions';
 
 const MAX_FILE_SIZE = 2000000; // 2MB
@@ -48,7 +48,7 @@ export default async function UpdateProduct({ id }) {
 
   return (
     // @ts-ignore
-    <Form action={handleSubmit(onSubmit)}>
+    <form action={handleSubmit(onSubmit)}>
       <h2>Update existing product</h2>
       <fieldset>
         <label>
@@ -89,6 +89,6 @@ export default async function UpdateProduct({ id }) {
         <p className='text-sm text-red-600 mt-1'>{errors.description?.message}</p>
         <button className="bg-red-600 text-white" type="submit">Update Product</button>
       </fieldset>
-    </Form>
+    </form>
   );
 }

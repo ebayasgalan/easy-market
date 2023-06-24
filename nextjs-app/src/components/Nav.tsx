@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { useCart } from '../lib/cartState';
 import CartCount from './CartCount';
-import Signout from './Signout';
-import NavStyles from './styles/NavStyles';
+// import Signout from './Signout';
+// import NavStyles from './styles/NavStyles';
 import { useUser } from './User';
 
 export default function Nav({ cartItems }) {
@@ -36,7 +36,7 @@ export default function Nav({ cartItems }) {
             <Link href="/sell">Sell</Link>
             <Link href="/orders">Orders</Link>
             <Link href="/account">Account</Link>
-            <Signout />
+            {/* <Signout /> */}
             <button type="button" onClick={openCart}>
               My Cart
             {/* <CartCount

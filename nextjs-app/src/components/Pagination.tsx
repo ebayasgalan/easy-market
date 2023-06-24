@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import PaginationStyles from './styles/PaginationStyles';
+// import PaginationStyles from './styles/PaginationStyles';
 
 export default function Pagination({ page, productsCount }) {
   const perPage = 4;

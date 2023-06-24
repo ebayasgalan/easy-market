@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { signIn } from "next-auth/react";
 import * as yup from 'yup';
 import { signupHandler } from '../lib/server-actions';
-import Form from './styles/Form';
+// import Form from './styles/Form';
 
 const formSchema = yup.object({
   name: yup.string(),
@@ -37,7 +37,7 @@ export default async function SignUp() {
 
   return (
     // @ts-ignore
-    <Form action={handleSubmit(submitHandler)}>
+    <form action={handleSubmit(submitHandler)}>
       <h2>Sign Up For an Account</h2>
       <fieldset>
         <label>
@@ -72,6 +72,6 @@ export default async function SignUp() {
         <p className='text-sm text-red-600 mt-1'>{errors.password?.message}</p>
         <button type="submit">Sign Up!</button>
       </fieldset>
-    </Form>
+    </form>
   );
 }
