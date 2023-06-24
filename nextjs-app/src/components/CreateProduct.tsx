@@ -48,7 +48,8 @@ export default async function CreateProduct() {
 
   return (
     // @ts-ignore
-    <Form action={handleSubmit(onSubmit)}>
+    // <Form action={handleSubmit(onSubmit)}>
+    <form action={handleSubmit(onSubmit)}>
       <h2>Post your product for sale</h2>
       <fieldset>
         <label>
@@ -89,6 +90,7 @@ export default async function CreateProduct() {
         <p className='text-sm text-red-600 mt-1'>{errors.description?.message}</p>
         <button className="bg-red-600 text-white" type="submit">+ Add Product</button>
       </fieldset>
-    </Form>
+    </form>
+    // </Form> 
   );
 }

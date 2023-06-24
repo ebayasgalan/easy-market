@@ -27,7 +27,8 @@ const CartItemStyles = styled.li`
 function CartItem({ cartItem }) {
   if (!cartItem) return null;
   return (
-    <CartItemStyles>
+    // <CartItemStyles>
+    <>
       <img
         width="100"
         src={cartItem.photo}
@@ -42,8 +43,9 @@ function CartItem({ cartItem }) {
           </em>
         </p>
       </div>
-      <RemoveFromCart id={cartItem.id} />
-    </CartItemStyles>
+      {/* <RemoveFromCart id={cartItem.id} /> */}
+    </>
+    // </CartItemStyles>
   );
 }
 
@@ -54,10 +56,11 @@ export default function Cart({ cartItems, currentUser }) {
   
   const totalPrice = calcTotalPrice(cartItems);
   return (
-    <CartStyles open={cartOpen}>
+    // <CartStyles open={cartOpen}>
+    <>
       <header>
-        <Supreme>{currentUser.name}&apos;s Cart</Supreme>
-        <CloseButton onClick={closeCart}>&times;</CloseButton>
+        {/* <Supreme>{currentUser.name}&apos;s Cart</Supreme>
+        <CloseButton onClick={closeCart}>&times;</CloseButton> */}
       </header>
       <ul>
         {cartItems.map((cartItem) => (
@@ -66,8 +69,9 @@ export default function Cart({ cartItems, currentUser }) {
       </ul>
       <footer>
         <p>{formatMoney(totalPrice)}</p>
-        <Checkout totalPrice={totalPrice} userId={currentUser.id} />
+        {/* <Checkout totalPrice={totalPrice} userId={currentUser.id} /> */}
       </footer>
-    </CartStyles>
+    </>
+    // </CartStyles> 
   );
 }

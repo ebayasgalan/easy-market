@@ -1,8 +1,8 @@
 import './globals.css';
 import AuthContext from '../lib/AuthContext';
-import StyledComponentsRegistry from '../lib/styledRegistry';
+// import StyledComponentsRegistry from '../lib/styledRegistry';
 import Header from '../components/Header';
-import ChildrenWrapper from '../components/styles/ChildrenWrapper';
+// import ChildrenWrapper from '../components/styles/ChildrenWrapper';
 import { CartStateProvider } from '../lib/cartState';
 import { getCurrentUser, getAllCartItems } from '../lib/server-actions';
 
@@ -28,12 +28,10 @@ export default async function RootLayout({
       <body>
         <AuthContext>
           <CartStateProvider>
-              <Header cartItems={cartItems} currentUser={currentUser} />
-              <StyledComponentsRegistry >
-                <ChildrenWrapper>
+                <Header cartItems={cartItems} currentUser={currentUser} />
+                {/* <ChildrenWrapper> */}
                   {children}
-                </ChildrenWrapper>
-              </StyledComponentsRegistry>
+                {/* </ChildrenWrapper> */}
           </CartStateProvider>
         </AuthContext>
       </body>

@@ -6,14 +6,14 @@ export default function ResetPage({ query }) {
     return (
       <div>
         <p>Sorry you must supply a token</p>
-        <RequestReset />
+        {/* <RequestReset /> */}
       </div>
     );
   }
   return (
     <div>
       <p>RESET YOUR PASSWORD</p>
-      <Reset token={query.token} />
+      {/* <Reset token={query.token} /> */}
     </div>
   );
 }

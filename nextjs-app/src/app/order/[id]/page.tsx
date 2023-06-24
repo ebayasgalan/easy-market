@@ -33,6 +33,7 @@ export default async function OrderPage({ params }) {
   const { id } = params;
   const order = await getOrder(id);
   return (
-    <Order order={order}/>
+    <h1>OrderPage</h1>
+    // <Order order={order}/>
   );
 }

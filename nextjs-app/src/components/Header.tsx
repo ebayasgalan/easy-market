@@ -66,13 +66,12 @@ const HeaderStyles = styled.header`
 export default function Header({ cartItems, currentUser}) {
   
   return (
-    <StyledComponentsRegistry>
-      <HeaderStyles>
+      // <HeaderStyles>
         <div>
           <div className="bar">
-            <Logo>
+            {/* <Logo> */}
               <Link href="/">Easy Market</Link>
-            </Logo>
+            {/* </Logo> */}
             <Nav cartItems={cartItems} />
           </div>
           {/* <div className="sub-bar">
@@ -80,7 +79,6 @@ export default function Header({ cartItems, currentUser}) {
           </div> */}
           <Cart cartItems={cartItems} currentUser={currentUser} />
         </div>
-      </HeaderStyles>
-    </StyledComponentsRegistry>
+      // </HeaderStyles>
   );
 }

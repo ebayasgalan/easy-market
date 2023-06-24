@@ -33,5 +33,6 @@ const fetchProduct = async (id: any) => {
 
 export default async function SingleProductPage({ params }) {
     const product = await fetchProduct(params.id);
-    return <SingleProduct product={product} />;
+    // return <SingleProduct product={product} />;
+    return <h1>Dynamic product component</h1>;
 }
