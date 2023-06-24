@@ -24,11 +24,12 @@ export default async function Products({ products, userId, page }) {
   return (
     <div>
        {/* <ProductsListStyles> */}
-        <>
+       <h1>Products Component</h1>
+        {/* <>
           {pageProducts.map((product) => (
             <Product key={product.id} product={product} userId={userId} />
           ))}
-        </>
+        </> */}
       {/* </ProductsListStyles>  */}
     </div>
   );
