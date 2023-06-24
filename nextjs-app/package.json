@@ -4,11 +4,12 @@
   "license": "MIT",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "start": "next start",
     "lint": "next lint",
     "generate": "prisma generate",
     "migrate": "prisma migrate dev",
+    "deploy": "prisma migrate deploy",
     "seed-data": "prisma db seed",
     "reset-data": "prisma db push --force-reset"
   },

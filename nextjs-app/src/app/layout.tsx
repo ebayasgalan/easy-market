@@ -26,12 +26,12 @@ export default async function RootLayout({
       <body>
         <AuthContext>
           <CartStateProvider>
-            <StyledComponentsRegistry>
               <Header cartItems={cartItems} currentUser={currentUser} />
-              <ChildrenWrapper>
-                {children}
-              </ChildrenWrapper>
-            </StyledComponentsRegistry>
+              <StyledComponentsRegistry>
+                <ChildrenWrapper>
+                  {children}
+                </ChildrenWrapper>
+              </StyledComponentsRegistry>
           </CartStateProvider>
         </AuthContext>
       </body>
