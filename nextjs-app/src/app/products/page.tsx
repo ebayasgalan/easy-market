@@ -3,10 +3,10 @@ import prisma from "../../lib/prisma";
 import Products from '../../components/Products';
 import Pagination from '../../components/Pagination';
 
-// const getAllProducts = async () => {
-//   const products = await prisma.product.findMany();
-//   return products;
-// }
+const getAllProducts = async () => {
+  const products = await prisma.product.findMany();
+  return products;
+}
 const testFunc = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/todos', {
     method: "GET"
@@ -18,11 +18,11 @@ const testFunc = async () => {
 export default async function ProductsPage({ params }) {
   // const page = parseInt(params.page);
   const todos = await testFunc();
-  console.log('ProductsPage, todos: ', todos);
-  console.log('ProductsPage, params: ', params);
+  // console.log('ProductsPage, todos: ', todos);
+  // console.log('ProductsPage, params: ', params);
 
   // Initiate both requests in parallel
-  // const productsData = getAllProducts();
+  const productsData = await getAllProducts();
   // const userData = getCurrentUser();
 
   // Wait for the promises to resolve
