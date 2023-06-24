@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'radnika_next';
-  src: ('/fonts/radnikanext-medium-webfont.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
 html {
   --red: #ff0000;
   --black: #393939;
@@ -25,7 +19,7 @@ html {
   box-sizing: inherit;
 }
 body {
-  font-family: 'radnika_next';
+  font-family: 'sans-serif';
   margin: 0;
   font-size: 1.5rem;
   line-height:2;
