@@ -8,23 +8,15 @@ const getAllProducts = async () => {
   return products;
 }
 
-const getAllUsers = async () => {
-  const users = await prisma.user.findMany();
-  return users;
-}
-
 export default async function ProductsPage({ params }) {
   const page = parseInt(params.page);
+
   // Initiate both requests in parallel
   const productsData = getAllProducts();
   const userData = getCurrentUser();
-  const allUsers = getAllUsers();
 
   // Wait for the promises to resolve
-  const [products, user, users] = await Promise.all([productsData, userData, allUsers])
-
-  // console.log('products, all users: ', users);
-  // console.log('products, all products: ', products);
+  const [products, user] = await Promise.all([productsData, userData]);
 
   return (
     <main>

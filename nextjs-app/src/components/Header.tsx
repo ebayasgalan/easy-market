@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Cart from './Cart';
 import Nav from './Nav';
+import StyledComponentsRegistry from '../lib/styledRegistry';
 // import Search from './Search';
 
 const Logo = styled.h1`
@@ -33,13 +34,16 @@ const HeaderStyles = styled.header`
   z-index: 30;
   top: 0;
   background: white;
+  margin-bottom: 2rem;
   .bar {
-    display: grid;
     grid-template-columns: auto 1fr;
     justify-content: space-between;
     align-items: stretch;
     max-width: var(--maxWidth);
     margin: auto;
+    @media (min-width: 768px) {
+      display: grid;
+    }
     @media (min-width: 1024px) {
       padding: 0 10px;
     }
@@ -62,19 +66,21 @@ const HeaderStyles = styled.header`
 export default function Header({ cartItems, currentUser}) {
   
   return (
-    <HeaderStyles>
-      <div>
-        <div className="bar">
-          <Logo>
-            <Link href="/">Easy Market</Link>
-          </Logo>
-          <Nav cartItems={cartItems} />
+    <StyledComponentsRegistry>
+      <HeaderStyles>
+        <div>
+          <div className="bar">
+            <Logo>
+              <Link href="/">Easy Market</Link>
+            </Logo>
+            <Nav cartItems={cartItems} />
+          </div>
+          {/* <div className="sub-bar">
+            <Search />
+          </div> */}
+          <Cart cartItems={cartItems} currentUser={currentUser} />
         </div>
-        {/* <div className="sub-bar">
-          <Search />
-        </div> */}
-        <Cart cartItems={cartItems} currentUser={currentUser} />
-      </div>
-    </HeaderStyles>
+      </HeaderStyles>
+    </StyledComponentsRegistry>
   );
 }

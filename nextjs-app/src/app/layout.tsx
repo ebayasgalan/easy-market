@@ -13,10 +13,12 @@ export const metadata = {
 
 export default async function RootLayout({
   children
+}: {
+  children: React.ReactNode
 }) {
   // All the cart items relating to current user
   const currentUser = await getCurrentUser();
-  let cartItems = [];
+  let cartItems = null;
   if(currentUser) cartItems = await getAllCartItems(currentUser?.cart);
   
   // console.log('root layout, currentUser: ', currentUser);
@@ -27,7 +29,7 @@ export default async function RootLayout({
         <AuthContext>
           <CartStateProvider>
               <Header cartItems={cartItems} currentUser={currentUser} />
-              <StyledComponentsRegistry>
+              <StyledComponentsRegistry >
                 <ChildrenWrapper>
                   {children}
                 </ChildrenWrapper>
