@@ -57,13 +57,15 @@ export default async function SignInPage() {
   }
 
   return (
-    <GridStyles>
+    // <GridStyles>
+    <>
       <button className='demo-button' onClick={handleSubmit}>Bypass login for demo purposes</button>
       <div className='forms'>
-        <Signin />
-        <Signup />
+        {/* <Signin /> */}
+        {/* <Signup /> */}
         {/* <RequestReset /> */}
       </div>
-    </GridStyles>
+    </>
+    // </GridStyles>
   );
 }

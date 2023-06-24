@@ -22,7 +22,8 @@ export default function Nav({ cartItems }) {
   }
 
   return (
-    <NavStyles className='wrapper'>
+    // <NavStyles className='wrapper'>
+    <>
       <div className="toggle-btn" onClick={toggleClass}>
         <span></span>
         <span></span>
@@ -38,13 +39,13 @@ export default function Nav({ cartItems }) {
             <Signout />
             <button type="button" onClick={openCart}>
               My Cart
-            <CartCount
+            {/* <CartCount
               count={cartItems.reduce(
                 (tally, cartItem) =>
                   tally + (cartItem.id ? cartItem.quantity : 0),
                 0
               )}
-            />
+            /> */}
             </button>
           </>
         )}
@@ -54,6 +55,7 @@ export default function Nav({ cartItems }) {
           </>
         )}
       </div>
-    </NavStyles>
+    </>
+    // </NavStyles>
   );
 }

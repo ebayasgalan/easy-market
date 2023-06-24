@@ -12,17 +12,19 @@ import { useUser } from './User';
 export default function Product({ product, userId }) {
   const user = useUser();
   return (
-    <ItemStyles>
+    // <ItemStyles>
+    <>
       <img
         src={product.photo}
         alt={product.name}
       />
-      <Title>
+      <h1>product component</h1>
+      {/* <Title>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
-      </Title>
-      <PriceTag>{formatMoney(product.price)}</PriceTag>
+      </Title> */}
+      {/* <PriceTag>{formatMoney(product.price)}</PriceTag> */}
       <p>{product.description}</p>
-      {user &&
+      {/* {user &&
         <div className="buttonList">
           <Link
             href={{
@@ -37,7 +39,8 @@ export default function Product({ product, userId }) {
           <AddToCart id={product.id} userId={userId} />
           <DeleteProduct id={product.id}>Delete</DeleteProduct>
         </div>
-      }
-    </ItemStyles>
+      } */}
+    </>
+    // </ItemStyles>
   );
 }
