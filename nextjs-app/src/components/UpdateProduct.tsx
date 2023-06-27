@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation";
 import * as yup from 'yup';
-// import Form from './styles/Form';
+import './styles/formStyles.scss';
 import { updateProduct } from '../lib/server-actions';
 
 const MAX_FILE_SIZE = 2000000; // 2MB
@@ -48,7 +48,7 @@ export default async function UpdateProduct({ id }) {
 
   return (
     // @ts-ignore
-    <form action={handleSubmit(onSubmit)}>
+    <form className="formStyle" action={handleSubmit(onSubmit)}>
       <h2>Update existing product</h2>
       <fieldset>
         <label>

@@ -1,0 +1,32 @@
+.signInPage {
+  .forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: auto;
+    max-width: var(--maxWidth);
+    @media (min-width: 768px) {
+      flex-direction: row;
+      justify-content: center;
+      min-height: 300px;
+      padding: 25px;
+      gap: 8%
+    }
+  }
+  .demo-button {
+    width: auto;
+    display: block;
+    margin: auto;
+    background: red;
+    color: white;
+    border: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 0.5rem 1.2rem;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.2), 0px 0px 50px rgba(0, 0, 0, 0.2);
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 37px 20px -20px rgba(0,0,0,0.2)
+    }
+  }
+}

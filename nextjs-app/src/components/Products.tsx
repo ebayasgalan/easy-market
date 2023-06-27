@@ -1,17 +1,6 @@
-'use client';
-
-// import styled from 'styled-components';
+import './styles/productsListStyles.scss';
 import Product from './Product';
-
-// const ProductsListStyles = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 30px;
-//   @media (min-width: 768px) {
-//     flex-flow: row wrap;
-//     justify-content: space-between;
-//   }
-// `;
+// import Nprogress from 'nprogress';
 
 export default async function Products({ products, userId, page }) {
   // console.log('products: ', products);
@@ -21,16 +10,24 @@ export default async function Products({ products, userId, page }) {
   let startIndex = endIndex - 4;
   const pageProducts = products.slice(startIndex, endIndex);
 
+  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
+  const pageDelay = async () => {
+    // Nprogress.start();
+    const slept = await sleep(1000);
+    // Nprogress.done();
+    console.log('delay ended');
+  }
+
+  pageDelay();
+
   return (
     <div>
-       {/* <ProductsListStyles> */}
-       <h1>Products Component</h1>
-        {/* <>
+        <div className='products'>
           {pageProducts.map((product) => (
             <Product key={product.id} product={product} userId={userId} />
           ))}
-        </> */}
-      {/* </ProductsListStyles>  */}
+        </div>
     </div>
   );
 }

@@ -1,12 +1,10 @@
-import styled from 'styled-components';
-
-const OrderStyles = styled.div`
+.singleOrder {
   max-width: 1000px;
   margin: 0 auto;
   border: 1px solid var(--offWhite);
   box-shadow: var(--bs);
   padding: 2rem;
-  border-top: 10px solid red;
+  border-top: 10px solid var(--red);
   & > p {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -34,5 +32,4 @@ const OrderStyles = styled.div`
       object-fit: cover;
     }
   }
-`;
-export default OrderStyles;
+}

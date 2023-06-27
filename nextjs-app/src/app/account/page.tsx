@@ -1,6 +1,5 @@
 import { getCurrentUser } from '@/lib/server-actions';
 
-
 export default async function AccountPage() {
     const user = await getCurrentUser();
 

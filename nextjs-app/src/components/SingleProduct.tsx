@@ -1,36 +1,22 @@
-'use client';
+import './styles/productStyles.scss';
+import Image from 'next/image';
 
-// import styled from 'styled-components';
-
-// const ProductStyles = styled.div`
-//   display: grid;
-//   grid-auto-columns: 1fr;
-//   grid-auto-flow: column;
-//   max-width: var(--maxWidth);
-//   justify-content: center;
-//   align-items: top;
-//   gap: 2rem;
-//   img {
-//     width: 100%;
-//     object-fit: contain;
-//   }
-// `;
-
-export default function SingleProduct({ product }) {
+export default function SingleProduct({ product }: any) {
 
   // console.log('SingleProduct, product: ', product);
   return (
-    // <ProductStyles>
-    <>
-      <img
+    <div className="singleProduct">
+      <Image
         src={product.photo}
         alt={product.name}
+        width={600}
+        height={400}
+        style={{objectFit: 'cover'}}
       />
       <div className="details">
         <h2>{product.name}</h2>
         <p>{product.description}</p>
       </div>
-      </>
-    // </ProductStyles>
+    </div>
   );
 }

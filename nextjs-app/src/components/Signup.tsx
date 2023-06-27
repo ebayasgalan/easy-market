@@ -13,6 +13,12 @@ const formSchema = yup.object({
   password: yup.string().min(6).required('password is required'),
 })
 
+interface Data {
+  name?: string;
+  email: string;
+  password: string;
+}
+
 export default async function SignUp() {
   const {
     register,
@@ -22,7 +28,7 @@ export default async function SignUp() {
     resolver: yupResolver(formSchema),
   });
 
-  const submitHandler = async (data) => {
+  const submitHandler = async (data: Data): Promise<void> => {
     const { email, password } = data;
     const newMember = await signupHandler(data);
     console.log('submitHandler, newMember: ', newMember);
@@ -37,7 +43,7 @@ export default async function SignUp() {
 
   return (
     // @ts-ignore
-    <form action={handleSubmit(submitHandler)}>
+    <form className="formStyle" action={handleSubmit(submitHandler)}>
       <h2>Sign Up For an Account</h2>
       <fieldset>
         <label>
