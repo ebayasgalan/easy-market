@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import Signin from '../../components/Signin';
 import Signup from '../../components/Signup';
-import '../../components/styles/signinStyles.scss';
+import '../../components/styles/signInStyles.scss';
 // import NProgress from 'nprogress';
 
 export default async function SignInPage() {
