@@ -10,17 +10,6 @@ export default async function Products({ products, userId, page }) {
   let startIndex = endIndex - 4;
   const pageProducts = products.slice(startIndex, endIndex);
 
-  const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
-  const pageDelay = async () => {
-    // Nprogress.start();
-    const slept = await sleep(1000);
-    // Nprogress.done();
-    console.log('delay ended');
-  }
-
-  pageDelay();
-
   return (
     <div>
         <div className='products'>
