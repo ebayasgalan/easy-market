@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signIn } from "next-auth/react";
 import * as yup from 'yup';
-import { signupHandler } from '../lib/server-actions';
+// import { signupHandler } from '../lib/server-actions';
 // import Form from './styles/Form';
 
 const formSchema = yup.object({
@@ -30,8 +30,8 @@ export default async function SignUp() {
 
   const submitHandler = async (data: Data): Promise<void> => {
     const { email, password } = data;
-    const newMember = await signupHandler(data);
-    console.log('submitHandler, newMember: ', newMember);
+    // const newMember = await signupHandler(data);
+    // console.log('submitHandler, newMember: ', newMember);
     
     // signin after successfull signup 
     const res = await signIn('credentials', {
