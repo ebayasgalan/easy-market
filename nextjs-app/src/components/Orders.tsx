@@ -1,28 +1,22 @@
-'use client';
+// @ts-nocheck
 
-import styled from 'styled-components';
 import Link from 'next/link';
 import formatMoney from '@/lib/formatMoney';
-import OrderItemStyles from '@/components/styles/OrderItemStyles';
-
-const OrderUl = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  grid-gap: 4rem;
-`;
+import './styles/orderItemStyles.scss';
+import Image from 'next/image';
 
 function countItemsInAnOrder(order) {
   return order.items.reduce((tally, item) => tally + item.quantity, 0);
 }
 
 export default function OrdersPage({ orders }) {
-  console.log('orders: ', orders);
+  // console.log('orders: ', orders);
   return (
     <div>
-      <h2>You have {orders.length} orders!</h2>
-      <OrderUl>
+      <h2>You have {orders.length} order{orders.length === 1 ? '' : 's'}!</h2>
+      <ul className='orderItems'>
         {orders.map((order, i) => (
-          <OrderItemStyles key={i}>
+          <li className='orderItem' key={i}>
             <Link href={`/order/${order.id}`}>
                 <div className="order-meta">
                   <p>{countItemsInAnOrder(order)} Items</p>
@@ -34,17 +28,22 @@ export default function OrdersPage({ orders }) {
                 </div>
                 <div className="images">
                   {order.items.map((item) => (
-                    <img
+                    <Image
                       key={`image-${item.id}`}
                       src={item.photo}
                       alt={item.name}
+                      width={300}
+                      height={400}
+                      style={{
+                        objectFit: 'cover'
+                      }}
                     />
                   ))}
                 </div>
             </Link>
-          </OrderItemStyles>
+          </li>
         ))}
-      </OrderUl>
+      </ul>
     </div>
   );
 }

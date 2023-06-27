@@ -19,7 +19,7 @@ export async function generateMetadata(
   }
 }
 
-const fetchProduct = async (id: any) => {
+const fetchProduct = async (id: string) => {
     let product = null;
     try {
         product = await prisma.product.findUnique({
@@ -31,8 +31,7 @@ const fetchProduct = async (id: any) => {
     return product;
 }
 
-export default async function SingleProductPage({ params }) {
+export default async function SingleProductPage({ params }: any) {
     const product = await fetchProduct(params.id);
-    // return <SingleProduct product={product} />;
-    return <h1>Dynamic product component</h1>;
+    return <SingleProduct product={product} />;
 }

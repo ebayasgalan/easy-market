@@ -1,10 +1,9 @@
 import './globals.css';
+// import './../components/styles/nprogress.css';
 import AuthContext from '../lib/AuthContext';
-// import StyledComponentsRegistry from '../lib/styledRegistry';
 import Header from '../components/Header';
-// import ChildrenWrapper from '../components/styles/ChildrenWrapper';
 import { CartStateProvider } from '../lib/cartState';
-import { getCurrentUser, getAllCartItems } from '../lib/server-actions';
+import { getCurrentUser, getUserCartItems } from '../lib/server-actions';
 
 export const metadata = {
   title: 'Easy-Market',
@@ -16,22 +15,22 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  // All the cart items relating to current user
+  // get all cart items relating to current user
   const currentUser = await getCurrentUser();
   let cartItems = null;
-  if(currentUser) cartItems = await getAllCartItems(currentUser?.cart);
+  // get all user-selected products then dedupe and augment it with quantity 
+  if(currentUser) cartItems = await getUserCartItems(currentUser.cart);
   
-  console.log('root layout, currentUser: ', currentUser);
-  console.log('root layout, all cartItems: ', cartItems);
+  // console.log('root layout, currentUser: ', currentUser);
+  // console.log('root layout, all cartItems: ', cartItems);
+
   return (
     <html lang="en">
       <body>
         <AuthContext>
           <CartStateProvider>
-                <Header cartItems={cartItems} currentUser={currentUser} />
-                {/* <ChildrenWrapper> */}
-                  {children}
-                {/* </ChildrenWrapper> */}
+              <Header cartItems={cartItems} currentUser={currentUser} />
+              {children}
           </CartStateProvider>
         </AuthContext>
       </body>

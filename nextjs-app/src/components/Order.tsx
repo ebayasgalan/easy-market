@@ -1,14 +1,11 @@
-'use client';
-
-import OrderStyles from './styles/OrderStyles';
 import formatMoney from '../lib/formatMoney';
+import './styles/orderStyles.scss';
+import Image from 'next/image';
 
 export default async function SingleOrderPage({ order }) {
-//   const { id } = params;
-//   console.log('single order, params: ', params);
-  console.log('single order, order: ', order);
+//  console.log('single order, order: ', order);
   return (
-    <OrderStyles>
+    <div className='singleOrder'>
       <p>
         <span>Order Id:</span>
         <span>{order.id}</span>
@@ -24,7 +21,7 @@ export default async function SingleOrderPage({ order }) {
       <div className="items">
         {order.items.map((item) => (
           <div className="order-item" key={item.id}>
-            <img src={item.photo} alt={item.name} />
+            <Image src={item.photo} alt={item.name} width={200} height={100} />
             <div className="item-details">
               <h2>{item.name}</h2>
               <p>Qty: {item.quantity}</p>
@@ -35,6 +32,6 @@ export default async function SingleOrderPage({ order }) {
           </div>
         ))}
       </div>
-    </OrderStyles>
+    </div>
   );
 }

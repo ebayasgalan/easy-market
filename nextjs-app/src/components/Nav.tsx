@@ -1,29 +1,28 @@
 'use client';
 
 import Link from 'next/link';
+import './styles/navStyles.scss';
 import { useCart } from '../lib/cartState';
-import CartCount from './CartCount';
 import Signout from './Signout';
-import NavStyles from './styles/NavStyles';
 import { useUser } from './User';
+import CartCount from './CartCount';
 
-export default function Nav({ cartItems }) {
+export default function Nav({count}) {
   const user = useUser();
   // console.log('Nav, user: ', user);
-  const { openCart } = useCart();
+  const { openCart }: any = useCart();
 
   const toggleClass = () => {
-    const parentClass = document.querySelector('.wrapper');
-    if(parentClass.classList.contains('mobile-active')) {
+    const parentClass: Element | null = document.querySelector('.wrapper');
+    if(parentClass?.classList.contains('mobile-active')) {
       parentClass.classList.remove('mobile-active');
     } else {
-      parentClass.classList.add('mobile-active');
+      parentClass?.classList.add('mobile-active');
     }
   }
 
   return (
-    // <NavStyles className='wrapper'>
-    <>
+    <div className='navigation'> 
       <div className="toggle-btn" onClick={toggleClass}>
         <span></span>
         <span></span>
@@ -39,14 +38,8 @@ export default function Nav({ cartItems }) {
             <Signout />
             <button type="button" onClick={openCart}>
               My Cart
-            {/* <CartCount
-              count={cartItems.reduce(
-                (tally, cartItem) =>
-                  tally + (cartItem.id ? cartItem.quantity : 0),
-                0
-              )}
-            /> */}
             </button>
+            <CartCount count={count} />
           </>
         )}
         {!user && (
@@ -55,7 +48,6 @@ export default function Nav({ cartItems }) {
           </>
         )}
       </div>
-    </>
-    // </NavStyles>
+    </div>
   );
 }

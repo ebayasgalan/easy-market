@@ -8,13 +8,7 @@ import { revalidatePath } from 'next/cache';
 import bcrypt from "bcrypt";
 import prisma from "./prisma";
 
-interface SignupPropsType {
-    name: string,
-    email: string,
-    password: string
-}
-
-export const signupHandler = async (data: SignupPropsType) => { 
+export const signupHandler = async (data) => { 
     const userInput = Object.assign(data, {});
     const { name, email, password } = userInput;
 
@@ -64,7 +58,7 @@ export const getCurrentUser = async () => {
     }
 };
 
-export const getAllCartItems = async (userCart) => {
+export const getUserCartItems = async (userCart) => {
     try {
 
         // fetch all products and filter based on cartItem-productIds 
@@ -92,7 +86,7 @@ export const getAllCartItems = async (userCart) => {
         });
 
         // filter through allProducts and augment the cached ones with "quantity"
-        // add the new products to endResult 
+        // then add the new products to endResult 
         allProducts.forEach(product => {
             if(cache[product.id]) {
                 const newProduct = { ...product };
@@ -141,9 +135,7 @@ export const deleteProduct = async (id) => {
       }
 }
 
-export const checkOutCart = async (token, totalPrice, userId) => { 
-    const cartItems = await getAllCartItems();
-
+export const checkOutCart = async (token, totalPrice, userId, cartItems) => { 
     const orderItems = cartItems.map(cartItem => {
         return {
             name: cartItem.name,        

@@ -13,7 +13,6 @@ const getAllOrders = async () => {
 export default async function OrdersPage() {
     const orders = await getAllOrders();
     return (
-        <h1>OrdersPage</h1>
-        // <Orders orders={orders} />
+        <Orders orders={orders} />
     )
 }

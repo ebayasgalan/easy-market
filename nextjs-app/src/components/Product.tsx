@@ -1,30 +1,29 @@
-'use client';
-
 import Link from 'next/link';
-import ItemStyles from './styles/ItemStyles';
-import Title from './styles/Title';
-import PriceTag from './styles/PriceTag';
+import Image from 'next/image';
+import './styles/itemStyles.scss';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
-import { useUser } from './User';
 
 export default function Product({ product, userId }) {
-  const user = useUser();
+  // console.log('Product, userId: ', userId);
   return (
-    // <ItemStyles>
-    <>
-      <img
+    <div className='item'>
+      <Image
         src={product.photo}
         alt={product.name}
+        width={500}
+        height={300}
+        style={{
+          objectFit: 'cover',
+        }}
       />
-      <h1>product component</h1>
-      {/* <Title>
+      <h3 className='title'>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
-      </Title> */}
-      {/* <PriceTag>{formatMoney(product.price)}</PriceTag> */}
+      </h3>
+      <span className='price'>{formatMoney(product.price)}</span>
       <p>{product.description}</p>
-      {/* {user &&
+      {userId &&
         <div className="buttonList">
           <Link
             href={{
@@ -39,8 +38,7 @@ export default function Product({ product, userId }) {
           <AddToCart id={product.id} userId={userId} />
           <DeleteProduct id={product.id}>Delete</DeleteProduct>
         </div>
-      } */}
-    </>
-    // </ItemStyles>
+      }
+    </div>
   );
 }

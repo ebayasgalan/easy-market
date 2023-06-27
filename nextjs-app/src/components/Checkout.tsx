@@ -1,6 +1,7 @@
+// @ts-nocheck
 'use client';
 
-import styled from 'styled-components';
+import './styles/checkOutStyles.scss';
 import { loadStripe } from '@stripe/stripe-js';
 import {
   CardElement,
@@ -10,22 +11,12 @@ import {
 } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 // import nProgress from 'nprogress';
-import SickButton from './styles/SickButton';
 import { useCart } from '../lib/cartState';
 import { checkOutCart } from '../lib/server-actions';
 
-const CheckoutFormStyles = styled.form`
-  box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 5px;
-  padding: 1rem;
-  display: grid;
-  grid-gap: 1rem;
-`;
+const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
-// const stripeLib = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
-
-function CheckoutForm({ totalPrice, userId }) {
+function CheckoutForm({ totalPrice, userId, cartItems }) {
   const [error, setError] = useState();
   // const [loading, setLoading] = useState(false);
   const stripe = useStripe();
@@ -52,7 +43,7 @@ function CheckoutForm({ totalPrice, userId }) {
       return; // stops the checkout from happening
     }
     // 5. Send the token from step 3 to server, via server-action!
-    const order = await checkOutCart(paymentMethod.id, totalPrice, userId);
+    const order = await checkOutCart(paymentMethod.id, totalPrice, userId, cartItems);
     console.log(`Finished with the order!!`, order);
 
     // 7. Clear and close the cart
@@ -64,20 +55,20 @@ function CheckoutForm({ totalPrice, userId }) {
   }
 
   return (
-    <CheckoutFormStyles onSubmit={handleSubmit}>
+    <form className='checkOutForm' onSubmit={handleSubmit}>
       {error && <p style={{ fontSize: 12 }}>{error.message}</p>}
       <CardElement />
-      <SickButton type="submit">Check Out Now</SickButton>
-    </CheckoutFormStyles>
+      <button className='sickButton' type="submit">Check Out Now</button>
+    </form>
   );
 }
 
-function Checkout({ totalPrice, userId }) {
+function Checkout({ totalPrice, userId, cartItems }) {
   return (
     <Elements stripe={stripeLib}>
-      <CheckoutForm totalPrice={totalPrice} userId={userId} />
+      <CheckoutForm totalPrice={totalPrice} userId={userId} cartItems={cartItems} />
     </Elements>
   );
 }
 
-// export { Checkout };
+export { Checkout };

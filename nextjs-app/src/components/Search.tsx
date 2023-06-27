@@ -1,11 +1,13 @@
+// @ts-nocheck
 'use client';
 
 // import { useLazyQuery } from '@apollo/client';
 import { resetIdCounter, useCombobox } from 'downshift';
 // import gql from 'graphql-tag';
-import debounce from 'lodash.debounce';
+// import debounce from 'lodash.debounce';
 import { useRouter } from 'next/navigation';
-import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
+import Image from 'next/image';
+import './styles/dropDown.scss';
 
 // const SEARCH_PRODUCTS_QUERY = gql`
 //   query SEARCH_PRODUCTS_QUERY($searchTerm: String!) {
@@ -65,7 +67,7 @@ export default function Search() {
   });
   
   return (
-    <SearchStyles>
+    <div className='searchStyles'>
       <div>
         <input
           {...getInputProps({
@@ -76,26 +78,28 @@ export default function Search() {
           })}
         />
       </div> 
-      <DropDown {...getMenuProps()}>
+      <div className='dropDown' {...getMenuProps()}>
         {isOpen &&
           items.map((item, index) => (
-            <DropDownItem
+            <div
               {...getItemProps({ item })}
               key={item.id}
               highlighted={index === highlightedIndex}
+              className='dropDownItem'
             >
-              <img
+              <Image
                 src={item.photo.picture.url}
                 alt={item.name}
-                width="50"
+                width={50}
+                height={50}
               />
               {item.name}
-            </DropDownItem>
+            </div>
           ))}
         {isOpen && !items.length && !loading && (
-          <DropDownItem>Sorry, No items found for {inputValue}</DropDownItem>
+          <div className='dropDownItem'>Sorry, No items found for {inputValue}</div>
         )}
-      </DropDown>
-    </SearchStyles> 
+      </div>
+    </div> 
   );
 }

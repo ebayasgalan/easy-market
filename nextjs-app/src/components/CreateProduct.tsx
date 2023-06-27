@@ -1,10 +1,11 @@
+// @ts-nocheck
 'use client';
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation";
 import * as yup from 'yup';
-import Form from './styles/Form';
+import './styles/formStyles.scss';
 
 const MAX_FILE_SIZE = 2000000; // 2MB
 
@@ -21,7 +22,7 @@ export default async function CreateProduct() {
   const router = useRouter();
 
   const onSubmit = async (data: FormSchemaType) => {
-    const formData = new FormData();
+    const formData = new FormData()
   
     formData.append('picture', data.picture[0]);
     formData.append('name', data.name);
@@ -48,8 +49,7 @@ export default async function CreateProduct() {
 
   return (
     // @ts-ignore
-    // <Form action={handleSubmit(onSubmit)}>
-    <form action={handleSubmit(onSubmit)}>
+    <form className="formStyle" action={handleSubmit(onSubmit)}>
       <h2>Post your product for sale</h2>
       <fieldset>
         <label>
@@ -91,6 +91,5 @@ export default async function CreateProduct() {
         <button className="bg-red-600 text-white" type="submit">+ Add Product</button>
       </fieldset>
     </form>
-    // </Form> 
   );
 }
