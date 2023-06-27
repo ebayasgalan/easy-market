@@ -21,9 +21,9 @@ export default async function ProductsPage({ params }) {
 
   return (
     <main>
-      <Pagination page={page || 1} productsCount={products.length} />
+      {/* <Pagination page={page || 1} productsCount={products.length} />
       <Products page={page || 1} products={products} userId={user?.id} />
-      <Pagination page={page || 1} productsCount={products.length} />
+      <Pagination page={page || 1} productsCount={products.length} /> */}
     </main>
   )
 }

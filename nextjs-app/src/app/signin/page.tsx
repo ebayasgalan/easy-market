@@ -17,7 +17,7 @@ export default async function SignInPage() {
         password: "demoUser",
         callbackUrl: '/'
       },
-    )
+    ).catch(err => console.error('oops, error: ', err));
     // NProgress.done();
   }
 
