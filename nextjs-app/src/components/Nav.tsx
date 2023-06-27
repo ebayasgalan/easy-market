@@ -4,11 +4,19 @@ import Link from 'next/link';
 import './styles/navStyles.scss';
 import { useCart } from '../lib/cartState';
 import Signout from './Signout';
-import { useUser } from './User';
+// import { useUser } from './User';
 import CartCount from './CartCount';
+import { useSession } from "next-auth/react";
 
 export default function Nav({count}) {
-  const user = useUser();
+  // const user = useUser();
+  const { data: session, status } = useSession();
+
+  let isAuthenticated = false;
+
+  if (status === "authenticated") {
+    isAuthenticated = true;
+  }
   // console.log('Nav, user: ', user);
   const { openCart }: any = useCart();
 
@@ -29,7 +37,7 @@ export default function Nav({count}) {
         <span></span>
       </div>
       <div className='nav-wrapper'>
-        {user && (
+        {isAuthenticated && (
           <>
             <Link href="/">Home</Link>
             <Link href="/sell">Sell</Link>
@@ -42,7 +50,7 @@ export default function Nav({count}) {
             <CartCount count={count} />
           </>
         )}
-        {!user && (
+        {!isAuthenticated && (
           <>
             <Link href="/signin">Sign In</Link>
           </>
