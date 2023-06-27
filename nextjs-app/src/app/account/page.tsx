@@ -1,9 +1,7 @@
-// import { getCurrentUser } from '@/lib/server-actions';
+import { getCurrentUser } from '@/lib/server-actions';
 
 export default async function AccountPage() {
-    // const user = await getCurrentUser();
-
-    let user = null;
+    const user = await getCurrentUser();
 
     if(user) {
         // console.log('user: ', user);

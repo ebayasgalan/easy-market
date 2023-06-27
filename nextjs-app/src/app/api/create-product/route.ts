@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import prisma from "../../../lib/prisma";
-// import { getCurrentUser } from '../../../lib/server-actions';
+import { getCurrentUser } from '../../../lib/server-actions';
 
 const S3_BUCKET_NAME = process.env.S3_BUCKET_NAME;
 const S3_REGION = process.env.S3_REGION;
@@ -46,7 +46,7 @@ export const uploadImageToS3 = async (imageFile: any) => {
 export async function POST(request: Request) {
     const formData = await request.formData();
     const pictureFile: any = formData.get('picture');
-    // const currentUser = await getCurrentUser();
+    const currentUser = await getCurrentUser();
     const newProduct = {};
 
     for(let [key, value] of formData) {
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     const storedImageURL = await uploadImageToS3(pictureFile);
 
     newProduct["photo"] = storedImageURL;
-    // newProduct["userId"] = currentUser.id;
+    newProduct["userId"] = currentUser.id;
 
     console.log('newProduct: ', newProduct);
 

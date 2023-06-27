@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useRouter } from "next/navigation";
 import * as yup from 'yup';
 import './styles/formStyles.scss';
-// import { updateProduct } from '../lib/server-actions';
+import { updateProduct } from '../lib/server-actions';
 
 const MAX_FILE_SIZE = 2000000; // 2MB
 
@@ -32,10 +32,10 @@ export default async function UpdateProduct({ id }) {
     formData.append('description', data.description);
 
     // invoke server-action 
-    // const updatedProduct = await updateProduct(formData, id);
+    const updatedProduct = await updateProduct(formData, id);
     
     // Go to that product's page!
-    // router.push(`/product/${updatedProduct.id}`);
+    router.push(`/product/${updatedProduct.id}`);
   }
 
   const {

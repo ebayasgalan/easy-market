@@ -3,7 +3,7 @@ import './globals.css';
 import AuthContext from '../lib/AuthContext';
 import Header from '../components/Header';
 import { CartStateProvider } from '../lib/cartState';
-// import { getCurrentUser, getUserCartItems } from '../lib/server-actions';
+import { getCurrentUser, getUserCartItems } from '../lib/server-actions';
 
 export const metadata = {
   title: 'Easy-Market',
@@ -16,10 +16,10 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   // get all cart items relating to current user
-  // const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser();
   let cartItems = null;
   // get all user-selected products then dedupe and augment it with quantity 
-  // if(currentUser) cartItems = await getUserCartItems(currentUser.cart);
+  if(currentUser) cartItems = await getUserCartItems(currentUser.cart);
   
   // console.log('root layout, currentUser: ', currentUser);
   // console.log('root layout, all cartItems: ', cartItems);
@@ -29,7 +29,7 @@ export default async function RootLayout({
       <body>
         <AuthContext>
           <CartStateProvider>
-              {/* <Header cartItems={cartItems} currentUser={currentUser} /> */}
+              <Header cartItems={cartItems} currentUser={currentUser} />
               {children}
           </CartStateProvider>
         </AuthContext>

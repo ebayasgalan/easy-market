@@ -1,14 +1,13 @@
 'use client';
 
 import { useTransition } from 'react';
-// import { addToCart } from '../lib/server-actions';
+import { addToCart } from '../lib/server-actions';
 
 export default function AddToCartButton({ id, userId }) {
   let [isPending, startTransition] = useTransition();
 
   return (
-    // <button onClick={() => startTransition(() => addToCart(id, userId))}>
-    <button onClick={() => startTransition(() => console.log('hello'))}>
+    <button onClick={() => startTransition(() => addToCart(id, userId))}>
       Add To Cart 🛒
     </button>
   );

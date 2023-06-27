@@ -4,10 +4,12 @@ import Link from 'next/link';
 import './styles/navStyles.scss';
 import { useCart } from '../lib/cartState';
 import Signout from './Signout';
+// import { useUser } from './User';
 import CartCount from './CartCount';
 import { useSession } from "next-auth/react";
 
 export default function Nav({count}) {
+  // const user = useUser();
   const { data: session, status } = useSession();
 
   let isAuthenticated = false;
@@ -15,7 +17,7 @@ export default function Nav({count}) {
   if (status === "authenticated") {
     isAuthenticated = true;
   }
-  
+  // console.log('Nav, user: ', user);
   const { openCart }: any = useCart();
 
   const toggleClass = () => {
