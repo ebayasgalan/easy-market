@@ -12,13 +12,13 @@ export default async function Products({ products, page }) {
   let endIndex = page * 4;
   let startIndex = endIndex - 4;
   // const pageProducts = products.slice(startIndex, endIndex);
-  const pageProducts = products;
+  // const pageProducts = products;
   // userId={userId} 
 
   return (
     <div>
         <div className='products'>
-          {products.map((product) => (
+          {products?.map((product) => (
             <Product key={product.id} product={product}  />
           ))}
         </div>
