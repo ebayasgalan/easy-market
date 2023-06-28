@@ -17,17 +17,13 @@ export default async function ProductsPage({ params }) {
   const userData = getCurrentUser();
 
   // Wait for the promises to resolve
-  try {
-    const [products, user] = await Promise.all([allProducts, userData]);
-  }catch (err) {
-    console.log('err: ', err);
-  }
+  const [products, user] = await Promise.all([allProducts, userData]).catch(err => console.error('err: ', err));
 
   return (
     <main>
-      {/* <Pagination page={page || 1} productsCount={products.length} />
+      <Pagination page={page || 1} productsCount={products.length} />
       <Products page={page || 1} products={products} userId={user?.id} />
-      <Pagination page={page || 1} productsCount={products.length} /> */}
+      <Pagination page={page || 1} productsCount={products.length} />
     </main>
   )
 }
