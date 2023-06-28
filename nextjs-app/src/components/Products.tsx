@@ -5,15 +5,15 @@ import prisma from "../lib/prisma";
 
 var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-// const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-// const products = await res.json();
-// await sleep(2000);
+// const products = await prisma.product.findMany();
 // return products;
 
 const getAllProducts = async () => {
   // console.log('getAllProducts');
   try {
-    const products = await prisma.product.findMany();
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+    const products = await res.json();
+    await sleep(3000);
     return products;
   }catch(err) {
     console.error('err: ', err);
