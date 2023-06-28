@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import './styles/itemStyles.scss';
@@ -9,7 +7,7 @@ import DeleteProduct from './DeleteProduct';
 
 // export default function Product({ product, userId }) {
 export default function Product({ product }) {
-  console.log('Product, product: ', product);
+  // console.log('Product, product: ', product);
   return (
     <div className='item'>
       <Image
