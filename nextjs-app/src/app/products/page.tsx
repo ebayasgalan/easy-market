@@ -40,7 +40,7 @@ export default async function ProductsPage({ params }) {
     <main>
       <Pagination page={page || 1} productsCount={products?.length} />
       <ul>
-        {products.map(product => <li>{product.name}</li>)}
+        {products.map(product => <li key={product.id}>{product.name}</li>)}
       </ul>
       {/* <Products page={page || 1} products={products} /> */}
       <Pagination page={page || 1} productsCount={products?.length} />
