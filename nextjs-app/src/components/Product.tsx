@@ -24,8 +24,8 @@ export default function Product({ product, userId }) {
         <Link href={`/product/${product.id}`}>{product.name}</Link>
       </h3>
       <span className='price'>{formatMoney(product.price)}</span>
-      {/* <p>{product.description}</p> */}
-      {/* {userId &&
+      <p>{product.description}</p>
+      {userId &&
         <div className="buttonList">
           <Link
             href={{
@@ -40,7 +40,7 @@ export default function Product({ product, userId }) {
           <AddToCart id={product.id} userId={userId} />
           <DeleteProduct id={product.id}>Delete</DeleteProduct>
         </div>
-      } */}
+      }
     </div>
   );
 }

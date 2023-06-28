@@ -8,7 +8,8 @@ export default async function Products({ products, userId, page }) {
   // console.log('page: ', page);
   let endIndex = page * 4;
   let startIndex = endIndex - 4;
-  const pageProducts = products.slice(startIndex, endIndex);
+  // const pageProducts = products.slice(startIndex, endIndex);
+  const pageProducts = products;
 
   return (
     <div>
