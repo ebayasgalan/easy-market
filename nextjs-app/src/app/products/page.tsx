@@ -1,5 +1,6 @@
 import prisma from "../../lib/prisma";
 import { getCurrentUser } from '../../lib/server-actions';
+import { Suspense } from 'react';
 import Products from '../../components/Products';
 import Pagination from '../../components/Pagination';
 
@@ -32,15 +33,17 @@ export default async function ProductsPage({ params }) {
   // Wait for the promises to resolve
   // const [products, user] = await Promise.all([allProducts, userData]);
 
-  console.log('ProductsPage, products: ', products);
+  // console.log('ProductsPage, products: ', products);
   // console.log('ProductsPage, user: ', user);
   // userId={user?.id} 
 
   return (
     <main>
-      <Pagination page={page || 1} productsCount={products?.length} />
-      {products?.length && <Products page={page || 1} products={products} />}
-      <Pagination page={page || 1} productsCount={products?.length} />
+      {/* <Pagination page={page || 1} productsCount={products?.length} /> */}
+      <Suspense fallback={<p>Loading products...</p>}>
+        <Products page={page || 1} />
+      </Suspense>
+      {/* <Pagination page={page || 1} productsCount={products?.length} /> */}
     </main>
   )
 }
