@@ -8,11 +8,11 @@ import DeleteProduct from './DeleteProduct';
 // import AddToCart from './AddToCartButton';
 
 // export default function Product({ product, userId }) {
-export default function Product({ product, key }) {
-  console.log(`Product, product-${key}: `, product);
+export default function Product({ product }) {
+  console.log(`Product, product: `, product);
   return (
     <div className='item'>
-      {/* <Image
+      <Image
         src={product.photo}
         alt={product.name}
         width={500}
@@ -20,11 +20,11 @@ export default function Product({ product, key }) {
         style={{
           objectFit: 'cover',
         }}
-      /> */}
-      {/* <h3 className='title'>
+      />
+      <h3 className='title'>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
-      </h3> */}
-      {/* <span className='price'>{formatMoney(product.price)}</span> */}
+      </h3>
+      <span className='price'>{formatMoney(product.price)}</span>
       <p>{product.description}</p>
       {/* {userId &&
         <div className="buttonList">

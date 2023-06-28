@@ -35,7 +35,7 @@ export default async function Products({ page }) {
     <div>
         <div className='products'>
           {products?.map((product, i) => (
-            <Product key={i} product={product}  />
+            <Product key={i} product={product}/>
           ))}
         </div>
     </div>
