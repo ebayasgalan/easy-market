@@ -10,7 +10,8 @@ const getAllProducts = async () => {
     const products = await prisma.product.findMany();
     return products;
   }catch(err) {
-    throw new Error('oops, error: ', err.message);
+    await prisma.product.findMany();
+    // throw new Error('oops, error: ', err.message);
   }
 }
 
