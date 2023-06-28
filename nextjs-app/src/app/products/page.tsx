@@ -13,17 +13,17 @@ const getAllProducts = async () => {
   }
 }
 
-var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+// var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-var pollProducts = (promiseFn, duration) => promiseFn().then(res => {
-  if(!res.length) sleep(duration).then(() => pollProducts(promiseFn, duration))
-  else return res;
-});
+// var pollProducts = (promiseFn, duration) => promiseFn().then(res => {
+//   if(!res.length) sleep(duration).then(() => pollProducts(promiseFn, duration))
+//   else return res;
+// });
 
 export default async function ProductsPage({ params }) {
   const page = parseInt(params.page);
 
-  const products = await pollProducts(getAllProducts, 1000);
+  const products = await getAllProducts();
 
   // Initiate both requests in parallel
   // const allProducts = getAllProducts();
@@ -39,10 +39,7 @@ export default async function ProductsPage({ params }) {
   return (
     <main>
       <Pagination page={page || 1} productsCount={products?.length} />
-      <ul>
-        {products.map(product => <li key={product.id}>{product.name}</li>)}
-      </ul>
-      {/* <Products page={page || 1} products={products} /> */}
+      {products?.length && <Products page={page || 1} products={products} />}
       <Pagination page={page || 1} productsCount={products?.length} />
     </main>
   )
