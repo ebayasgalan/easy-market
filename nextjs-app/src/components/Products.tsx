@@ -7,12 +7,10 @@ var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const getAllProducts = async () => {
   try {
-    prisma.$connect();
     const products = await prisma.product.findMany();
-    console.log('in-try, products: ', products);
     return products;
   }catch(err) {
-    console.error('in-catch, err: ', err);
+    throw new Error('oops, error: ', err.message);
   }
 }
 
@@ -25,7 +23,7 @@ export default async function Products({ page }) {
   // let startIndex = endIndex - 4;
   const products = await getAllProducts();
   await sleep(1000);
-  console.log('products: ', products);
+  // console.log('products: ', products);
   // const pageProducts = products.slice(startIndex, endIndex);
   // userId={userId} 
 
