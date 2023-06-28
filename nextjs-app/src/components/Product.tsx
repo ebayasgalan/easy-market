@@ -8,7 +8,7 @@ import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
 
 export default function Product({ product, userId }) {
-  // console.log('Product, userId: ', userId);
+  console.log('Product, product: ', product);
   return (
     <div className='item'>
       <Image
@@ -24,7 +24,7 @@ export default function Product({ product, userId }) {
         <Link href={`/product/${product.id}`}>{product.name}</Link>
       </h3>
       <span className='price'>{formatMoney(product.price)}</span>
-      <p>{product.description}</p>
+      {/* <p>{product.description}</p> */}
       {/* {userId &&
         <div className="buttonList">
           <Link
