@@ -10,6 +10,7 @@ var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 // await sleep(3000);
 
 const getAllProducts = async () => {
+  await prisma.$connect();
   try {
     const products = await prisma.product.findMany();
     return products;
