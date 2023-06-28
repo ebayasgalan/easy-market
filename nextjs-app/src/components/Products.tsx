@@ -14,8 +14,9 @@ export default async function Products({ products, userId, page }) {
   return (
     <div>
         <div className='products'>
-          {pageProducts.map((product) => (
-            <Product key={product.id} product={product} userId={userId} />
+          {products.map((product) => (
+            // <Product key={product.id} product={product} userId={userId} />
+            <h1 key={product.id}>{product.name}</h1>
           ))}
         </div>
     </div>
