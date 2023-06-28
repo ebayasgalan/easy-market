@@ -5,9 +5,10 @@ import Image from 'next/image';
 import './styles/itemStyles.scss';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
-import AddToCart from './AddToCartButton';
+// import AddToCart from './AddToCartButton';
 
-export default function Product({ product, userId }) {
+// export default function Product({ product, userId }) {
+export default function Product({ product }) {
   console.log('Product, product: ', product);
   return (
     <div className='item'>
@@ -37,7 +38,7 @@ export default function Product({ product, userId }) {
           >
             Edit ✏️
           </Link>
-          <AddToCart id={product.id} userId={userId} />
+          {/* <AddToCart id={product.id} userId={userId} /> */}
           <DeleteProduct id={product.id}>Delete</DeleteProduct>
         </div>
       }
