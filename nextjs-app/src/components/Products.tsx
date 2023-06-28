@@ -1,3 +1,5 @@
+'use client';
+
 import './styles/productsListStyles.scss';
 import Product from './Product';
 // import Nprogress from 'nprogress';
@@ -15,8 +17,7 @@ export default async function Products({ products, userId, page }) {
     <div>
         <div className='products'>
           {products.map((product) => (
-            // <Product key={product.id} product={product} userId={userId} />
-            <h1 key={product.id}>{product.name}</h1>
+            <Product key={product.id} product={product} userId={userId} />
           ))}
         </div>
     </div>
