@@ -23,13 +23,13 @@ export default async function ProductsPage({ params }) {
   // Wait for the promises to resolve
   const [products, user] = await Promise.all([allProducts, userData]);
 
-  // console.log('ProductsPage, products: ', products);
-  // console.log('ProductsPage, user: ', user);
+  console.log('ProductsPage, products: ', products);
+  console.log('ProductsPage, user: ', user);
 
   return (
     <main>
       <Pagination page={page || 1} productsCount={products?.length} />
-      <Products page={page || 1} products={products} userId={user?.id} />
+      {/* <Products page={page || 1} products={products} userId={user?.id} /> */}
       <Pagination page={page || 1} productsCount={products?.length} />
     </main>
   )
