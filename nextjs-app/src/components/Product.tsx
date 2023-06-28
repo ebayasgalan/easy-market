@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import './styles/itemStyles.scss';
@@ -6,8 +8,8 @@ import DeleteProduct from './DeleteProduct';
 // import AddToCart from './AddToCartButton';
 
 // export default function Product({ product, userId }) {
-export default function Product({ product }) {
-  // console.log('Product, product: ', product);
+export default function Product({ product, key }) {
+  console.log(`Product, product-${key}: `, product);
   return (
     <div className='item'>
       {/* <Image
@@ -19,10 +21,10 @@ export default function Product({ product }) {
           objectFit: 'cover',
         }}
       /> */}
-      <h3 className='title'>
+      {/* <h3 className='title'>
         <Link href={`/product/${product.id}`}>{product.name}</Link>
-      </h3>
-      <span className='price'>{formatMoney(product.price)}</span>
+      </h3> */}
+      {/* <span className='price'>{formatMoney(product.price)}</span> */}
       <p>{product.description}</p>
       {/* {userId &&
         <div className="buttonList">
