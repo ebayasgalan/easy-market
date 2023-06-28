@@ -5,15 +5,13 @@ import prisma from "../lib/prisma";
 
 var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
-// const products = await prisma.product.findMany();
-// return products;
+// const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+// const products = await res.json();
+// await sleep(3000);
 
 const getAllProducts = async () => {
-  // console.log('getAllProducts');
   try {
-    const res = await fetch('https://jsonplaceholder.typicode.com/todos');
-    const products = await res.json();
-    await sleep(3000);
+    const products = await prisma.product.findMany();
     return products;
   }catch(err) {
     console.error('err: ', err);
@@ -28,14 +26,15 @@ export default async function Products({ page }) {
   let endIndex = page * 4;
   let startIndex = endIndex - 4;
   const products = await getAllProducts();
-  console.log('products: ', products);
-  // const pageProducts = products.slice(startIndex, endIndex);
+  await sleep(2000);
+  // console.log('products: ', products);
+  const pageProducts = products.slice(startIndex, endIndex);
   // userId={userId} 
 
   return (
     <div>
         <div className='products'>
-          {products.map((product) => (
+          {pageProducts.map((product) => (
             <Product key={product.id} product={product}  />
           ))}
         </div>
