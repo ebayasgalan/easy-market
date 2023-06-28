@@ -10,8 +10,12 @@ var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 // await sleep(3000);
 
 const getAllProducts = async () => {
-  const products = await prisma.product.findMany();
-  return products;
+  try {
+    const products = await prisma.product.findMany();
+    return products;
+  }catch(err) {
+    console.error('err: ', err);
+  }
 }
 
 // export default async function Products({ products, userId, page }) { 
@@ -29,11 +33,11 @@ export default async function Products({ page }) {
 
   return (
     <div>
-      <div className='products'>
-        {products?.map((product, i) => (
-          <Product key={i} product={product}/>
-        ))}
-      </div>
+        <div className='products'>
+          {products?.map((product, i) => (
+            <Product key={i} product={product}/>
+          ))}
+        </div>
     </div>
   );
 }
