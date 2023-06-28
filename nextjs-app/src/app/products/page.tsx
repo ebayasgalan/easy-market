@@ -32,14 +32,17 @@ export default async function ProductsPage({ params }) {
   // Wait for the promises to resolve
   // const [products, user] = await Promise.all([allProducts, userData]);
 
-  // console.log('ProductsPage, products: ', products);
+  console.log('ProductsPage, products: ', products);
   // console.log('ProductsPage, user: ', user);
   // userId={user?.id} 
 
   return (
     <main>
       <Pagination page={page || 1} productsCount={products?.length} />
-      <Products page={page || 1} products={products} />
+      <ul>
+        {products.map(product => <li>{product.name}</li>)}
+      </ul>
+      {/* <Products page={page || 1} products={products} /> */}
       <Pagination page={page || 1} productsCount={products?.length} />
     </main>
   )
