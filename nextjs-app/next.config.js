@@ -3,7 +3,7 @@
 const nextConfig = {
     experimental: {
         serverActions: true,
-        serverComponentsExternalPackages: ['prisma', '@stripe/stripe-js'],
+        serverComponentsExternalPackages: ['@stripe/stripe-js'],
     },
     typescript: {
         ignoreBuildErrors: true,

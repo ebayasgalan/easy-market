@@ -5,13 +5,12 @@ import Products from '../../components/Products';
 import Pagination from '../../components/Pagination';
 
 const getAllProducts = async () => {
-  // console.log('getAllProducts');
-  // try {
-  //   const products = await prisma.product.findMany();
-  //   return products;
-  // }catch(err) {
-  //   console.error('err: ', err);
-  // }
+  try {
+    const products = await prisma.product.findMany();
+    return products;
+  }catch(err) {
+    console.error('err: ', err);
+  }
 }
 
 // var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
@@ -41,7 +40,7 @@ export default async function ProductsPage({ params }) {
     <div>
       {/* <Pagination page={page || 1} productsCount={products?.length} /> */}
       <Suspense fallback={<p>Loading products...</p>}>
-        <Products page={page || 1} />
+        <Products page={page || 1} userId={user?.id} />
       </Suspense>
       {/* <Pagination page={page || 1} productsCount={products?.length} /> */}
     </div>

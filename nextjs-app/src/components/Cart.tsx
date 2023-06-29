@@ -54,7 +54,7 @@ export default function Cart({ cartItems, currentUser }) {
       </ul>
       <footer>
         <p>{formatMoney(totalPrice)}</p>
-        {/* <Checkout totalPrice={totalPrice} userId={currentUser.id} cartItems={cartItems} /> */}
+        <Checkout totalPrice={totalPrice} userId={currentUser.id} cartItems={cartItems} />
       </footer>
     </div>
   );

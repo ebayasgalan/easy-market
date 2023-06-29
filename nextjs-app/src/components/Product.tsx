@@ -5,10 +5,9 @@ import Image from 'next/image';
 import './styles/itemStyles.scss';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
-// import AddToCart from './AddToCartButton';
+import AddToCart from './AddToCartButton';
 
-// export default function Product({ product, userId }) {
-export default function Product({ product }) {
+export default function Product({ product, userId }) {
   console.log(`Product, product: `, product);
   return (
     <div className='item'>
@@ -26,7 +25,7 @@ export default function Product({ product }) {
       </h3>
       <span className='price'>{formatMoney(product.price)}</span>
       <p>{product.description}</p>
-      {/* {userId &&
+      {userId &&
         <div className="buttonList">
           <Link
             href={{
@@ -41,7 +40,7 @@ export default function Product({ product }) {
           <AddToCart id={product.id} userId={userId} />
           <DeleteProduct id={product.id}>Delete</DeleteProduct>
         </div>
-       }  */}
+       } 
     </div>
   );
 }
