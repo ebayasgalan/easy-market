@@ -8,7 +8,7 @@ import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
 
 export default function Product({ product, userId }) {
-  console.log(`Product, product: `, product);
+  // console.log(`Product, product: `, product);
   return (
     <div className='item'>
       <Image

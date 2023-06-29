@@ -1,5 +1,5 @@
 datasource postgresql {
-  url = env("DATABASE_URL")
+  url = env("DATABASE_PRISMA_URL")
   provider = "postgresql"
   directUrl = env("DATABASE_URL_NON_POOLING") 
   shadowDatabaseUrl = env("DATABASE_URL_NON_POOLING") 
