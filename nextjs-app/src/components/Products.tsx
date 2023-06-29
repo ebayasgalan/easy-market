@@ -1,17 +1,13 @@
 import './styles/productsListStyles.scss';
 import Product from './Product';
 import prisma from "../lib/prisma";
-// import Nprogress from 'nprogress';
-
-var sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 const getAllProducts = async () => {
   try {
     const products = await prisma.product.findMany();
     return products;
   }catch(err) {
-    await prisma.product.findMany();
-    // throw new Error('oops, error: ', err.message);
+    throw new Error(err);
   }
 }
 
@@ -23,7 +19,6 @@ export default async function Products({ page }) {
   // let endIndex = page * 4;
   // let startIndex = endIndex - 4;
   const products = await getAllProducts();
-  await sleep(1000);
   // console.log('products: ', products);
   // const pageProducts = products.slice(startIndex, endIndex);
   // userId={userId} 

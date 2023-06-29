@@ -8,6 +8,7 @@
   flex-direction: column;
   img {
     height: 300px;
+    width: 100%;
   }
   button:hover {
     cursor: pointer
@@ -40,9 +41,6 @@
   @media(min-width: 768px) {
     width: 45%;
   }
-  // @media(min-width: 1250px) {
-  //   width: auto;
-  // }
   
   .title {
     margin: 0 1rem;

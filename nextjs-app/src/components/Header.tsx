@@ -16,8 +16,8 @@ interface currentUserProps {
   cart: []
 }
 
-export default function Header({ cartItems, currentUser}: {cartItems: any, currentUser: currentUserProps}) {
-  
+export default async function Header({ cartItems, currentUser}: {cartItems: any, currentUser: currentUserProps}) {
+
   return (
     <nav className='header'>
       <div className="bar">
