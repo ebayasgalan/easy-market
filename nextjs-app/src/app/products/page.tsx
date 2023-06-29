@@ -28,6 +28,7 @@ export default async function ProductsPage({ params }) {
   // Initiate both requests in parallel
   // const allProducts = getAllProducts();
   // const userData = getCurrentUser();
+  const user = await getCurrentUser();
 
   // Wait for the promises to resolve
   // const [products, user] = await Promise.all([allProducts, userData]);

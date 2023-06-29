@@ -3,7 +3,6 @@ import AuthContext from '../lib/AuthContext';
 import Header from '../components/Header';
 import { CartStateProvider } from '../lib/cartState';
 import { getCurrentUser, getUserCartItems } from '../lib/server-actions';
-import { Toaster } from 'react-hot-toast';
 
 export const metadata = {
   title: 'Easy-Market',

@@ -1,14 +1,14 @@
 import './styles/productsListStyles.scss';
 import Product from './Product';
 import prisma from "../lib/prisma";
-import toast from 'react-hot-toast';
 
 const getAllProducts = async () => {
   try {
     const products = await prisma.product.findMany();
     return products;
   }catch(err) {
-    throw new Error(err);
+    console.error(err);
+    // throw new Error(err);
   }
 }
 
@@ -20,13 +20,13 @@ export default async function Products({ userId, page }) {
   let endIndex = page * 4;
   let startIndex = endIndex - 4;
   const products = await getAllProducts();
-  console.log('products: ', products);
-  const pageProducts = products.slice(startIndex, endIndex);
+  // console.log('products: ', products);
+  const pageProducts = products?.slice(startIndex, endIndex);
 
   return (
     <div>
         <div className='products'>
-          {products?.map((product, i) => (
+          {pageProducts?.map((product, i) => (
             <Product key={i} product={product} userId={userId} />
           ))}
         </div>
