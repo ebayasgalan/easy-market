@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import './styles/itemStyles.scss';
@@ -6,7 +8,7 @@ import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
 
 export default function Product({ product, userId }) {
-  // console.log('Product, userId: ', userId);
+  // console.log(`Product, product: `, product);
   return (
     <div className='item'>
       <Image
@@ -38,7 +40,7 @@ export default function Product({ product, userId }) {
           <AddToCart id={product.id} userId={userId} />
           <DeleteProduct id={product.id}>Delete</DeleteProduct>
         </div>
-      }
+       } 
     </div>
   );
 }

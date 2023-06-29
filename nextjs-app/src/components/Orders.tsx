@@ -6,7 +6,7 @@ import './styles/orderItemStyles.scss';
 import Image from 'next/image';
 
 function countItemsInAnOrder(order) {
-  return order.items.reduce((tally, item) => tally + item.quantity, 0);
+  return order.items?.reduce((tally, item) => tally + item.quantity, 0);
 }
 
 export default function OrdersPage({ orders }) {

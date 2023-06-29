@@ -3,6 +3,7 @@
 const nextConfig = {
     experimental: {
         serverActions: true,
+        serverComponentsExternalPackages: ['@stripe/stripe-js'],
     },
     typescript: {
         ignoreBuildErrors: true,

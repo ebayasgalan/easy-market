@@ -1,5 +1,4 @@
 import './globals.css';
-// import './../components/styles/nprogress.css';
 import AuthContext from '../lib/AuthContext';
 import Header from '../components/Header';
 import { CartStateProvider } from '../lib/cartState';
@@ -16,10 +15,10 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   // get all cart items relating to current user
-  const currentUser = await getCurrentUser();
+  const currentUser = await getCurrentUser().catch(err => console.error('err: ', err));
   let cartItems = null;
   // get all user-selected products then dedupe and augment it with quantity 
-  if(currentUser) cartItems = await getUserCartItems(currentUser.cart);
+  if(currentUser) cartItems = await getUserCartItems(currentUser.cart).catch(err => console.error('err: ', err));
   
   // console.log('root layout, currentUser: ', currentUser);
   // console.log('root layout, all cartItems: ', cartItems);

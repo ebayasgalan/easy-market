@@ -37,7 +37,6 @@
     "lodash.debounce": "^4.0.8",
     "next": "13.4.5",
     "next-auth": "^4.22.1",
-    "nprogress": "^0.2.0",
     "postcss": "8.4.24",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -49,9 +48,6 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
-    "@types/formidable": "^2.0.6",
-    "@types/nprogress": "^0.2.0",
-    "@types/styled-components": "^5.1.26",
     "prisma": "^4.15.0",
     "sass": "^1.63.6",
     "ts-node": "^10.9.1"

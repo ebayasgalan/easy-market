@@ -10,14 +10,18 @@ export default async function SignInPage() {
 
   async function handleSubmit(e) {
     // NProgress.start();
-    console.log('demoUser logging in...');
-    const res = await signIn('credentials', 
-      {
-        email: "demoUser@gmail.com",
-        password: "demoUser",
-        callbackUrl: '/'
-      },
-    )
+    try {
+      console.log('demoUser logging in...');
+      const res = await signIn('credentials', 
+        {
+          email: "demoUser@gmail.com",
+          password: "demoUser",
+          callbackUrl: '/'
+        },
+      )
+    }catch(err) {
+      console.error('err: ', err);
+    }
     // NProgress.done();
   }
 
