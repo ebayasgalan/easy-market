@@ -10,7 +10,7 @@ import { useCart } from '../lib/cartState';
 import RemoveFromCart from './RemoveFromCart';
 import { Checkout } from './Checkout';
 
-function CartItem({ cartItem }) {
+export function CartItem({ cartItem }) {
   if (!cartItem) return null;
   return (
     <li className='cartItems'>

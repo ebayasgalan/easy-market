@@ -6,7 +6,7 @@ import { deleteProduct } from '../lib/server-actions';
 const onClickHandler = async (id: string) => {
   if (confirm('Are you sure you want to delete this item?')) {
     const deletedProduct = await deleteProduct(id);
-    console.log('Product Deleted!', deletedProduct);
+    // console.log('Product Deleted!', deletedProduct);
   }
 }
 
