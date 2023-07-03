@@ -1,18 +1,18 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Product from '../../components/Product';
-import AddToCartButton from '../../components/AddToCartButton';
-import DeleteProduct from '../../components/DeleteProduct';
+import Product from '../components/Product';
+import AddToCartButton from '../components/AddToCartButton';
+import DeleteProduct from '../components/DeleteProduct';
 
-jest.mock('../../lib/formatMoney', () => jest.fn((price) => `$${price.toFixed(2)}`));
+jest.mock('../lib/formatMoney', () => jest.fn((price) => `$${price.toFixed(2)}`));
 
-jest.mock('../../components/AddToCartButton', () => jest.fn(({ id, userId }) => (
+jest.mock('../components/AddToCartButton', () => jest.fn(({ id, userId }) => (
   <button onClick={() => {}}>
     Add To Cart 🛒
   </button>
 )));
 
-jest.mock('../../components/DeleteProduct', () => jest.fn(({ id, children }) => (
+jest.mock('../components/DeleteProduct', () => jest.fn(({ id, children }) => (
   <button onClick={() => {}}>
     {children}
   </button>

@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import CartCount from '../../components/CartCount';
+import CartCount from '../components/CartCount';
 
 describe('<CartCount/>', () => {
   it('Renders', () => {

@@ -1,14 +1,14 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import Nav from '../../components/Nav';
+import Nav from '../components/Nav';
 import { useSession } from 'next-auth/react';
-import { useCart } from '../../lib/cartState';
+import { useCart } from '../lib/cartState';
 
 jest.mock('next-auth/react', () => ({
   useSession: jest.fn(),
 }));
 
-jest.mock('../../lib/cartState', () => ({
+jest.mock('../lib/cartState', () => ({
   useCart: jest.fn(),
 }));
 

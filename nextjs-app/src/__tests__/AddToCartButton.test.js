@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import AddToCartButton from '../../components/AddToCartButton';
-import { addToCart } from '../../lib/server-actions';
+import AddToCartButton from '../components/AddToCartButton';
+import { addToCart } from '../lib/server-actions';
 
-jest.mock('../../lib/server-actions', () => ({
+jest.mock('../lib/server-actions', () => ({
   addToCart: jest.fn(),
 }));
 

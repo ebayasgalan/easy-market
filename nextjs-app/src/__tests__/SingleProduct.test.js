@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import SingleProduct from '../../components/SingleProduct';
+import SingleProduct from '../components/SingleProduct';
 
 describe('SingleProduct', () => {
   it('renders the product details', () => {

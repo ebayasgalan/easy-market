@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, fireEvent, waitFor } from '@testing-library/react';
-import DeleteProduct from '../../components/DeleteProduct';
-import { deleteProduct } from '../../lib/server-actions';
+import DeleteProduct from '../components/DeleteProduct';
+import { deleteProduct } from '../lib/server-actions';
 
-jest.mock('../../lib/server-actions', () => ({
+jest.mock('../lib/server-actions', () => ({
   deleteProduct: jest.fn(),
 }));
 
