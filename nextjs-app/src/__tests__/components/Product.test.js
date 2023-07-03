@@ -1,19 +1,8 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import Product from '../../components/Product';
-import { useRouter } from 'next/router';
 import AddToCartButton from '../../components/AddToCartButton';
 import DeleteProduct from '../../components/DeleteProduct';
-
-jest.mock('next/link', () => ({ children }) => children);
-
-jest.mock('next/image', () => ({ src, alt, width, height, style }) => (
-  <img src={src} alt={alt} width={width} height={height} style={style} />
-));
-
-jest.mock('next/router', () => ({
-  useRouter: jest.fn(),
-}));
 
 jest.mock('../../lib/formatMoney', () => jest.fn((price) => `$${price.toFixed(2)}`));
 
@@ -30,16 +19,13 @@ jest.mock('../../components/DeleteProduct', () => jest.fn(({ id, children }) => 
 )));
 
 describe('Product', () => {
-  beforeEach(() => {
-    useRouter.mockReset();
-  });
 
   it('should render the product component with the correct data', () => {
     const product = {
       id: 'product-id',
       name: 'Product 1',
       price: 9.99,
-      photo: 'product1.jpg',
+      photo: 'https://tech-challenges.s3.us-east-2.amazonaws.com/ipad.jpg',
       description: 'Product description',
     };
     const userId = 'user-id';
@@ -61,7 +47,7 @@ describe('Product', () => {
       id: 'product-id',
       name: 'Product 1',
       price: 9.99,
-      photo: 'product1.jpg',
+      photo: 'https://tech-challenges.s3.us-east-2.amazonaws.com/ipad.jpg',
       description: 'Product description',
     };
 
