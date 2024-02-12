@@ -6,12 +6,17 @@ const getAllOrders = async () => {
         include: {
             items: true
         }
-    });
+    }).catch(err => console.error(err));
     return allOrders;
 }
 
 export default async function OrdersPage() {
-    const orders = await getAllOrders();
+    let orders = null;
+    try {
+        orders = await getAllOrders();
+    } catch(err) {
+        console.error(err);
+    }
     return (
         <Orders orders={orders} />
     )

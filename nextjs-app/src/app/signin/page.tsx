@@ -19,7 +19,7 @@ export default async function SignInPage() {
           callbackUrl: '/'
         },
       )
-    }catch(err) {
+    } catch(err) {
       console.error('err: ', err);
     }
     // NProgress.done();

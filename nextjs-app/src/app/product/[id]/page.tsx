@@ -26,12 +26,12 @@ const fetchProduct = async (id: string) => {
             where: { id }
         })
     } catch(err) {
-        console.error(err);
+        console.error('product page, err: ', err);
     }
     return product;
 }
 
 export default async function SingleProductPage({ params }: any) {
-    const product = await fetchProduct(params.id);
+    const product = await fetchProduct(params.id).catch(err => console.error(err));
     return <SingleProduct product={product} />;
 }

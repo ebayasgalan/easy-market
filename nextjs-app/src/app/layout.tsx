@@ -15,10 +15,10 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   // get all cart items relating to current user
-  const currentUser = await getCurrentUser().catch(err => console.error('err: ', err));
+  const currentUser = await getCurrentUser().catch(err => console.error('RootLayout, currentUser-err: ', err));
   let cartItems = null;
   // get all user-selected products then dedupe and augment it with quantity 
-  if(currentUser) cartItems = await getUserCartItems(currentUser.cart).catch(err => console.error('err: ', err));
+  if(currentUser) cartItems = await getUserCartItems(currentUser.cart).catch(err => console.error('RootLayout, cartItems-err: ', err));
   
   // console.log('root layout, currentUser: ', currentUser);
   // console.log('root layout, all cartItems: ', cartItems);

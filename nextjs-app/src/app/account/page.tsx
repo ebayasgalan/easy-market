@@ -1,7 +1,12 @@
 import { getCurrentUser } from '@/lib/server-actions';
 
 export default async function AccountPage() {
-    const user = await getCurrentUser();
+    let user = null;
+    try {
+        user = await getCurrentUser();
+    } catch(err) {
+        console.error('AccountPage, err: ', err)
+    }
 
     if(user) {
         // console.log('user: ', user);

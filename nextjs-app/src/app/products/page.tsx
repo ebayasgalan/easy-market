@@ -8,7 +8,7 @@ const getAllProducts = async () => {
   try {
     const products = await prisma.product.findMany();
     return products;
-  }catch(err) {
+  } catch(err) {
     console.error(err);
   }
 }
@@ -21,7 +21,13 @@ export default async function ProductsPage({ params }) {
   const userData = getCurrentUser();
 
   // Wait for the promises to resolve
-  const [products, user] = await Promise.all([allProducts, userData]);
+  let products = null,
+      user = null;
+  try {
+    [products, user] = await Promise.all([allProducts, userData]);
+  } catch(err) {
+    console.error('ProductsPage, err: ', err);
+  }
   // console.log('ProductsPage, products: ', products);
   // console.log('ProductsPage, user: ', user);
 
