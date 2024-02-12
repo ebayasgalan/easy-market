@@ -46,7 +46,7 @@ export const uploadImageToS3 = async (imageFile: any) => {
 export async function POST(request: Request) {
     const formData = await request.formData();
     const pictureFile: any = formData.get('picture');
-    const currentUser = await getCurrentUser();
+    const currentUser = await getCurrentUser().catch(err => console.error('create-product route-handler error: ', err));
     const newProduct = {};
 
     for(let [key, value] of formData) {

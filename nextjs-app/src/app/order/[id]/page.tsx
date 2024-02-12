@@ -25,13 +25,19 @@ const getOrder = async (id) => {
         include: {
             items: true
         }
-    });
+    }).catch(err => console.error(err));
     return order;
 }
 
 export default async function OrderPage({ params }) {
   const { id } = params;
-  const order = await getOrder(id);
+  let order = null;
+  try {
+    order = await getOrder(id);
+  } catch(err) {
+    console.error(err);
+  }
+
   return (
     <Order order={order}/>
   );
