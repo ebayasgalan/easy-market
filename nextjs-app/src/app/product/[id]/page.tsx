@@ -1,6 +1,7 @@
 import SingleProduct from '../../../components/SingleProduct';
 import prisma from "../../../lib/prisma";
 import { Metadata, ResolvingMetadata } from 'next';
+import { getCurrentUser } from '../../../lib/server-actions';
 
 type Props = {
   params: { id: string }
@@ -32,6 +33,20 @@ const fetchProduct = async (id: string) => {
 }
 
 export default async function SingleProductPage({ params }: any) {
-    const product = await fetchProduct(params.id).catch(err => console.error(err));
-    return <SingleProduct product={product} />;
+  let userData = null,
+      product = null;
+
+  try {
+    userData = await getCurrentUser();
+  } catch(err) {
+    console.error(err);
+  }
+
+  try {
+    product = await fetchProduct(params.id);
+  } catch(err) {
+    console.error(err);
+  }
+
+  return <SingleProduct product={product} userId={userData?.id} />;
 }

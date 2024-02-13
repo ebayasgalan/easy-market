@@ -1,5 +1,4 @@
 import prisma from "../../lib/prisma";
-import { getCurrentUser } from '../../lib/server-actions';
 import { Suspense } from 'react';
 import Products from '../../components/Products';
 import Pagination from '../../components/Pagination';
@@ -15,19 +14,8 @@ const getAllProducts = async () => {
 
 export default async function ProductsPage({ params }) {
   const page = parseInt(params.page);
+  let products = await getAllProducts();
 
-  // Initiate both requests in parallel
-  const allProducts = getAllProducts();
-  const userData = getCurrentUser();
-
-  // Wait for the promises to resolve
-  let products = null,
-      user = null;
-  try {
-    [products, user] = await Promise.all([allProducts, userData]);
-  } catch(err) {
-    console.error('ProductsPage, err: ', err);
-  }
   // console.log('ProductsPage, products: ', products);
   // console.log('ProductsPage, user: ', user);
 
@@ -35,7 +23,7 @@ export default async function ProductsPage({ params }) {
     <div>
       <Pagination page={page || 1} productsCount={products?.length} />
       <Suspense fallback={<p>Loading products...</p>}>
-        <Products page={page || 1} products={products} userId={user?.id} />
+        <Products page={page || 1} products={products} />
       </Suspense>
       <Pagination page={page || 1} productsCount={products?.length} />
     </div>

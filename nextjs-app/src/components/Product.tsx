@@ -7,7 +7,7 @@ import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
 
-export default function Product({ product, userId }) {
+export default function Product({ product }) {
   // console.log(`Product, product: `, product);
 
   return (
@@ -23,7 +23,7 @@ export default function Product({ product, userId }) {
       </div>
       <h3 className="mt-4 font-medium text-gray-900">{product.name}</h3>
       <p className="italic text-gray-500">{product.description}</p>
-      <p className="mt-2 font-medium text-gray-900">{product.price}</p>
+      <p className="mt-2 font-medium text-gray-900">{formatMoney(product.price)}</p>
     </Link>
   );
 }
