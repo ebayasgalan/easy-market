@@ -1,23 +1,21 @@
-// import './styles/productsListStyles.scss';
+import './styles/productsListStyles.scss';
 import Product from './Product';
 
 export default async function Products({ products, userId, page }) {
   // console.log('products: ', products);
   // console.log('userId: ', userId);
   // console.log('page: ', page);
-  let endIndex = page * 6;
-  let startIndex = endIndex - 6;
+  let endIndex = page * 4;
+  let startIndex = endIndex - 4;
   const pageProducts = products?.slice(startIndex, endIndex);
 
   return (
-    <div className="bg-white">
-      <div className="mx-auto max-w-7xl overflow-hidden px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+    <div>
+        <div className='products'>
           {pageProducts?.map((product) => (
             <Product key={product.id} product={product} userId={userId} />
           ))}
         </div>
-      </div>
     </div>
-  )
+  );
 }
