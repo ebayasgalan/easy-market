@@ -19,7 +19,7 @@ interface Data {
   password: string;
 }
 
-export default async function SignUp() {
+export default function SignUp() {
   const {
     register,
     handleSubmit,

@@ -1,31 +1,27 @@
 import prisma from "../../lib/prisma";
 import { Suspense } from 'react';
 import Products from '../../components/Products';
-import Pagination from '../../components/Pagination';
 
 const getAllProducts = async () => {
+  let products = null;
   try {
-    const products = await prisma.product.findMany();
-    return products;
+    products = await prisma.product.findMany();
   } catch(err) {
     console.error(err);
   }
+  return products;
 }
 
-export default async function ProductsPage({ params }) {
-  const page = parseInt(params.page);
-  let products = await getAllProducts();
+export default async function ProductsPage() {
+  let products = await getAllProducts().catch(err => console.error('err: ', err));
 
   // console.log('ProductsPage, products: ', products);
-  // console.log('ProductsPage, user: ', user);
 
   return (
     <div>
-      <Pagination page={page || 1} productsCount={products?.length} />
       <Suspense fallback={<p>Loading products...</p>}>
-        <Products page={page || 1} products={products} />
+        <Products products={products} />
       </Suspense>
-      <Pagination page={page || 1} productsCount={products?.length} />
     </div>
   )
 }

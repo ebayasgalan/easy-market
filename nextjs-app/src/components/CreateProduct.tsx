@@ -18,7 +18,7 @@ const formSchema = yup.object({
 
 type FormSchemaType = yup.InferType<typeof formSchema>
 
-export default async function CreateProduct() {
+export default function CreateProduct() {
   const router = useRouter();
 
   const onSubmit = async (data: FormSchemaType) => {
