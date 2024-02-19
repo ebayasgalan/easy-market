@@ -2,45 +2,28 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import './styles/itemStyles.scss';
+// import './styles/itemStyles.scss';
 import formatMoney from '../lib/formatMoney';
 import DeleteProduct from './DeleteProduct';
 import AddToCart from './AddToCartButton';
 
-export default function Product({ product, userId }) {
+export default function Product({ product }) {
   // console.log(`Product, product: `, product);
+
   return (
-    <div className='item'>
-      <Image
-        src={product.photo}
-        alt={product.name}
-        width={500}
-        height={300}
-        style={{
-          objectFit: 'cover',
-        }}
-      />
-      <h3 className='title'>
-        <Link href={`/product/${product.id}`}>{product.name}</Link>
-      </h3>
-      <span className='price'>{formatMoney(product.price)}</span>
-      <p>{product.description}</p>
-      {userId &&
-        <div className="buttonList">
-          <Link
-            href={{
-              pathname: '/update',
-              query: {
-                id: product.id,
-              },
-            }}
-          >
-            Edit ✏️
-          </Link>
-          <AddToCart id={product.id} userId={userId} />
-          <DeleteProduct id={product.id}>Delete</DeleteProduct>
-        </div>
-       } 
-    </div>
+    <Link href={`/product/${product.id}`} className="group text-sm">
+      <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
+        <Image
+          className="h-full w-full object-cover object-center"
+          src={product.photo}
+          alt={product.name}
+          width={500}
+          height={300}
+        />
+      </div>
+      <h3 className="mt-4 font-medium text-gray-900">{product.name}</h3>
+      <p className="italic text-gray-500">{product.description}</p>
+      <p className="mt-2 font-medium text-gray-900">{formatMoney(product.price)}</p>
+    </Link>
   );
 }

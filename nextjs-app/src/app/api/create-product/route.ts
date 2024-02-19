@@ -18,7 +18,7 @@ export const uploadImageToS3 = async (imageFile: any) => {
 
     // Setting up S3 upload parameters
     const blob = new Blob([imageFile])
-    const readableStream = await blob.arrayBuffer();
+    const readableStream = await blob.arrayBuffer().catch(err => console.error('create-product, arrayBuffer error: ', err));
 
     const params: any = {
         Bucket: S3_BUCKET_NAME,
@@ -44,9 +44,9 @@ export const uploadImageToS3 = async (imageFile: any) => {
 }
 
 export async function POST(request: Request) {
-    const formData = await request.formData();
+    const formData = await request.formData().catch(err => console.error('create-product, formData error: ', err));
     const pictureFile: any = formData.get('picture');
-    const currentUser = await getCurrentUser().catch(err => console.error('create-product route-handler error: ', err));
+    const currentUser = await getCurrentUser().catch(err => console.error('create-product, route-handler error: ', err));
     const newProduct = {};
 
     for(let [key, value] of formData) {
@@ -55,7 +55,7 @@ export async function POST(request: Request) {
         else newProduct[key] = value;
     }
 
-    const storedImageURL = await uploadImageToS3(pictureFile);
+    const storedImageURL = await uploadImageToS3(pictureFile).catch(err => console.error('create-product, uploadImageToS3 error: ', err));
 
     newProduct["photo"] = storedImageURL;
     newProduct["userId"] = currentUser.id;

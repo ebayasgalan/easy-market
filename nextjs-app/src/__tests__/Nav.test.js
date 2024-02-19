@@ -33,7 +33,6 @@ describe('Nav', () => {
     expect(getByText('Sell')).toBeInTheDocument();
     expect(getByText('Orders')).toBeInTheDocument();
     expect(getByText('Account')).toBeInTheDocument();
-    // expect(getByText('Signout')).toBeInTheDocument();
     expect(getByText('My Cart')).toBeInTheDocument();
     expect(getByText('0')).toBeInTheDocument();
   });
@@ -66,24 +65,4 @@ describe('Nav', () => {
 
     expect(openCartMock).toHaveBeenCalled();
   });
-
-//   it('toggles mobile-active class when toggle button is clicked', () => {
-//     useSession.mockReturnValue({
-//       data: {},
-//       status: 'authenticated',
-//     });
-
-//     const { getByTestId } = render(<Nav count={0} />);
-//     const toggleButton = getByTestId('toggle-btn');
-
-//     fireEvent.click(toggleButton);
-
-//     const wrapper = document.querySelector('.wrapper');
-
-//     expect(wrapper?.classList.contains('mobile-active')).toBeTruthy();
-
-//     fireEvent.click(toggleButton);
-
-//     expect(wrapper?.classList.contains('mobile-active')).toBeFalsy();
-//   });
 });
