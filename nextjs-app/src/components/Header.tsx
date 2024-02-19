@@ -15,15 +15,16 @@ interface currentUserProps {
   cart: []
 }
 
-export default async function Header({ cartItems, currentUser}: {cartItems: any, currentUser: currentUserProps}) {
+export default async function Header({ cartItems }: {cartItems: any }) {
 
   return (
-    <nav className='header'>
-      <Nav count={currentUser?.cart.length} />
+    // <nav className='header'>
+    <header>
+      <Nav count={cartItems?.length} />
       {/* <div className="sub-bar">
         <Search />
       </div> */}
-      <Cart cartItems={cartItems} currentUser={currentUser} />
-    </nav>
+      <Cart cartItems={cartItems} />
+    </header>
   );
 }

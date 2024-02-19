@@ -28,7 +28,7 @@ export default async function RootLayout({
       <body>
         <AuthContext>
           <CartStateProvider>
-              <Header cartItems={cartItems} currentUser={currentUser} />
+              <Header cartItems={cartItems} />
               {children}
           </CartStateProvider>
         </AuthContext>
