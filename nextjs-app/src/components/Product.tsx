@@ -11,7 +11,7 @@ export default function Product({ product }) {
   // console.log(`Product, product: `, product);
 
   return (
-    <Link href={`/product/${product.id}`} className="group text-sm">
+    <Link href={`/product/${product.id}`} className="group text-sm md:text-lg">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-100 group-hover:opacity-75">
         <Image
           className="h-full w-full object-cover object-center"

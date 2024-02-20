@@ -14,56 +14,6 @@ import { useCart } from '../lib/cartState';
 import RemoveFromCart from './RemoveFromCart';
 import { Checkout } from './Checkout';
 
-// export function CartItem({ cartItem }) {
-//   if (!cartItem) return null;
-//   return (
-//     <li className='cartItems'>
-//       <Image
-//         width={100}
-//         height={200}
-//         src={cartItem.photo}
-//         alt={cartItem.name}
-//         style={{objectFit: 'cover'}}
-//       />
-//       <div>
-//         <h3>{cartItem.name}</h3>
-//         <p>
-//           {formatMoney(cartItem.price * cartItem.quantity)}-
-//           <em>
-//             {cartItem.quantity} &times; {formatMoney(cartItem.price)} each
-//           </em>
-//         </p>
-//       </div>
-//       <RemoveFromCart id={cartItem.id} />
-//     </li>
-//   );
-// }
-
-// function Cart_prev({ cartItems, currentUser }) {
-//   const { cartOpen, closeCart } = useCart();
-  
-//   if (!currentUser?.id) return null;
-  
-//   const totalPrice = calcTotalPrice(cartItems);
-//   return (
-//     <div className={clsx('cart', cartOpen && 'open')}>
-//       <header>
-//         <h3 className='supreme'>{currentUser.name}&apos;s Cart</h3>
-//         <button className='closeButton' onClick={closeCart}>&times;</button>
-//       </header>
-//       <ul>
-//         {cartItems.map((cartItem) => (
-//           <CartItem key={cartItem.id} cartItem={cartItem} />
-//         ))}
-//       </ul>
-//       <footer>
-//         <p>{formatMoney(totalPrice)}</p>
-//         <Checkout totalPrice={totalPrice} userId={currentUser.id} cartItems={cartItems} />
-//       </footer>
-//     </div>
-//   );
-// }
-
 export default function Cart({ cartItems }) {
   const { cartOpen, closeCart } = useCart();
   const totalPrice = calcTotalPrice(cartItems);
@@ -128,15 +78,15 @@ export default function Cart({ cartItems }) {
 
                                 <div className="ml-4 flex flex-1 flex-col">
                                   <div>
-                                    <div className="flex justify-between text-base font-medium text-gray-900">
+                                    <div className="flex justify-between text-base font-medium text-gray-900 lg:text-lg">
                                       <h3>
                                         {item.name}
                                       </h3>
                                       <p className="ml-4">{formatMoney(item.price)}</p>
                                     </div>
-                                    <p className="mt-1 text-sm text-gray-500">{item.description}</p>
+                                    <p className="mt-1 text-sm text-gray-500 lg:text-base">{item.description}</p>
                                   </div>
-                                  <div className="flex flex-1 items-end justify-between text-sm">
+                                  <div className="flex flex-1 items-end justify-between text-sm lg:text-base">
                                     <p className="text-gray-500">Qty {item.quantity}</p>
 
                                     <div className="flex">
