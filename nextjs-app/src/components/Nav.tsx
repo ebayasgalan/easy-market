@@ -34,19 +34,19 @@ export default function Nav({ count }: any) {
                     <>
                       <Link 
                         href="/"
-                        className={`${pathname === '/' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`}
+                        className={`${pathname === '/' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center border-b-2 px-1 pt-1 font-medium text-sm md:text-lg lg:text-2xl`}
                       >
                         Home
                       </Link>
                       <Link 
                         href="/sell"
-                        className={`${pathname === '/sell' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`}
+                        className={`${pathname === '/sell' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center border-b-2 px-1 pt-1 font-medium text-sm md:text-lg lg:text-2xl`}
                       >
                         Sell
                       </Link>
                       <Link 
                         href="/orders"
-                        className={`${pathname === '/orders' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium`}
+                        className={`${pathname === '/orders' ? 'border-indigo-500 text-gray-900' : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'} inline-flex items-center border-b-2 px-1 pt-1 font-medium text-sm md:text-lg lg:text-2xl`}
                       >
                         Orders
                       </Link>
@@ -54,7 +54,7 @@ export default function Nav({ count }: any) {
                       <button 
                         type="button" 
                         onClick={openCart}
-                        className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                        className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 text-sm md:text-lg lg:text-2xl"
                       >
                         My Cart
                       </button>
