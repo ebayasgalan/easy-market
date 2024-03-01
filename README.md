@@ -7,7 +7,8 @@ Nextjs provides route handlers, making it possible to send queries and mutations
 Once logged in, the user can post a new product for sale. The cart will contain the items that got added and can edit them as well. Payment process is integrated with Stripe API and here's a sample card once you're ready to checkout: 4242424242424242 123 12345
 
 ![List of Items for sale](/nextjs-app/public/images/ecommerce.png "Items that are for sale")
-![Version](https://img.shields.io/badge/version-1.6.0-blue.svg)
+
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ---
