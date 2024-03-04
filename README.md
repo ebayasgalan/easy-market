@@ -29,6 +29,7 @@ Once logged in, the user can post a new product for sale. The cart will contain 
 | Typescript   | Superset of Javascript             |
 | PostgreSQL   | Relational database                |
 | Prisma       | ORM (Object Relational Mapping)    |
+| Tailwind     | CSS framework                      |
 | Sass         | CSS preprocessor                   |
 | AWS-S3       | Cloud storage system               |
 | Vercel       | Deployment platform                |
