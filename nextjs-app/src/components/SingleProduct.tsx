@@ -5,7 +5,18 @@ import { CheckIcon } from '@heroicons/react/20/solid';
 import { ShieldCheckIcon } from '@heroicons/react/24/outline';
 import AddToCart from './AddToCartButton';
 
-export default function SingleProduct({ product, userId }: any) {
+type ProductProps = {
+  product: {
+    photo: string;
+    name: string;
+    description: string;
+    price: number;
+    id: string;
+  };
+  userId: string;
+}
+
+export default function SingleProduct({ product, userId }: ProductProps) {
 
   // console.log('SingleProduct, product: ', product);
 

@@ -1,7 +1,15 @@
 import './styles/productStyles.scss';
 import Image from 'next/image';
 
-export default function SingleProduct({ product }: any) {
+type ProductProps = {
+  product: {
+    photo: string;
+    name: string;
+    description: string;
+  };
+}
+
+export default function SingleProduct({ product }: ProductProps) {
 
   // console.log('SingleProduct, product: ', product);
   return (

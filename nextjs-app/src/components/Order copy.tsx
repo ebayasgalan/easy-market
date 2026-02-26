@@ -2,7 +2,7 @@ import formatMoney from '../lib/formatMoney';
 import './styles/orderStyles.scss';
 import Image from 'next/image';
 
-export default async function SingleOrderPage({ order }) {
+export default async function SingleOrderPage({ order }: any) {
 //  console.log('single order, order: ', order);
   return (
     <div className='singleOrder'>
@@ -19,7 +19,7 @@ export default async function SingleOrderPage({ order }) {
         <span>{order.items.length}</span>
       </p>
       <div className="items">
-        {order.items.map((item) => (
+        {order.items.map((item: any) => (
           <div className="order-item" key={item.id}>
             <Image src={item.photo} alt={item.name} width={200} height={100} />
             <div className="item-details">

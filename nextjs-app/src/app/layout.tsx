@@ -1,38 +1,41 @@
-import './globals.css';
-import AuthContext from '../lib/AuthContext';
-import Header from '../components/Header';
-import { CartStateProvider } from '../lib/cartState';
-import { getCurrentUser, getUserCartItems } from '../lib/server-actions';
+import type { Metadata } from 'next'
+import { Instrument_Sans } from 'next/font/google'
+import '@/styles/styles.scss'
+import GlobalProvider from './GlobalProvider'
+import ModalCart from '@/components/Modal/ModalCart'
+import ModalWishlist from '@/components/Modal/ModalWishlist'
+import ModalSearch from '@/components/Modal/ModalSearch'
+import ModalQuickview from '@/components/Modal/ModalQuickview'
+import ModalCompare from '@/components/Modal/ModalCompare'
+import CountdownTimeType from '@/type/CountdownType'
+import { countdownTime } from '@/store/countdownTime'
 
-export const metadata = {
-  title: 'Easy-Market',
-  description: 'Ecommerce site'
+const serverTimeLeft: CountdownTimeType = countdownTime();
+
+const instrument = Instrument_Sans({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Easy Market',
+  description: 'eCommerce that sells watches',
 }
 
-export default async function RootLayout({
-  children
+export default function RootLayout({
+  children,
 }: {
   children: React.ReactNode
 }) {
-  // get all cart items relating to current user
-  const currentUser = await getCurrentUser().catch(err => console.error('RootLayout, currentUser-err: ', err));
-  let cartItems = null;
-  // get all user-selected products then dedupe and augment it with quantity 
-  if(currentUser) cartItems = await getUserCartItems(currentUser.cart).catch(err => console.error('RootLayout, cartItems-err: ', err));
-  
-  // console.log('root layout, currentUser: ', currentUser);
-  // console.log('root layout, all cartItems: ', cartItems);
-
   return (
-    <html lang="en">
-      <body>
-        <AuthContext>
-          <CartStateProvider>
-              <Header cartItems={cartItems} />
-              {children}
-          </CartStateProvider>
-        </AuthContext>
-      </body>
-    </html>
+    <GlobalProvider>
+      <html lang="en">
+        <body className={instrument.className}>
+          {children}
+          <ModalCart serverTimeLeft={serverTimeLeft} />
+          <ModalWishlist />
+          <ModalSearch />
+          <ModalQuickview />
+          <ModalCompare />
+        </body>
+      </html>
+    </GlobalProvider>
   )
 }

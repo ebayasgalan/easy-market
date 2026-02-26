@@ -35,7 +35,7 @@ export default async function UpdateProduct({ id }) {
     const updatedProduct = await updateProduct(formData, id);
     
     // Go to that product's page!
-    router.push(`/product/${updatedProduct.id}`);
+    router.push(`/product/${updatedProduct?.product_id}`);
   }
 
   const {

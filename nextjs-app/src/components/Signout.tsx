@@ -1,8 +1,9 @@
 'use client';
 
 import { signOut } from "next-auth/react";
+import React from 'react';
 
-export default function Signout() {
+export default function Signout(): React.ReactNode {
 
   const onClickHandler = async () => {
     await signOut({ callbackUrl: "/signin" })
