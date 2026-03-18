@@ -37,7 +37,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/384x384.png'}
+                                    src={'/images/product/rolex_1_thumb.jpg'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -51,7 +51,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/384x384.png'}
+                                    src={'/images/product/rolex_1_thumb.jpg'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -65,7 +65,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/384x384.png'}
+                                    src={'/images/product/rolex_1_thumb.jpg'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -79,7 +79,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/384x384.png'}
+                                    src={'/images/product/rolex_1_thumb.jpg'}
                                     width={300}
                                     height={300}
                                     alt='1'
@@ -93,7 +93,7 @@ const Instagram = () => {
                         <SwiperSlide>
                             <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block overflow-hidden">
                                 <Image
-                                    src={'/images/instagram/384x384.png'}
+                                    src={'/images/product/rolex_1_thumb.jpg'}
                                     width={300}
                                     height={300}
                                     alt='1'

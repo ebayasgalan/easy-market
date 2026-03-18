@@ -8,6 +8,15 @@ import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css/bundle';
 import { useRouter } from 'next/navigation';
 
+const categoryImages: Record<string, string> = {
+    smart: '/images/product/smart_1_1.jpg',
+    luxury: '/images/product/luxury_1_2.jpg',
+    classic: '/images/product/rolex_1_1.jpg',
+    fitness: '/images/product/sport_1_2.jpg',
+    apple: '/images/product/smart_1_3.jpg',
+    sport: '/images/product/rolex_1_4.jpg',
+}
+
 const Category = () => {
     const router = useRouter()
 
@@ -46,102 +55,24 @@ const Category = () => {
                             }}
                             className='h-full'
                         >
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('smart')}>
-                                    <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden">
-                                        <Image
-                                            src={'/images/collection/450x450.png'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='outerwear'
-                                            className='w-full'
-                                        />
+                            {Object.entries(categoryImages).map(([type, image]) => (
+                                <SwiperSlide key={type}>
+                                    <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick(type)}>
+                                        <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden aspect-square">
+                                            <Image
+                                                src={image}
+                                                width={1000}
+                                                height={1000}
+                                                alt={type}
+                                                className='w-full h-full object-cover'
+                                            />
+                                        </div>
+                                        <div className="trending-name text-center mt-5 duration-500">
+                                            <span className='heading6 text-white'>{type.charAt(0).toUpperCase() + type.slice(1)}{type === 'smart' ? ' watch' : type === 'apple' ? ' watch' : ''}</span>
+                                        </div>
                                     </div>
-                                    <div className="trending-name text-center mt-5 duration-500">
-                                        <span className='heading6 text-white'>Smart watch</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('luxury')}>
-                                    <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden">
-                                        <Image
-                                            src={'/images/collection/450x450.png'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='swimwear'
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name text-center mt-5 duration-500">
-                                        <span className='heading6 text-white'>Luxury</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('classic')}>
-                                    <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden">
-                                        <Image
-                                            src={'/images/collection/450x450.png'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='clothes'
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name text-center mt-5 duration-500">
-                                        <span className='heading6 text-white'>Classic</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('fitness')}>
-                                    <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden">
-                                        <Image
-                                            src={'/images/collection/450x450.png'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='sets'
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name text-center mt-5 duration-500">
-                                        <span className='heading6 text-white'>Fitness</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('apple')}>
-                                    <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden">
-                                        <Image
-                                            src={'/images/collection/450x450.png'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='accessories'
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name text-center mt-5 duration-500">
-                                        <span className='heading6 text-white'>Apple watch</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                                <div className="trending-item block relative cursor-pointer" onClick={() => handleTypeClick('sport')}>
-                                    <div className="bg-img rounded-full bg-surface1 border-surface2 border-2 overflow-hidden">
-                                        <Image
-                                            src={'/images/collection/450x450.png'}
-                                            width={1000}
-                                            height={1000}
-                                            alt='lingerie'
-                                            className='w-full'
-                                        />
-                                    </div>
-                                    <div className="trending-name text-center mt-5 duration-500">
-                                        <span className='heading6 text-white'>Sport</span>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
+                                </SwiperSlide>
+                            ))}
                         </Swiper>
                     </div>
                 </div>

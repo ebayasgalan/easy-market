@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ProductType } from '@/type/ProductType'
 import Product from '../Product'
-import Rate from '@/components/Other/Rate'
+import Rate from '@/lib/Rate'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Thumbs, Scrollbar } from 'swiper/modules';
 import 'swiper/css/bundle';
@@ -326,7 +326,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         <div className="list grid grid-cols-6">
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -335,7 +335,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -344,7 +344,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -353,7 +353,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -362,7 +362,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -371,7 +371,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -692,7 +692,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                     >
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -701,7 +701,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -710,7 +710,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -719,7 +719,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -728,7 +728,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -737,7 +737,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -746,7 +746,7 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                         </SwiperSlide>
                                         <SwiperSlide>
                                             <Image
-                                                src={'/images/product/1000x1000.png'}
+                                                src={'/images/product/rolex_1_thumb.jpg'}
                                                 width={400}
                                                 height={400}
                                                 alt=''
@@ -771,21 +771,21 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                 <div className="left lg:w-1/4 w-full lg:pr-[15px]">
                                     <div className="list-img-review flex gap-2">
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
                                             className='w-[60px] aspect-square rounded-lg'
                                         />
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
                                             className='w-[60px] aspect-square rounded-lg'
                                         />
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
@@ -820,21 +820,21 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                 <div className="left lg:w-1/4 w-full lg:pr-[15px]">
                                     <div className="list-img-review flex gap-2">
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
                                             className='w-[60px] aspect-square rounded-lg'
                                         />
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
                                             className='w-[60px] aspect-square rounded-lg'
                                         />
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
@@ -869,21 +869,21 @@ const Default: React.FC<Props> = ({ data, productId }) => {
                                 <div className="left lg:w-1/4 w-full lg:pr-[15px]">
                                     <div className="list-img-review flex gap-2">
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
                                             className='w-[60px] aspect-square rounded-lg'
                                         />
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'
                                             className='w-[60px] aspect-square rounded-lg'
                                         />
                                         <Image
-                                            src={'/images/product/1000x1000.png'}
+                                            src={'/images/product/rolex_1_thumb.jpg'}
                                             width={200}
                                             height={200}
                                             alt='img'

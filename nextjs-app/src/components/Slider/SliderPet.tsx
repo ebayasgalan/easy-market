@@ -35,10 +35,10 @@ const SliderPet = () => {
                                     </div>
                                     <div className="sub-img absolute left-0 top-0 w-full h-full z-[-1]">
                                         <Image
-                                            src={'/images/slider/1920x760.png'}
+                                            src={'/images/product/rolex_1_1.jpg'}
                                             width={2560}
                                             height={1080}
-                                            alt='1920x760'
+                                            alt='rolex watch'
                                             className='w-full h-full object-cover'
                                         />
                                     </div>
@@ -55,10 +55,10 @@ const SliderPet = () => {
                                     </div>
                                     <div className="sub-img absolute left-0 top-0 w-full h-full z-[-1]">
                                         <Image
-                                            src={'/images/slider/1920x760.png'}
+                                            src={'/images/product/luxury_1_1.jpg'}
                                             width={2560}
                                             height={1080}
-                                            alt='1920x760'
+                                            alt='luxury watch'
                                             className='w-full h-full object-cover'
                                         />
                                     </div>
@@ -75,10 +75,10 @@ const SliderPet = () => {
                                     </div>
                                     <div className="sub-img absolute left-0 top-0 w-full h-full z-[-1]">
                                         <Image
-                                            src={'/images/slider/1920x760.png'}
+                                            src={'/images/product/sport_1_1.jpg'}
                                             width={2560}
                                             height={1080}
-                                            alt='1920x760'
+                                            alt='sport watch'
                                             className='w-full h-full object-cover'
                                         />
                                     </div>

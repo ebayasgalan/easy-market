@@ -11,7 +11,6 @@ import productData from '../lib/Product.json'
 import FeaturedProduct from '@/components/Watch/FeaturedProduct'
 import TrendingProduct from '@/components/Watch/TrendingProduct'
 import PopularProduct from '@/components/Watch/PopularProduct'
-import Instagram from '@/components/Watch/Instagram'
 // import Brand from '@/components/Home6/Brand'/
 import Footer from '@/components/Footer/Footer'
 
@@ -30,7 +29,6 @@ export default function Home() {
             <TrendingProduct data={productData} />
             <PopularProduct />
             <Benefit props="md:py-[60px] py-8 style-watch md:mt-20 mt-10" />
-            <Instagram />
             {/* <Brand /> */}
             <div className="style-watch">
                 <Footer />

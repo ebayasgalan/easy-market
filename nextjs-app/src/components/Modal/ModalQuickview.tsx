@@ -278,7 +278,7 @@ const ModalQuickview = () => {
                                             <div className="list grid grid-cols-6">
                                                 <div className="item flex items-center justify-center lg:px-3 px-1">
                                                     <Image
-                                                        src={'/images/payment/150x96.png'}
+                                                        src={'/images/product/rolex_1_thumb.jpg'}
                                                         width={500}
                                                         height={450}
                                                         alt='payment'
@@ -287,7 +287,7 @@ const ModalQuickview = () => {
                                                 </div>
                                                 <div className="item flex items-center justify-center lg:px-3 px-1">
                                                     <Image
-                                                        src={'/images/payment/150x96.png'}
+                                                        src={'/images/product/rolex_1_thumb.jpg'}
                                                         width={500}
                                                         height={450}
                                                         alt='payment'
@@ -296,7 +296,7 @@ const ModalQuickview = () => {
                                                 </div>
                                                 <div className="item flex items-center justify-center lg:px-3 px-1">
                                                     <Image
-                                                        src={'/images/payment/150x96.png'}
+                                                        src={'/images/product/rolex_1_thumb.jpg'}
                                                         width={500}
                                                         height={450}
                                                         alt='payment'
@@ -305,7 +305,7 @@ const ModalQuickview = () => {
                                                 </div>
                                                 <div className="item flex items-center justify-center lg:px-3 px-1">
                                                     <Image
-                                                        src={'/images/payment/150x96.png'}
+                                                        src={'/images/product/rolex_1_thumb.jpg'}
                                                         width={500}
                                                         height={450}
                                                         alt='payment'
@@ -314,7 +314,7 @@ const ModalQuickview = () => {
                                                 </div>
                                                 <div className="item flex items-center justify-center lg:px-3 px-1">
                                                     <Image
-                                                        src={'/images/payment/150x96.png'}
+                                                        src={'/images/product/rolex_1_thumb.jpg'}
                                                         width={500}
                                                         height={450}
                                                         alt='payment'
@@ -323,7 +323,7 @@ const ModalQuickview = () => {
                                                 </div>
                                                 <div className="item flex items-center justify-center lg:px-3 px-1">
                                                     <Image
-                                                        src={'/images/payment/150x96.png'}
+                                                        src={'/images/product/rolex_1_thumb.jpg'}
                                                         width={500}
                                                         height={450}
                                                         alt='payment'

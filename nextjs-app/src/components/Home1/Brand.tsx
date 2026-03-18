@@ -43,10 +43,10 @@ const Brand = () => {
                             <SwiperSlide>
                                 <div className="brand-item relative flex items-center justify-center h-[36px]">
                                     <Image
-                                        src={'/images/brand/160x44.png'}
+                                        src={'/images/product/rolex_1_thumb.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='rolex'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -54,10 +54,10 @@ const Brand = () => {
                             <SwiperSlide>
                                 <div className="brand-item relative flex items-center justify-center h-[36px]">
                                     <Image
-                                        src={'/images/brand/160x44.png'}
+                                        src={'/images/product/rolex_2_thumb.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='rolex'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -65,10 +65,10 @@ const Brand = () => {
                             <SwiperSlide>
                                 <div className="brand-item relative flex items-center justify-center h-[36px]">
                                     <Image
-                                        src={'/images/brand/160x44.png'}
+                                        src={'/images/product/luxury_1_thumb.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='luxury'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -76,10 +76,10 @@ const Brand = () => {
                             <SwiperSlide>
                                 <div className="brand-item relative flex items-center justify-center h-[36px]">
                                     <Image
-                                        src={'/images/brand/160x44.png'}
+                                        src={'/images/product/smart_1_thumb.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='smart watch'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -87,10 +87,10 @@ const Brand = () => {
                             <SwiperSlide>
                                 <div className="brand-item relative flex items-center justify-center h-[36px]">
                                     <Image
-                                        src={'/images/brand/160x44.png'}
+                                        src={'/images/product/sport_1_thumb.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='sport watch'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>
@@ -98,10 +98,10 @@ const Brand = () => {
                             <SwiperSlide>
                                 <div className="brand-item relative flex items-center justify-center h-[36px]">
                                     <Image
-                                        src={'/images/brand/160x44.png'}
+                                        src={'/images/product/rolex_1_2.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='rolex'
                                         className='h-full w-auto duration-500 relative object-cover'
                                     />
                                 </div>

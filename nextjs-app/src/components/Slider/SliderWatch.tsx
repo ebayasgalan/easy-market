@@ -34,10 +34,10 @@ const SliderWatch = () => {
                                     </div>
                                     <div className="sub-img absolute left-0 top-0 w-full h-full z-[-1]">
                                         <Image
-                                            src={'/images/slider/1920x760.png'}
-                                            width={3000}
-                                            height={2000}
-                                            alt='1920x760'
+                                            src={'/images/hero/hero-1.jpg'}
+                                            width={1920}
+                                            height={1281}
+                                            alt='luxury watch on dark background'
                                             className='w-full h-full object-cover'
                                         />
                                     </div>
@@ -55,10 +55,10 @@ const SliderWatch = () => {
                                     </div>
                                     <div className="sub-img absolute left-0 top-0 w-full h-full z-[-1]">
                                         <Image
-                                            src={'/images/slider/1920x760.png'}
-                                            width={3000}
-                                            height={2000}
-                                            alt='1920x760'
+                                            src={'/images/hero/hero-2.jpg'}
+                                            width={1920}
+                                            height={2400}
+                                            alt='rolex watch on elegant tray'
                                             className='w-full h-full object-cover'
                                         />
                                     </div>
@@ -76,10 +76,10 @@ const SliderWatch = () => {
                                     </div>
                                     <div className="sub-img absolute left-0 top-0 w-full h-full z-[-1]">
                                         <Image
-                                            src={'/images/slider/1920x760.png'}
-                                            width={3000}
-                                            height={2000}
-                                            alt='1920x760'
+                                            src={'/images/hero/hero-3.jpg'}
+                                            width={1920}
+                                            height={2560}
+                                            alt='close-up watch on dark surface'
                                             className='w-full h-full object-cover'
                                         />
                                     </div>

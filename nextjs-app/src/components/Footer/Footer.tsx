@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
+
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 
 const Footer = () => {
@@ -84,64 +84,15 @@ const Footer = () => {
                         </div>
                         <div className="footer-bottom py-3 flex items-center justify-between gap-5 max-lg:justify-center max-lg:flex-col border-t border-line">
                             <div className="left flex items-center gap-8">
-                                <div className="copyright caption1 text-secondary">©2024 All Rights Reserved.</div>
+                                <div className="copyright caption1 text-secondary">©2026 All Rights Reserved.</div>
                             </div>
                             <div className="right flex items-center gap-2">
                                 <div className="caption1 text-secondary">Payment:</div>
-                                <div className="payment-img">
-                                    <Image
-                                        src={'/images/payment/150x96.png'}
-                                        width={500}
-                                        height={500}
-                                        alt={'payment'}
-                                        className='w-9'
-                                    />
-                                </div>
-                                <div className="payment-img">
-                                    <Image
-                                        src={'/images/payment/150x96.png'}
-                                        width={500}
-                                        height={500}
-                                        alt={'payment'}
-                                        className='w-9'
-                                    />
-                                </div>
-                                <div className="payment-img">
-                                    <Image
-                                        src={'/images/payment/150x96.png'}
-                                        width={500}
-                                        height={500}
-                                        alt={'payment'}
-                                        className='w-9'
-                                    />
-                                </div>
-                                <div className="payment-img">
-                                    <Image
-                                        src={'/images/payment/150x96.png'}
-                                        width={500}
-                                        height={500}
-                                        alt={'payment'}
-                                        className='w-9'
-                                    />
-                                </div>
-                                <div className="payment-img">
-                                    <Image
-                                        src={'/images/payment/150x96.png'}
-                                        width={500}
-                                        height={500}
-                                        alt={'payment'}
-                                        className='w-9'
-                                    />
-                                </div>
-                                <div className="payment-img">
-                                    <Image
-                                        src={'/images/payment/150x96.png'}
-                                        width={500}
-                                        height={500}
-                                        alt={'payment'}
-                                        className='w-9'
-                                    />
-                                </div>
+                                <div className="caption1 text-secondary">Visa</div>
+                                <div className="caption1 text-secondary">Mastercard</div>
+                                <div className="caption1 text-secondary">Amex</div>
+                                <div className="caption1 text-secondary">PayPal</div>
+                                <div className="caption1 text-secondary">Stripe</div>
                             </div>
                         </div>
                     </div>

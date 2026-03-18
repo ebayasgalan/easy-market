@@ -20,7 +20,7 @@ const Banner = () => {
                         <div className="banner-item relative block rounded-[40px] overflow-hidden duration-500 cursor-pointer" onClick={() => handleCategoryClick('watch')}>
                             <div className="banner-img w-full h-full">
                                 <Image
-                                    src={'/images/banner/410x615.png'}
+                                    src={'/images/product/rolex_2_1.jpg'}
                                     width={2000}
                                     height={1800}
                                     alt='bg-img'
@@ -36,7 +36,7 @@ const Banner = () => {
                         <div className="banner-item relative block rounded-[40px] overflow-hidden duration-500 cursor-pointer" onClick={() => handleCategoryClick('watch')}>
                             <div className="banner-img w-full h-full">
                                 <Image
-                                    src={'/images/banner/410x615.png'}
+                                    src={'/images/product/luxury_1_1.jpg'}
                                     width={2000}
                                     height={1800}
                                     alt='bg-img'
@@ -52,7 +52,7 @@ const Banner = () => {
                         <div className="banner-item relative block rounded-[40px] overflow-hidden duration-500 cursor-pointer" onClick={() => handleCategoryClick('watch')}>
                             <div className="banner-img w-full h-full">
                                 <Image
-                                    src={'/images/banner/410x615.png'}
+                                    src={'/images/product/sport_1_1.jpg'}
                                     width={2000}
                                     height={1800}
                                     alt='bg-img'

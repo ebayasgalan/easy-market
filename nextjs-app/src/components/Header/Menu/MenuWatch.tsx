@@ -441,7 +441,7 @@ const MenuWatch: React.FC<Props> = ({ props }) => {
                                                             <div className="button-main mt-5">Shop Now</div>
                                                         </div>
                                                         <Image
-                                                            src={'/images/other/600x450.png'}
+                                                            src={'/images/product/luxury_1_1.jpg'}
                                                             width={1000}
                                                             height={800}
                                                             alt='bg-img'
@@ -1313,7 +1313,7 @@ const MenuWatch: React.FC<Props> = ({ props }) => {
                                                             <div className="button-main mt-5">Shop Now</div>
                                                         </div>
                                                         <Image
-                                                            src={'/images/other/600x450.png'}
+                                                            src={'/images/product/luxury_1_1.jpg'}
                                                             width={1000}
                                                             height={900}
                                                             alt='bg-img'

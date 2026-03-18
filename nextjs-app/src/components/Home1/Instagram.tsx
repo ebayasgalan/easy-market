@@ -46,10 +46,10 @@ const Instagram = () => {
                             <SwiperSlide>
                                 <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block rounded-[32px] overflow-hidden">
                                     <Image
-                                        src={'/images/instagram/384x384.png'}
+                                        src={'/images/product/rolex_1_1.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='rolex watch'
                                         className='h-full w-full duration-500 relative'
                                     />
                                     <div className="icon w-12 h-12 bg-white hover:bg-black duration-500 flex items-center justify-center rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
@@ -60,10 +60,10 @@ const Instagram = () => {
                             <SwiperSlide>
                                 <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block rounded-[32px] overflow-hidden">
                                     <Image
-                                        src={'/images/instagram/384x384.png'}
+                                        src={'/images/product/rolex_2_1.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='rolex watch'
                                         className='h-full w-full duration-500 relative'
                                     />
                                     <div className="icon w-12 h-12 bg-white hover:bg-black duration-500 flex items-center justify-center rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
@@ -74,10 +74,10 @@ const Instagram = () => {
                             <SwiperSlide>
                                 <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block rounded-[32px] overflow-hidden">
                                     <Image
-                                        src={'/images/instagram/384x384.png'}
+                                        src={'/images/product/luxury_1_1.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='luxury watch'
                                         className='h-full w-full duration-500 relative'
                                     />
                                     <div className="icon w-12 h-12 bg-white hover:bg-black duration-500 flex items-center justify-center rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
@@ -88,10 +88,10 @@ const Instagram = () => {
                             <SwiperSlide>
                                 <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block rounded-[32px] overflow-hidden">
                                     <Image
-                                        src={'/images/instagram/384x384.png'}
+                                        src={'/images/product/smart_1_1.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='smart watch'
                                         className='h-full w-full duration-500 relative'
                                     />
                                     <div className="icon w-12 h-12 bg-white hover:bg-black duration-500 flex items-center justify-center rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">
@@ -102,10 +102,10 @@ const Instagram = () => {
                             <SwiperSlide>
                                 <Link href={'https://www.instagram.com/'} target='_blank' className="item relative block rounded-[32px] overflow-hidden">
                                     <Image
-                                        src={'/images/instagram/384x384.png'}
+                                        src={'/images/product/sport_1_1.jpg'}
                                         width={300}
                                         height={300}
-                                        alt='1'
+                                        alt='sport watch'
                                         className='h-full w-full duration-500 relative'
                                     />
                                     <div className="icon w-12 h-12 bg-white hover:bg-black duration-500 flex items-center justify-center rounded-2xl absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[1]">

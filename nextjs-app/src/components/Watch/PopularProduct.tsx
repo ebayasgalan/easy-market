@@ -50,7 +50,7 @@ const PopularProduct = () => {
                             </div>
                             <div className="product-img sm:w-[55%] w-[90%]">
                                 <Image
-                                    src={'/images/collection/450x450.png'}
+                                    src={'/images/product/smart_1_1.jpg'}
                                     width={1000}
                                     height={1000}
                                     alt='bg-img'

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ProductType } from '@/type/ProductType'
 import Product from '../Product'
-import Rate from '@/components/Other/Rate'
+import Rate from '@/lib/Rate'
 import * as Icon from "@phosphor-icons/react/dist/ssr";
 import { useCart } from '@/context/CartContext'
 import { useModalCartContext } from '@/context/ModalCartContext'
@@ -326,7 +326,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                         <div className="list grid grid-cols-6">
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -335,7 +335,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -344,7 +344,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -353,7 +353,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -362,7 +362,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -371,7 +371,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                             </div>
                                             <div className="item flex items-center justify-center lg:px-3 px-1">
                                                 <Image
-                                                    src={'/images/payment/150x96.png'}
+                                                    src={'/images/product/rolex_1_thumb.jpg'}
                                                     width={500}
                                                     height={450}
                                                     alt='payment'
@@ -654,7 +654,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                                 <div className="user-infor flex gap-4">
                                                     <div className="avatar">
                                                         <Image
-                                                            src={'/images/avatar/700x700.png'}
+                                                            src={'/images/product/rolex_2_thumb.jpg'}
                                                             width={200}
                                                             height={200}
                                                             alt='img'
@@ -694,7 +694,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                                 <div className="user-infor flex gap-4">
                                                     <div className="avatar">
                                                         <Image
-                                                            src={'/images/avatar/700x700.png'}
+                                                            src={'/images/product/rolex_2_thumb.jpg'}
                                                             width={200}
                                                             height={200}
                                                             alt='img'
@@ -734,7 +734,7 @@ const CountdownTimer: React.FC<Props> = ({ data, productId }) => {
                                                 <div className="user-infor flex gap-4">
                                                     <div className="avatar">
                                                         <Image
-                                                            src={'/images/avatar/700x700.png'}
+                                                            src={'/images/product/rolex_2_thumb.jpg'}
                                                             width={200}
                                                             height={200}
                                                             alt='img'
